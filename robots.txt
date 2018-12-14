@@ -11,5 +11,4 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
-Sitemap: http://iamxcb.com/sitemap.xml
-Sitemap: http://iamxcb.com/baidusitemap.xml
+Sitemap: http://www.ehcoo.com/sitemap.xml
