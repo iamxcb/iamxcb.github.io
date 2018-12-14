@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="题解可以知道A[k] * 2是一个偶数， 当 i &amp;lt; k &amp;lt; j时，为了使 A[k] * 2 != A[i] + A[j]，可以让左边全奇数，右边全偶数 示例代码(go)1234567891011121314151617func beautifulArray(N int) []int &amp;#123;    res := make([]int, 0)        if N == 1 &amp;#">
+<meta name="description" content="题解前六位代表分钟，后四位代表时钟，组成十位二进制，当num=1时，共计0000000001~1000000000 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以hour小时就等于十进制数值除以64，minute分钟则是对64取模，当num=2,3,4...时，对于bits每一个值，左边依次找一个二进制位变为1，比如0000010000可以变成0000110000, 000101">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 932 漂亮数组">
-<meta property="og:url" content="http://iamxcb.com/leetcode-932.html">
+<meta property="og:title" content="leetcode 401 二进制手表">
+<meta property="og:url" content="http://iamxcb.com/leetcode-401.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解可以知道A[k] * 2是一个偶数， 当 i &amp;lt; k &amp;lt; j时，为了使 A[k] * 2 != A[i] + A[j]，可以让左边全奇数，右边全偶数 示例代码(go)1234567891011121314151617func beautifulArray(N int) []int &amp;#123;    res := make([]int, 0)        if N == 1 &amp;#">
+<meta property="og:description" content="题解前六位代表分钟，后四位代表时钟，组成十位二进制，当num=1时，共计0000000001~1000000000 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以hour小时就等于十进制数值除以64，minute分钟则是对64取模，当num=2,3,4...时，对于bits每一个值，左边依次找一个二进制位变为1，比如0000010000可以变成0000110000, 000101">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-13T09:52:27.083Z">
+<meta property="og:updated_time" content="2018-12-14T05:42:31.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 932 漂亮数组">
-<meta name="twitter:description" content="题解可以知道A[k] * 2是一个偶数， 当 i &amp;lt; k &amp;lt; j时，为了使 A[k] * 2 != A[i] + A[j]，可以让左边全奇数，右边全偶数 示例代码(go)1234567891011121314151617func beautifulArray(N int) []int &amp;#123;    res := make([]int, 0)        if N == 1 &amp;#">
+<meta name="twitter:title" content="leetcode 401 二进制手表">
+<meta name="twitter:description" content="题解前六位代表分钟，后四位代表时钟，组成十位二进制，当num=1时，共计0000000001~1000000000 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以hour小时就等于十进制数值除以64，minute分钟则是对64取模，当num=2,3,4...时，对于bits每一个值，左边依次找一个二进制位变为1，比如0000010000可以变成0000110000, 000101">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://iamxcb.com/leetcode-932.html">
+  <link rel="canonical" href="http://iamxcb.com/leetcode-401.html">
 
 
 
 
 
-  <title>leetcode 932 漂亮数组 | 下午三点钟的太阳</title>
+  <title>leetcode 401 二进制手表 | 下午三点钟的太阳</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode-932.html">
+    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode-401.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xcb">
@@ -268,7 +268,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 932 漂亮数组</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 401 二进制手表</h2>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T16:27:05+08:00">
-                2018-12-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T13:07:05+08:00">
+                2018-12-14
               </time>
             
 
@@ -318,8 +318,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>可以知道<code>A[k] * 2</code>是一个偶数， 当 <code>i &lt; k &lt; j</code>时，为了使 <code>A[k] * 2 != A[i] + A[j]</code>，可以让左边全奇数，右边全偶数</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">beautifulArray</span><span class="params">(N <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> N == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    left := beautifulArray((N +<span class="number">1</span>) / <span class="number">2</span>)</span><br><span class="line">    right := beautifulArray(N / <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> left &#123;</span><br><span class="line">        res = <span class="built_in">append</span>(res, <span class="number">2</span> * v - <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">for</span> _, v := <span class="keyword">range</span> right &#123;</span><br><span class="line">        res = <span class="built_in">append</span>(res, <span class="number">2</span> * v)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>前六位代表分钟，后四位代表时钟，组成十位二进制，当<code>num=1</code>时，共计<code>0000000001</code>~<code>1000000000</code> 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以<code>hour</code>小时就等于十进制数值除以64，<code>minute</code>分钟则是对64取模，当<code>num=2,3,4...</code>时，对于<code>bits</code>每一个值，左边依次找一个二进制位变为1，比如<code>0000010000</code>可以变成<code>0000110000</code>, <code>0001010000</code>一直到<code>1000010000</code>，同时也要排除掉大于768和在[60,64]之间的值，因为时钟不能为12，分钟不能大于59</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">readBinaryWatch</span><span class="params">(num <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    times := []<span class="keyword">string</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="keyword">string</span>&#123;<span class="string">"0:00"</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    bits := []<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">9</span>; i++ &#123;</span><br><span class="line">        bits = <span class="built_in">append</span>(bits, bits[i]*<span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; num; i++ &#123;</span><br><span class="line">        nextBits := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> bits &#123;</span><br><span class="line">            <span class="keyword">for</span> add := <span class="number">1</span>; add &lt;= <span class="number">512</span>; add *= <span class="number">2</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> v + add &gt;= <span class="number">768</span>  || (v + add &gt;= <span class="number">60</span> &amp;&amp; v + add &lt; <span class="number">64</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> add &gt; v &#123;</span><br><span class="line">                    nextBits = <span class="built_in">append</span>(nextBits, v + add)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        bits = nextBits</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> bits &#123;</span><br><span class="line">        hour := v / <span class="number">64</span></span><br><span class="line">        minute := v % <span class="number">64</span></span><br><span class="line">        times = <span class="built_in">append</span>(times, fmt.Sprintf(<span class="string">"%d:%02d"</span>, hour, minute))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> times</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -343,8 +343,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode-547.html" rel="next" title="leetcode 547 朋友圈">
-                <i class="fa fa-chevron-left"></i> leetcode 547 朋友圈
+              <a href="/leetcode-932.html" rel="next" title="leetcode 932 漂亮数组">
+                <i class="fa fa-chevron-left"></i> leetcode 932 漂亮数组
               </a>
             
           </div>
@@ -352,10 +352,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-401.html" rel="prev" title="leetcode 401 二进制手表">
-                leetcode 401 二进制手表 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
