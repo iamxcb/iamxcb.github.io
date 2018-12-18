@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="题解数组stack作为栈，通过append和切片模拟入栈出栈操作  迭代数组T 数组T的索引0入栈 迭代的值大于栈顶索引的值，即v &amp;gt; T[stack[len(stack)-1]]，则栈顶元素出栈，并存入res 重复步骤3, 直到栈为空 或 v不大于T[stack[len(stack)-1]] 数组T迭代完毕，返回数组res  示例代码(go)12345678910111213141516f">
+<meta name="description" content="题解找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积 示例代码(go)12345678910111213141516171819202122232425func maximumProduct(nums []int) int &amp;#123;    res := 0    firstMax, secondMax, thirdMax := math.MinInt32, mat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 739. Daily Temperatures 每日温度">
-<meta property="og:url" content="http://iamxcb.com/leetcode739.html">
+<meta property="og:title" content="leetcode 628. 三个数的最大乘积">
+<meta property="og:url" content="http://iamxcb.com/leetcode-628.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解数组stack作为栈，通过append和切片模拟入栈出栈操作  迭代数组T 数组T的索引0入栈 迭代的值大于栈顶索引的值，即v &amp;gt; T[stack[len(stack)-1]]，则栈顶元素出栈，并存入res 重复步骤3, 直到栈为空 或 v不大于T[stack[len(stack)-1]] 数组T迭代完毕，返回数组res  示例代码(go)12345678910111213141516f">
+<meta property="og:description" content="题解找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积 示例代码(go)12345678910111213141516171819202122232425func maximumProduct(nums []int) int &amp;#123;    res := 0    firstMax, secondMax, thirdMax := math.MinInt32, mat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T03:27:08.580Z">
+<meta property="og:updated_time" content="2018-12-18T09:06:46.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 739. Daily Temperatures 每日温度">
-<meta name="twitter:description" content="题解数组stack作为栈，通过append和切片模拟入栈出栈操作  迭代数组T 数组T的索引0入栈 迭代的值大于栈顶索引的值，即v &amp;gt; T[stack[len(stack)-1]]，则栈顶元素出栈，并存入res 重复步骤3, 直到栈为空 或 v不大于T[stack[len(stack)-1]] 数组T迭代完毕，返回数组res  示例代码(go)12345678910111213141516f">
+<meta name="twitter:title" content="leetcode 628. 三个数的最大乘积">
+<meta name="twitter:description" content="题解找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积 示例代码(go)12345678910111213141516171819202122232425func maximumProduct(nums []int) int &amp;#123;    res := 0    firstMax, secondMax, thirdMax := math.MinInt32, mat">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://iamxcb.com/leetcode739.html">
+  <link rel="canonical" href="http://iamxcb.com/leetcode-628.html">
 
 
 
 
 
-  <title>leetcode 739. Daily Temperatures 每日温度 | 下午三点钟的太阳</title>
+  <title>leetcode 628. 三个数的最大乘积 | 下午三点钟的太阳</title>
   
 
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode739.html">
+    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode-628.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xcb">
@@ -276,7 +276,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 739. Daily Temperatures 每日温度</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 628. 三个数的最大乘积</h2>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T16:59:44+08:00">
-                2018-12-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-18T17:03:52+08:00">
+                2018-12-18
               </time>
             
 
@@ -326,15 +326,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数组stack作为栈，通过append和切片模拟入栈出栈操作</p>
-<ol>
-<li>迭代数组T</li>
-<li>数组T的索引0入栈</li>
-<li>迭代的值大于栈顶索引的值，即v &gt; T[stack[len(stack)-1]]，则栈顶元素出栈，并存入res</li>
-<li>重复步骤3, 直到栈为空 或 v不大于T[stack[len(stack)-1]]</li>
-<li>数组T迭代完毕，返回数组res</li>
-</ol>
-<h3 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dailyTemperatures</span><span class="params">(T []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(T))</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> T &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">len</span>(stack) &gt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> v &gt; T[stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]] &#123;</span><br><span class="line">                res[stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]] = i - stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stack = <span class="built_in">append</span>(stack, i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maximumProduct</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    firstMax, secondMax, thirdMax := math.MinInt32, math.MinInt32, math.MinInt32</span><br><span class="line">    firstMin, secondMin := math.MaxInt32, math.MaxInt32</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> v &gt; firstMax &#123;</span><br><span class="line">            firstMax, secondMax, thirdMax = v, firstMax, secondMax</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &gt; secondMax &#123;</span><br><span class="line">            secondMax, thirdMax = v, secondMax</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &gt; thirdMax &#123;</span><br><span class="line">            thirdMax = v</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> v &lt; firstMin &#123;</span><br><span class="line">            firstMin, secondMin = v, firstMin</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &lt; secondMin &#123;</span><br><span class="line">            secondMin = v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res = firstMax * secondMax * thirdMax</span><br><span class="line">    <span class="keyword">if</span> res &lt; firstMin * secondMin * firstMax &#123;</span><br><span class="line">        res = firstMin * secondMin * firstMax</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -358,8 +351,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world.html" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/leetcode-638.html" rel="next" title="leetcode 638. 大礼包">
+                <i class="fa fa-chevron-left"></i> leetcode 638. 大礼包
               </a>
             
           </div>
@@ -367,10 +360,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode14.html" rel="prev" title="leetcode 14. 最长公共前缀">
-                leetcode 14. 最长公共前缀 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -519,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例代码-go"><span class="nav-number">1.1.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>
