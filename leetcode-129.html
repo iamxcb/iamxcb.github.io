@@ -90,16 +90,17 @@
 
 
 
-<meta name="description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="下午三点钟的太阳">
-<meta property="og:url" content="http://iamxcb.com/archives/2018/08/index.html">
+<meta name="description" content="题解遍历二叉树，依次改变节点值，子节点值 = 子节点值 + 父节点值 * 10，最后返回所有叶子节点值的和 示例代码(go)1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *     Left">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode 129. 求根到叶子节点数字之和">
+<meta property="og:url" content="http://iamxcb.com/leetcode-129.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta property="og:description" content="题解遍历二叉树，依次改变节点值，子节点值 = 子节点值 + 父节点值 * 10，最后返回所有叶子节点值的和 示例代码(go)1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *     Left">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-08T02:27:25.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="下午三点钟的太阳">
-<meta name="twitter:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta name="twitter:title" content="leetcode 129. 求根到叶子节点数字之和">
+<meta name="twitter:description" content="题解遍历二叉树，依次改变节点值，子节点值 = 子节点值 + 父节点值 * 10，最后返回所有叶子节点值的和 示例代码(go)1234567891011121314151617181920212223242526/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *     Left">
 
 
 
@@ -129,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://iamxcb.com/archives/2018/08/">
+  <link rel="canonical" href="http://iamxcb.com/leetcode-129.html">
 
 
 
 
 
-  <title>归档 | 下午三点钟的太阳</title>
+  <title>leetcode 129. 求根到叶子节点数字之和 | 下午三点钟的太阳</title>
   
 
 
@@ -154,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -244,72 +245,151 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 24 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode-129.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/hello-world.html" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">leetcode 129. 求根到叶子节点数字之和</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-08-14T16:55:16+08:00" content="2018-08-14">
-          08-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-08T10:20:37+08:00">
+                2019-01-08
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-129.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-129.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历二叉树，依次改变节点值，子节点值 = 子节点值 + 父节点值 * 10，最后返回所有叶子节点值的和</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumNumbers</span><span class="params">(root *TreeNode)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">        root.Left.Val += root.Val * <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        root.Right.Val += root.Val * <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right == <span class="literal">nil</span> &#123;</span><br><span class="line">        res += root.Val</span><br><span class="line">    &#125;</span><br><span class="line">    res += sumNumbers(root.Left)</span><br><span class="line">    res += sumNumbers(root.Right)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/leetcode-120.html" rel="next" title="leetcode 120. 三角形最小路径和">
+                <i class="fa fa-chevron-left"></i> leetcode 120. 三角形最小路径和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -317,6 +397,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -337,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -412,6 +508,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -545,6 +657,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
