@@ -90,16 +90,17 @@
 
 
 
-<meta name="description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="下午三点钟的太阳">
-<meta property="og:url" content="http://iamxcb.com/archives/2018/12/index.html">
+<meta name="description" content="题解动态规划 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i := 0; i &amp;lt; n+2; i++ &amp;#123;        dp[i] = make([]int, n+1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode 312. 戳气球">
+<meta property="og:url" content="http://iamxcb.com/leetcode-312.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta property="og:description" content="题解动态规划 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i := 0; i &amp;lt; n+2; i++ &amp;#123;        dp[i] = make([]int, n+1)">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-16T03:51:03.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="下午三点钟的太阳">
-<meta name="twitter:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta name="twitter:title" content="leetcode 312. 戳气球">
+<meta name="twitter:description" content="题解动态规划 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i := 0; i &amp;lt; n+2; i++ &amp;#123;        dp[i] = make([]int, n+1)">
 
 
 
@@ -129,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://iamxcb.com/archives/2018/12/">
+  <link rel="canonical" href="http://iamxcb.com/leetcode-312.html">
 
 
 
 
 
-  <title>归档 | 下午三点钟的太阳</title>
+  <title>leetcode 312. 戳气球 | 下午三点钟的太阳</title>
   
 
 
@@ -154,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -244,391 +245,151 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode-312.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">leetcode 312. 戳气球</h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T11:46:27+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 30 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-312.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-312.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-791.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 791. 自定义字符串排序</span>
-              
-            </a>
-        
-      </h3>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-29T16:05:19+08:00" content="2018-12-29">
-          12-29
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-938.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 938. 二叉搜索树的范围和</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-28T15:30:55+08:00" content="2018-12-28">
-          12-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-419.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 419. 甲板上的战舰</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-27T13:59:40+08:00" content="2018-12-27">
-          12-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-748.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 748. 最短完整词</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-25T15:19:20+08:00" content="2018-12-25">
-          12-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-447.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 447. 回旋镖的数量</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-25T13:32:14+08:00" content="2018-12-25">
-          12-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxCoins</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="keyword">int</span>, n+<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n+<span class="number">2</span>; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    nums = <span class="built_in">append</span>(nums, <span class="number">1</span>)</span><br><span class="line">    nums = <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;, nums...)</span><br><span class="line">    <span class="keyword">for</span> m := <span class="number">1</span>; m &lt;= n; m++ &#123;</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n-m+<span class="number">1</span>; i++ &#123;</span><br><span class="line">            j := i+m<span class="number">-1</span></span><br><span class="line">            <span class="keyword">for</span> k := i; k &lt;= j; k++ &#123;</span><br><span class="line">                sum := nums[i<span class="number">-1</span>] * nums[k] * nums[j+<span class="number">1</span>] + dp[i][k<span class="number">-1</span>] + dp[k+<span class="number">1</span>][j]</span><br><span class="line">                <span class="keyword">if</span> dp[i][j] &lt; sum &#123;</span><br><span class="line">                    dp[i][j] = sum</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="number">1</span>][n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-337.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 337. 打家劫舍 III</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-24T16:22:26+08:00" content="2018-12-24">
-          12-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-62.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 62. 不同路径</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-24T14:59:02+08:00" content="2018-12-24">
-          12-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-937.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 937. 重新排列日志文件</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-21T17:38:30+08:00" content="2018-12-21">
-          12-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-749.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 749. 隔离病毒</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-20T11:32:30+08:00" content="2018-12-20">
-          12-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-628.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 628. 三个数的最大乘积</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-18T17:03:52+08:00" content="2018-12-18">
-          12-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/leetcode-228.html" rel="next" title="leetcode 228. 汇总区间">
+                <i class="fa fa-chevron-left"></i> leetcode 228. 汇总区间
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2018/12/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/12/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -636,6 +397,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -656,8 +424,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -731,6 +508,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -864,6 +657,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
