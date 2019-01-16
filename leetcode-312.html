@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="题解动态规划 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i := 0; i &amp;lt; n+2; i++ &amp;#123;        dp[i] = make([]int, n+1)">
+<meta name="description" content="题解动态规划，dp[i][j]表示戳爆从i到j个气球的最大金币数，依次戳爆1、2、3…n个气球，最终得到dp[1][n]表示最大金币数 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 312. 戳气球">
 <meta property="og:url" content="http://iamxcb.com/leetcode-312.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解动态规划 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i := 0; i &amp;lt; n+2; i++ &amp;#123;        dp[i] = make([]int, n+1)">
+<meta property="og:description" content="题解动态规划，dp[i][j]表示戳爆从i到j个气球的最大金币数，依次戳爆1、2、3…n个气球，最终得到dp[1][n]表示最大金币数 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-16T03:51:03.553Z">
+<meta property="og:updated_time" content="2019-01-16T06:25:56.352Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 312. 戳气球">
-<meta name="twitter:description" content="题解动态规划 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i := 0; i &amp;lt; n+2; i++ &amp;#123;        dp[i] = make([]int, n+1)">
+<meta name="twitter:description" content="题解动态规划，dp[i][j]表示戳爆从i到j个气球的最大金币数，依次戳爆1、2、3…n个气球，最终得到dp[1][n]表示最大金币数 示例代码(go)123456789101112131415161718192021func maxCoins(nums []int) int &amp;#123;    n := len(nums)    dp := make([][]int, n+2)    for i">
 
 
 
@@ -336,7 +336,7 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划</p>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，<code>dp[i][j]</code>表示戳爆从<code>i</code>到<code>j</code>个气球的最大金币数，依次戳爆1、2、3…n个气球，最终得到<code>dp[1][n]</code>表示最大金币数</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxCoins</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="keyword">int</span>, n+<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n+<span class="number">2</span>; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    nums = <span class="built_in">append</span>(nums, <span class="number">1</span>)</span><br><span class="line">    nums = <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;, nums...)</span><br><span class="line">    <span class="keyword">for</span> m := <span class="number">1</span>; m &lt;= n; m++ &#123;</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n-m+<span class="number">1</span>; i++ &#123;</span><br><span class="line">            j := i+m<span class="number">-1</span></span><br><span class="line">            <span class="keyword">for</span> k := i; k &lt;= j; k++ &#123;</span><br><span class="line">                sum := nums[i<span class="number">-1</span>] * nums[k] * nums[j+<span class="number">1</span>] + dp[i][k<span class="number">-1</span>] + dp[k+<span class="number">1</span>][j]</span><br><span class="line">                <span class="keyword">if</span> dp[i][j] &lt; sum &#123;</span><br><span class="line">                    dp[i][j] = sum</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="number">1</span>][n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
