@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="题解strs数组中首个字符串与其余字符串，分别比较它们的每一位，如果全部相同则加入到prefix中 示例代码(go)123456789101112131415161718func longestCommonPrefix(strs []string) string &amp;#123;    prefix := make([]byte, 0)    strsNums := len(strs)    if s">
+<meta name="description" content="题解分别统计nums中相同数字的和，遍历数组arr，比较i处的相邻arr[i-1]和相隔arr[i-2]+arr[i]的大小 示例代码(go)123456789101112131415161718192021func deleteAndEarn(nums []int) int &amp;#123;    max := 0    for _, v := range nums &amp;#123;        ma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 14. 最长公共前缀">
-<meta property="og:url" content="http://iamxcb.com/leetcode14.html">
+<meta property="og:title" content="leetcode 740. 删除与获得点数">
+<meta property="og:url" content="http://iamxcb.com/leetcode-740.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解strs数组中首个字符串与其余字符串，分别比较它们的每一位，如果全部相同则加入到prefix中 示例代码(go)123456789101112131415161718func longestCommonPrefix(strs []string) string &amp;#123;    prefix := make([]byte, 0)    strsNums := len(strs)    if s">
+<meta property="og:description" content="题解分别统计nums中相同数字的和，遍历数组arr，比较i处的相邻arr[i-1]和相隔arr[i-2]+arr[i]的大小 示例代码(go)123456789101112131415161718192021func deleteAndEarn(nums []int) int &amp;#123;    max := 0    for _, v := range nums &amp;#123;        ma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T03:26:58.282Z">
+<meta property="og:updated_time" content="2019-01-28T03:59:45.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 14. 最长公共前缀">
-<meta name="twitter:description" content="题解strs数组中首个字符串与其余字符串，分别比较它们的每一位，如果全部相同则加入到prefix中 示例代码(go)123456789101112131415161718func longestCommonPrefix(strs []string) string &amp;#123;    prefix := make([]byte, 0)    strsNums := len(strs)    if s">
+<meta name="twitter:title" content="leetcode 740. 删除与获得点数">
+<meta name="twitter:description" content="题解分别统计nums中相同数字的和，遍历数组arr，比较i处的相邻arr[i-1]和相隔arr[i-2]+arr[i]的大小 示例代码(go)123456789101112131415161718192021func deleteAndEarn(nums []int) int &amp;#123;    max := 0    for _, v := range nums &amp;#123;        ma">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://iamxcb.com/leetcode14.html">
+  <link rel="canonical" href="http://iamxcb.com/leetcode-740.html">
 
 
 
 
 
-  <title>leetcode 14. 最长公共前缀 | 下午三点钟的太阳</title>
+  <title>leetcode 740. 删除与获得点数 | 下午三点钟的太阳</title>
   
 
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode14.html">
+    <link itemprop="mainEntityOfPage" href="http://iamxcb.com/leetcode-740.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xcb">
@@ -276,7 +276,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 14. 最长公共前缀</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 740. 删除与获得点数</h2>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-11T16:03:44+08:00">
-                2018-12-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-28T11:50:46+08:00">
+                2019-01-28
               </time>
             
 
@@ -307,8 +307,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode14.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode14.html" itemprop="commentCount"></span>
+                <a href="/leetcode-740.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-740.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -336,8 +336,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>strs数组中首个字符串与其余字符串，分别比较它们的每一位，如果全部相同则加入到prefix中</p>
-<h3 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">longestCommonPrefix</span><span class="params">(strs []<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    prefix := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">    strsNums := <span class="built_in">len</span>(strs)</span><br><span class="line">    <span class="keyword">if</span> strsNums == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    nums := <span class="built_in">len</span>(strs[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; nums; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt; strsNums; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(strs[j]) == i || strs[j][i] != strs[<span class="number">0</span>][i] &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">string</span>(prefix)</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        prefix = <span class="built_in">append</span>(prefix, strs[<span class="number">0</span>][i])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">string</span>(prefix)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分别统计<code>nums</code>中相同数字的和，遍历数组<code>arr</code>，比较<code>i</code>处的相邻<code>arr[i-1]</code>和相隔<code>arr[i-2]+arr[i]</code>的大小</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteAndEarn</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    max := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        max = Max(max, v)</span><br><span class="line">    &#125;</span><br><span class="line">    arr := <span class="built_in">make</span>([]<span class="keyword">int</span>, max+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        arr[v] += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= max; i++ &#123;</span><br><span class="line">        arr[i] = Max(arr[i<span class="number">-1</span>], arr[i<span class="number">-2</span>] + arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr[max]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -361,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode739.html" rel="next" title="leetcode 739. Daily Temperatures 每日温度">
-                <i class="fa fa-chevron-left"></i> leetcode 739. Daily Temperatures 每日温度
+              <a href="/leetcode-648.html" rel="next" title="leetcode 648. 单词替换">
+                <i class="fa fa-chevron-left"></i> leetcode 648. 单词替换
               </a>
             
           </div>
@@ -370,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode328.html" rel="prev" title="leetcode 328. 奇偶链表">
-                leetcode 328. 奇偶链表 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +518,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例代码-go"><span class="nav-number">1.1.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>
