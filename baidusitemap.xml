@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://iamxcb.com/leetcode-17.html</loc>
+    <lastmod>2019-03-04T01:50:13.244Z</lastmod>
+  </url>  <url>
     <loc>http://iamxcb.com/leetcode-343.html</loc>
     <lastmod>2019-02-27T03:04:51.193Z</lastmod>
   </url>  <url>
@@ -126,8 +129,5 @@
   </url>  <url>
     <loc>http://iamxcb.com/python-install.html</loc>
     <lastmod>2018-12-12T07:36:28.475Z</lastmod>
-  </url>  <url>
-    <loc>http://iamxcb.com/hello-world.html</loc>
-    <lastmod>2018-08-14T08:55:16.862Z</lastmod>
   </url>
 </urlset>
