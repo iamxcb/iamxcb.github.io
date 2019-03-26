@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>下午三点钟的太阳</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://iamxcb.com/"/>
+  <updated>2019-03-26T01:52:16.201Z</updated>
+  <id>https://iamxcb.com/</id>
+  
+  <author>
+    <name>iamxcb</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 394. 字符串解码</title>
+    <link href="https://iamxcb.com/leetcode-394.html"/>
+    <id>https://iamxcb.com/leetcode-394.html</id>
+    <published>2019-03-26T01:52:11.000Z</published>
+    <updated>2019-03-26T01:52:16.201Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>倒序遍历字符串<code>s</code>，如果不是<code>[</code>则直接入栈；遇到<code>[</code>时，先找出<code>[</code>前边的数字<code>nums</code>表示为<code>k</code>，然后找出编码字符串<code>encodedStr</code>，重复<code>k</code>次入栈，跳过数字继续遍历</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">decodeString</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(s)<span class="number">-1</span>; i &gt;=<span class="number">0</span>;&#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] == <span class="string">'['</span> &#123;</span><br><span class="line">            nums := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> j := i<span class="number">-1</span>; j &gt;= <span class="number">0</span>; j-- &#123;</span><br><span class="line">                <span class="keyword">if</span> s[j] &gt;= <span class="string">'0'</span> &amp;&amp; s[j] &lt;= <span class="string">'9'</span> &#123;</span><br><span class="line">                    nums = <span class="built_in">append</span>(nums, <span class="keyword">string</span>(s[j]))</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            reverse(nums)</span><br><span class="line">            k, _ := strconv.Atoi(strings.Join(nums, <span class="string">""</span>)) </span><br><span class="line">            encodedStr := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] != <span class="string">"]"</span> &#123;</span><br><span class="line">                encodedStr = <span class="built_in">append</span>(encodedStr, stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>])</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">            reverse(encodedStr)</span><br><span class="line">            <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; k; j++ &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, encodedStr...)</span><br><span class="line">            &#125;</span><br><span class="line">            i -= <span class="built_in">len</span>(nums)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, <span class="keyword">string</span>(s[i]))</span><br><span class="line">        &#125;</span><br><span class="line">        i -= <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    reverse(stack)</span><br><span class="line">    <span class="keyword">return</span> strings.Join(stack, <span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverse</span><span class="params">(arr []<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length/<span class="number">2</span>; i++ &#123;</span><br><span class="line">        arr[i], arr[length-i<span class="number">-1</span>] = arr[length-i<span class="number">-1</span>], arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;倒序遍历字符串&lt;code&gt;s&lt;/code&gt;，如果不是&lt;code&gt;[&lt;/code&gt;则直接入栈；遇到&lt;code&gt;[&lt;/code&gt;时，先找出&lt;co
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 1. 两数之和</title>
+    <link href="https://iamxcb.com/leetcode-1.html"/>
+    <id>https://iamxcb.com/leetcode-1.html</id>
+    <published>2019-03-25T08:37:52.000Z</published>
+    <updated>2019-03-25T08:39:42.103Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>哈希表保存位置</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">2</span>)</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        hash[v] = i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> j, ok := hash[target-v]; ok &amp;&amp; j != i &#123;</span><br><span class="line">            res[<span class="number">0</span>] = i</span><br><span class="line">            res[<span class="number">1</span>] = j</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;哈希表保存位置&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerlink&quot; tit
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 64. 最小路径和</title>
+    <link href="https://iamxcb.com/leetcode-64.html"/>
+    <id>https://iamxcb.com/leetcode-64.html</id>
+    <published>2019-03-22T04:41:08.000Z</published>
+    <updated>2019-03-22T04:44:00.288Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划问题，<code>grid[i][j] += min(grid[i-1][j], grid[i][j-1])</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minPathSum</span><span class="params">(grid [][]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    m := <span class="built_in">len</span>(grid)</span><br><span class="line">    <span class="keyword">if</span> m == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; n; i++ &#123;</span><br><span class="line">        grid[<span class="number">0</span>][i] += grid[<span class="number">0</span>][i<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; m; i++ &#123;</span><br><span class="line">        grid[i][<span class="number">0</span>] += grid[i<span class="number">-1</span>][<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt; n; j++ &#123;</span><br><span class="line">            grid[i][j] += min(grid[i<span class="number">-1</span>][j], grid[i][j<span class="number">-1</span>])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> grid[m<span class="number">-1</span>][n<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt;= b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划问题，&lt;code&gt;grid[i][j] += min(grid[i-1][j], grid[i][j-1])&lt;/code&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 39. 组合总和</title>
+    <link href="https://iamxcb.com/leetcode-39.html"/>
+    <id>https://iamxcb.com/leetcode-39.html</id>
+    <published>2019-03-21T06:55:25.000Z</published>
+    <updated>2019-03-21T07:07:43.179Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，遍历数组<code>candidates</code>，通过<code>target</code>减去数组中相应的值，不断缩小<code>target</code>进行递归，同时为了避免重复，从数组中取的值不能大于<code>target/2</code>，同时不能小于上一次的取值<code>prev</code><br>例如, <code>candidates=[2,3,5,6,7,8,9,11,12]; target = 14</code>，可以递归<code>(2,12),(3,11),(5,9),(6,8),(7,7)</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combinationSum</span><span class="params">(candidates []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> combination(candidates, []<span class="keyword">int</span>&#123;&#125;, <span class="number">0</span>, target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combination</span><span class="params">(candidates []<span class="keyword">int</span>, arr []<span class="keyword">int</span>, prev, target <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> target == <span class="number">0</span> &#123;</span><br><span class="line">        tmp := <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;&#125;, arr...)</span><br><span class="line">        res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> candidates &#123;</span><br><span class="line">        <span class="keyword">if</span> (v &lt;= target/<span class="number">2</span> &amp;&amp; v &gt;= prev) || v == target &#123;</span><br><span class="line">            arr = <span class="built_in">append</span>(arr, v)</span><br><span class="line">            res = <span class="built_in">append</span>(res, combination(candidates, arr, v, target-v)...)</span><br><span class="line">            arr = arr[:<span class="built_in">len</span>(arr)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，遍历数组&lt;code&gt;candidates&lt;/code&gt;，通过&lt;code&gt;target&lt;/code&gt;减去数组中相应的值，不断缩小&lt;cod
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 287. 寻找重复数</title>
+    <link href="https://iamxcb.com/leetcode-287.html"/>
+    <id>https://iamxcb.com/leetcode-287.html</id>
+    <published>2019-03-20T09:21:56.000Z</published>
+    <updated>2019-03-20T09:26:26.933Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过使用<code>nums</code>的值作为序号<code>i</code>，让相应位置取反，因为重复数值会访问相同位置多次，从而找出重复数值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findDuplicate</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        i := abs(v)</span><br><span class="line">        <span class="keyword">if</span> nums[i] &lt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums[i] = -nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">abs</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过使用&lt;code&gt;nums&lt;/code&gt;的值作为序号&lt;code&gt;i&lt;/code&gt;，让相应位置取反，因为重复数值会访问相同位置多次，从而找出
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 94. 二叉树的中序遍历</title>
+    <link href="https://iamxcb.com/leetcode-94.html"/>
+    <id>https://iamxcb.com/leetcode-94.html</id>
+    <published>2019-03-19T03:14:33.000Z</published>
+    <updated>2019-03-19T03:17:10.389Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过<code>stack</code>模拟栈进行中序遍历</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraversal</span><span class="params">(root *TreeNode)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    stack := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> root != <span class="literal">nil</span> || <span class="built_in">len</span>(stack) != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> root != <span class="literal">nil</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, root)</span><br><span class="line">            root = root.Left</span><br><span class="line">        &#125;</span><br><span class="line">        root = stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">        stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">        res = <span class="built_in">append</span>(res, root.Val)</span><br><span class="line">        root = root.Right</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过&lt;code&gt;stack&lt;/code&gt;模拟栈进行中序遍历&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; 
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 22. 括号生成</title>
+    <link href="https://iamxcb.com/leetcode-22.html"/>
+    <id>https://iamxcb.com/leetcode-22.html</id>
+    <published>2019-03-18T05:34:34.000Z</published>
+    <updated>2019-03-18T05:39:38.813Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，左括号小于<code>n</code>时递归，右括号小于左括号时递归，左右括号数量为<code>n</code>时停止递归</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generateParenthesis</span><span class="params">(n <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    generate(&amp;res, <span class="string">""</span>, n, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generate</span><span class="params">(arr *[]<span class="keyword">string</span>, str <span class="keyword">string</span>, left, right <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> left == <span class="number">0</span> &amp;&amp; right == <span class="number">0</span> &#123;</span><br><span class="line">        *arr = <span class="built_in">append</span>(*arr, str)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> left &gt; <span class="number">0</span> &#123;</span><br><span class="line">        generate(arr, str+<span class="string">"("</span>, left<span class="number">-1</span>, right+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> right &gt; <span class="number">0</span> &#123;</span><br><span class="line">        generate(arr, str+<span class="string">")"</span>, left, right<span class="number">-1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，左括号小于&lt;code&gt;n&lt;/code&gt;时递归，右括号小于左括号时递归，左右括号数量为&lt;code&gt;n&lt;/code&gt;时停止递归&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 347. 前K个高频元素</title>
+    <link href="https://iamxcb.com/leetcode-347.html"/>
+    <id>https://iamxcb.com/leetcode-347.html</id>
+    <published>2019-03-15T01:59:25.000Z</published>
+    <updated>2019-03-15T02:03:58.430Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>统计相同数字出现的次数，然后根据出现次数存入二维数组中，最后从二维数组的后面开始取出高频数值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(nums []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    arr := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">    m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    maxCount := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _,v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        m[v] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> m[v] &gt; maxCount &#123;</span><br><span class="line">            maxCount = m[v]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    tmp := <span class="built_in">make</span>([][]<span class="keyword">int</span>, maxCount+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> k,v := <span class="keyword">range</span> m &#123;</span><br><span class="line">        tmp[v] = <span class="built_in">append</span>(tmp[v], k)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := maxCount; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(tmp[i]) == <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        arr = <span class="built_in">append</span>(arr, tmp[i]...)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(arr) == k &#123;</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;统计相同数字出现的次数，然后根据出现次数存入二维数组中，最后从二维数组的后面开始取出高频数值&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 46. 全排列</title>
+    <link href="https://iamxcb.com/leetcode-46.html"/>
+    <id>https://iamxcb.com/leetcode-46.html</id>
+    <published>2019-03-14T06:49:20.000Z</published>
+    <updated>2019-03-14T07:06:10.301Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，首先通过交换数组头部和后序的值，然后对剩下的子数组进行递归排列</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">permute</span><span class="params">(nums []<span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> recursion(nums, <span class="number">0</span>, <span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">recursion</span><span class="params">(nums []<span class="keyword">int</span>, left, right <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> left == right &#123;</span><br><span class="line">        tmp := <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;&#125;, nums...)</span><br><span class="line">        res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := left; i &lt;= right; i++ &#123;</span><br><span class="line">        swap(nums, i, left)</span><br><span class="line">        res = <span class="built_in">append</span>(res, recursion(nums, left+<span class="number">1</span>, right)...)</span><br><span class="line">        swap(nums, i, left)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(nums []<span class="keyword">int</span>, i, j <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，首先通过交换数组头部和后序的值，然后对剩下的子数组进行递归排列&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 78. 子集</title>
+    <link href="https://iamxcb.com/leetcode-78.html"/>
+    <id>https://iamxcb.com/leetcode-78.html</id>
+    <published>2019-03-13T03:45:16.000Z</published>
+    <updated>2019-03-13T03:48:35.577Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>倒序遍历数组<code>nums</code>，依次添加到前边的子集中</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">subsets</span><span class="params">(nums []<span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    res = <span class="built_in">append</span>(res, []<span class="keyword">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(nums)<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        length := <span class="built_in">len</span>(res)</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; length; j++ &#123;</span><br><span class="line">            tmp := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">            tmp = <span class="built_in">append</span>(tmp, nums[i])</span><br><span class="line">            tmp = <span class="built_in">append</span>(tmp, res[j]...)</span><br><span class="line">            res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;倒序遍历数组&lt;code&gt;nums&lt;/code&gt;，依次添加到前边的子集中&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 238. 除自身以外数组的乘积</title>
+    <link href="https://iamxcb.com/leetcode-238.html"/>
+    <id>https://iamxcb.com/leetcode-238.html</id>
+    <published>2019-03-12T03:31:57.000Z</published>
+    <updated>2019-03-12T03:38:25.749Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>计算<code>i</code>左右两边的乘积，两边乘积再相乘，就可以了</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">productExceptSelf</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> length &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> nums</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, length)</span><br><span class="line">    res[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; length; i++ &#123;</span><br><span class="line">        res[i] = res[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    reverse := <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        res[i] *= reverse</span><br><span class="line">        reverse *= nums[i]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;计算&lt;code&gt;i&lt;/code&gt;左右两边的乘积，两边乘积再相乘，就可以了&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 1005. Maximize Sum Of Array After K Negations</title>
+    <link href="https://iamxcb.com/leetcode-1005.html"/>
+    <id>https://iamxcb.com/leetcode-1005.html</id>
+    <published>2019-03-11T08:02:45.000Z</published>
+    <updated>2019-03-11T08:14:31.944Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>比较反转的次数<code>K</code>和多少个负数<code>nums</code>，主要分两种情况，<code>K &lt; nums</code>时，就反转<code>K</code>个最小的负数，<code>k &gt;= nums</code>时，则看看<code>K-nums</code>是奇数还是偶数，偶数就反转两次不变，奇数就再减去最小值（数组<code>A</code>变为正整数中的最小值）</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">largestSumAfterKNegations</span><span class="params">(A []<span class="keyword">int</span>, K <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res, nums, min := <span class="number">0</span>, <span class="number">0</span>, <span class="number">101</span></span><br><span class="line">    sort.Ints(A)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> A &#123;</span><br><span class="line">        <span class="keyword">if</span> v &lt; <span class="number">0</span> &#123;</span><br><span class="line">            nums++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> min &gt; abs(v) &#123;</span><br><span class="line">            min = abs(v)</span><br><span class="line">        &#125;</span><br><span class="line">        res += abs(v)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> K &lt; nums &#123;</span><br><span class="line">        <span class="keyword">for</span> i := K; i &lt; nums; i++ &#123;</span><br><span class="line">            res += <span class="number">2</span>*A[i]</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (K-nums) % <span class="number">2</span> == <span class="number">1</span> &#123;</span><br><span class="line">        res -= <span class="number">2</span>*min</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">abs</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;比较反转的次数&lt;code&gt;K&lt;/code&gt;和多少个负数&lt;code&gt;nums&lt;/code&gt;，主要分两种情况，&lt;code&gt;K &amp;lt; nums
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 406. 根据身高重建队列</title>
+    <link href="https://iamxcb.com/leetcode-406.html"/>
+    <id>https://iamxcb.com/leetcode-406.html</id>
+    <published>2019-03-08T08:45:35.000Z</published>
+    <updated>2019-03-08T08:57:40.315Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先进行排序，身高从高到低，同时根据前面有几个人从低到高，排好之后，根据前面有几人依次插入到相应位置</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Sorter [][]<span class="keyword">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sorter Sorter)</span> <span class="title">Len</span><span class="params">()</span> <span class="title">int</span></span> &#123; <span class="keyword">return</span> <span class="built_in">len</span>(sorter) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sorter Sorter)</span> <span class="title">Swap</span><span class="params">(i, j <span class="keyword">int</span>)</span></span> &#123; sorter[i], sorter[j] = sorter[j], sorter[i] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(sorter Sorter)</span> <span class="title">Less</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"><span class="keyword">if</span> (sorter[i][<span class="number">0</span>] == sorter[j][<span class="number">0</span>]) &#123;</span><br><span class="line"><span class="keyword">return</span> sorter[i][<span class="number">1</span>] &lt; sorter[j][<span class="number">1</span>]</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">return</span> sorter[i][<span class="number">0</span>] &gt; sorter[j][<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reconstructQueue</span><span class="params">(people [][]<span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    sorter := Sorter(people)</span><br><span class="line">sort.Sort(sorter)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> sorter &#123;</span><br><span class="line">        res = <span class="built_in">append</span>(res, <span class="literal">nil</span>)</span><br><span class="line">        <span class="built_in">copy</span>(res[v[<span class="number">1</span>]+<span class="number">1</span>:], res[v[<span class="number">1</span>]:])</span><br><span class="line">        res[v[<span class="number">1</span>]] = v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先进行排序，身高从高到低，同时根据前面有几个人从低到高，排好之后，根据前面有几人依次插入到相应位置&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 553. 最优除法</title>
+    <link href="https://iamxcb.com/leetcode-553.html"/>
+    <id>https://iamxcb.com/leetcode-553.html</id>
+    <published>2019-03-05T08:31:39.000Z</published>
+    <updated>2019-03-05T08:40:20.107Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">optimalDivision</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(nums)</span><br><span class="line">    res := strconv.Itoa(nums[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res + <span class="string">"/"</span> + strconv.Itoa(nums[<span class="number">1</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    res += <span class="string">"/("</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; length<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        res += strconv.Itoa(nums[i]) + <span class="string">"/"</span></span><br><span class="line">    &#125;</span><br><span class="line">    res += strconv.Itoa(nums[length<span class="number">-1</span>]) + <span class="string">")"</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 812. 最大三角形面积</title>
+    <link href="https://iamxcb.com/leetcode-812.html"/>
+    <id>https://iamxcb.com/leetcode-812.html</id>
+    <published>2019-03-04T09:40:46.000Z</published>
+    <updated>2019-03-04T09:49:26.259Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过三点可以计算出三角形的面积，<code>area = (x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">largestTriangleArea</span><span class="params">(points [][]<span class="keyword">int</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    res := <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(points)<span class="number">-2</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i+<span class="number">1</span>; j &lt; <span class="built_in">len</span>(points)<span class="number">-1</span>; j++ &#123;</span><br><span class="line">            <span class="keyword">for</span> k := j+<span class="number">1</span>; k &lt; <span class="built_in">len</span>(points); k++ &#123;</span><br><span class="line">                area := computeArea(points[i], points[j], points[k])</span><br><span class="line">                <span class="keyword">if</span> area &gt; res &#123;</span><br><span class="line">                    res = area</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computeArea</span><span class="params">(a, b, c []<span class="keyword">int</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    area := a[<span class="number">0</span>]*(b[<span class="number">1</span>]-c[<span class="number">1</span>]) + b[<span class="number">0</span>]*(c[<span class="number">1</span>]-a[<span class="number">1</span>]) + c[<span class="number">0</span>]*(a[<span class="number">1</span>]-b[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> area &lt; <span class="number">0</span> &#123;</span><br><span class="line">        area = -area</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">float64</span>(area) / <span class="number">2.0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过三点可以计算出三角形的面积，&lt;code&gt;area = (x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 17. 电话号码的字母组合</title>
+    <link href="https://iamxcb.com/leetcode-17.html"/>
+    <id>https://iamxcb.com/leetcode-17.html</id>
+    <published>2019-03-02T12:26:18.000Z</published>
+    <updated>2019-03-04T01:50:13.244Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，首先把<code>digits</code>中的每一个数字，依次转化为相对应的字符串存入<code>strings</code>数组中，然后依次递归遍历<code>strings[0], strings[1]...strings[n]</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">letterCombinations</span><span class="params">(digits <span class="keyword">string</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    arr := []<span class="keyword">string</span>&#123;<span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> digits == <span class="string">""</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    strings := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="built_in">len</span>(digits))</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> digits &#123;</span><br><span class="line">        strings[i] = arr[v-<span class="string">'2'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    recursion(strings, &amp;res, <span class="string">""</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">recursion</span><span class="params">(strings []<span class="keyword">string</span>, res *[]<span class="keyword">string</span>, str <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(strings) == <span class="number">0</span> &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, str)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> strings[<span class="number">0</span>] &#123;</span><br><span class="line">        recursion(strings[<span class="number">1</span>:], res, str+<span class="keyword">string</span>(v))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，首先把&lt;code&gt;digits&lt;/code&gt;中的每一个数字，依次转化为相对应的字符串存入&lt;code&gt;strings&lt;/code&gt;数组中
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 343. 整数拆分</title>
+    <link href="https://iamxcb.com/leetcode-343.html"/>
+    <id>https://iamxcb.com/leetcode-343.html</id>
+    <published>2019-02-27T02:58:53.000Z</published>
+    <updated>2019-02-27T03:04:51.193Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，dp数组保存最大乘积</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">integerBreak</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">1</span>], dp[<span class="number">2</span>] = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">3</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt;= i/<span class="number">2</span>; j++ &#123;</span><br><span class="line">            tmp := max(dp[j], j) * max(dp[i-j], i-j)</span><br><span class="line">            dp[i] = max(dp[i], tmp)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，dp数组保存最大乘积&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 463. 岛屿的周长</title>
+    <link href="https://iamxcb.com/leetcode-463.html"/>
+    <id>https://iamxcb.com/leetcode-463.html</id>
+    <published>2019-02-22T03:50:02.000Z</published>
+    <updated>2019-02-22T03:53:03.685Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>判断代表陆地点的上下左右点对应的值，出界或为零则周长加一</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">islandPerimeter</span><span class="params">(grid [][]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    m := <span class="built_in">len</span>(grid)</span><br><span class="line"><span class="keyword">if</span> m == <span class="number">0</span> &#123;</span><br><span class="line"><span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line">n := <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="number">1</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> i<span class="number">-1</span> &lt; <span class="number">0</span> || grid[i<span class="number">-1</span>][j] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> i+<span class="number">1</span> &gt;= m || grid[i+<span class="number">1</span>][j] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> j<span class="number">-1</span> &lt; <span class="number">0</span> || grid[i][j<span class="number">-1</span>] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> j+<span class="number">1</span> &gt;= n || grid[i][j+<span class="number">1</span>] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;判断代表陆地点的上下左右点对应的值，出界或为零则周长加一&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; c
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 413. 等差数列划分</title>
+    <link href="https://iamxcb.com/leetcode-413.html"/>
+    <id>https://iamxcb.com/leetcode-413.html</id>
+    <published>2019-02-19T06:27:46.000Z</published>
+    <updated>2019-02-19T06:30:22.384Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>找出连续的等差数列，分别计算有多少等差子数组</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numberOfArithmeticSlices</span><span class="params">(A []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(A) &lt; <span class="number">3</span> &#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> </span><br><span class="line">    &#125;</span><br><span class="line">cnt := <span class="number">0</span></span><br><span class="line">sum := <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i:=<span class="number">2</span>; i&lt;<span class="built_in">len</span>(A); i++ &#123;</span><br><span class="line"><span class="keyword">if</span> A[i] - A[i<span class="number">-1</span>] == A[i<span class="number">-1</span>] - A[i<span class="number">-2</span>]&#123;</span><br><span class="line">cnt = cnt + <span class="number">1</span></span><br><span class="line">sum += cnt</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">cnt = <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;找出连续的等差数列，分别计算有多少等差子数组&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 821. 字符的最短距离</title>
+    <link href="https://iamxcb.com/leetcode-821.html"/>
+    <id>https://iamxcb.com/leetcode-821.html</id>
+    <published>2019-02-14T08:07:35.000Z</published>
+    <updated>2019-02-14T08:10:14.476Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分为两步，第一步找出字符的所有位置，第二步通过比较各个位置找出最短距离</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">shortestToChar</span><span class="params">(S <span class="keyword">string</span>, C <span class="keyword">byte</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    indexArr := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(S))</span><br><span class="line">    <span class="keyword">for</span> i, c := <span class="keyword">range</span> S &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">byte</span>(c) == C &#123;</span><br><span class="line">            indexArr = <span class="built_in">append</span>(indexArr, i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, _ := <span class="keyword">range</span> S &#123;</span><br><span class="line">        res[i] = min(i, indexArr)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(index <span class="keyword">int</span>, arr []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    min := abs(index-arr[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(arr); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> abs(index-arr[i]) &lt; min &#123;</span><br><span class="line">            min = abs(index-arr[i])   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> min</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">abs</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;分为两步，第一步找出字符的所有位置，第二步通过比较各个位置找出最短距离&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
