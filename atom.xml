@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-03-27T07:02:43.660Z</updated>
+  <updated>2019-03-28T02:27:40.567Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 114. 二叉树展开为链表</title>
+    <link href="https://iamxcb.com/leetcode-114.html"/>
+    <id>https://iamxcb.com/leetcode-114.html</id>
+    <published>2019-03-28T02:21:40.000Z</published>
+    <updated>2019-03-28T02:27:40.567Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">flatten</span><span class="params">(root *TreeNode)</span></span>  &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    flatten(root.Left)</span><br><span class="line">    flatten(root.Right)</span><br><span class="line">    tmp := root.Right</span><br><span class="line">    root.Right = root.Left</span><br><span class="line">    root.Left = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">for</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        root = root.Right</span><br><span class="line">    &#125;</span><br><span class="line">    root.Right = tmp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 494. 目标和</title>
@@ -421,28 +443,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，dp数组保存最大乘积&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerl
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 463. 岛屿的周长</title>
-    <link href="https://iamxcb.com/leetcode-463.html"/>
-    <id>https://iamxcb.com/leetcode-463.html</id>
-    <published>2019-02-22T03:50:02.000Z</published>
-    <updated>2019-02-22T03:53:03.685Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>判断代表陆地点的上下左右点对应的值，出界或为零则周长加一</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">islandPerimeter</span><span class="params">(grid [][]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    m := <span class="built_in">len</span>(grid)</span><br><span class="line"><span class="keyword">if</span> m == <span class="number">0</span> &#123;</span><br><span class="line"><span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line">n := <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="number">1</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> i<span class="number">-1</span> &lt; <span class="number">0</span> || grid[i<span class="number">-1</span>][j] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> i+<span class="number">1</span> &gt;= m || grid[i+<span class="number">1</span>][j] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> j<span class="number">-1</span> &lt; <span class="number">0</span> || grid[i][j<span class="number">-1</span>] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> j+<span class="number">1</span> &gt;= n || grid[i][j+<span class="number">1</span>] == <span class="number">0</span> &#123;</span><br><span class="line">                    res++</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;判断代表陆地点的上下左右点对应的值，出界或为零则周长加一&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; c
       
     
     </summary>

@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解首先复制A的值到B，对B进行倒序排列，然后遍历B的值，并找出其在A中的位置，接着进行两次翻转，第一次翻转会先把值放在首位，第二次翻转则会把值依次放在后面，最终会完成排序 示例代码(go)123456789101112131415161718192021222324252627282930func pancakeSort(A []int) []int &amp;#123;    length := le">
+<meta name="description" content="题解分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树 示例代码(go)12345678910111213141516171819202122/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 969. 煎饼排序">
-<meta property="og:url" content="https://iamxcb.com/leetcode-969.html">
+<meta property="og:title" content="leetcode 114. 二叉树展开为链表">
+<meta property="og:url" content="https://iamxcb.com/leetcode-114.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解首先复制A的值到B，对B进行倒序排列，然后遍历B的值，并找出其在A中的位置，接着进行两次翻转，第一次翻转会先把值放在首位，第二次翻转则会把值依次放在后面，最终会完成排序 示例代码(go)123456789101112131415161718192021222324252627282930func pancakeSort(A []int) []int &amp;#123;    length := le">
+<meta property="og:description" content="题解分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树 示例代码(go)12345678910111213141516171819202122/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-09T03:19:45.168Z">
+<meta property="og:updated_time" content="2019-03-28T02:27:40.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 969. 煎饼排序">
-<meta name="twitter:description" content="题解首先复制A的值到B，对B进行倒序排列，然后遍历B的值，并找出其在A中的位置，接着进行两次翻转，第一次翻转会先把值放在首位，第二次翻转则会把值依次放在后面，最终会完成排序 示例代码(go)123456789101112131415161718192021222324252627282930func pancakeSort(A []int) []int &amp;#123;    length := le">
+<meta name="twitter:title" content="leetcode 114. 二叉树展开为链表">
+<meta name="twitter:description" content="题解分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树 示例代码(go)12345678910111213141516171819202122/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/leetcode-969.html"/>
+  <link rel="canonical" href="https://iamxcb.com/leetcode-114.html"/>
 
 
 
 
 
-  <title>leetcode 969. 煎饼排序 | 下午三点钟的太阳</title>
+  <title>leetcode 114. 二叉树展开为链表 | 下午三点钟的太阳</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-969.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-114.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -278,7 +278,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 969. 煎饼排序</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 114. 二叉树展开为链表</h2>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T11:09:55+08:00">
-                2019-01-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T10:21:40+08:00">
+                2019-03-28
               </time>
             
 
@@ -309,8 +309,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode-969.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-969.html" itemprop="commentCount"></span>
+                <a href="/leetcode-114.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-114.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -338,8 +338,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先复制<code>A</code>的值到<code>B</code>，对<code>B</code>进行倒序排列，然后遍历<code>B</code>的值，并找出其在<code>A</code>中的位置，接着进行两次翻转，第一次翻转会先把值放在首位，第二次翻转则会把值依次放在后面，最终会完成排序</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">pancakeSort</span><span class="params">(A []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(A)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    B := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    B = <span class="built_in">append</span>(B, A...)</span><br><span class="line">    sort.Sort(sort.Reverse(sort.IntSlice(B)))</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> B &#123;</span><br><span class="line">        index := find(A, v)</span><br><span class="line">        res = <span class="built_in">append</span>(res, index + <span class="number">1</span>)</span><br><span class="line">        res = <span class="built_in">append</span>(res, length - i)</span><br><span class="line">        reverse(A, index + <span class="number">1</span>)</span><br><span class="line">        reverse(A, length - i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">find</span><span class="params">(arr []<span class="keyword">int</span>, num <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> arr &#123;</span><br><span class="line">        <span class="keyword">if</span> num == v &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverse</span><span class="params">(arr []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; (k / <span class="number">2</span>); i++ &#123;</span><br><span class="line">        arr[i], arr[k-i<span class="number">-1</span>] = arr[k-i<span class="number">-1</span>], arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">flatten</span><span class="params">(root *TreeNode)</span></span>  &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    flatten(root.Left)</span><br><span class="line">    flatten(root.Right)</span><br><span class="line">    tmp := root.Right</span><br><span class="line">    root.Right = root.Left</span><br><span class="line">    root.Left = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">for</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        root = root.Right</span><br><span class="line">    &#125;</span><br><span class="line">    root.Right = tmp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -363,8 +363,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode-129.html" rel="next" title="leetcode 129. 求根到叶子节点数字之和">
-                <i class="fa fa-chevron-left"></i> leetcode 129. 求根到叶子节点数字之和
+              <a href="/leetcode-494.html" rel="next" title="leetcode 494. 目标和">
+                <i class="fa fa-chevron-left"></i> leetcode 494. 目标和
               </a>
             
           </div>
@@ -372,10 +372,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-77.html" rel="prev" title="leetcode 77. 组合">
-                leetcode 77. 组合 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
