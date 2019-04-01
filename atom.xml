@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-01T06:56:27.409Z</updated>
+  <updated>2019-04-01T09:23:26.595Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 560. 和为K的子数组</title>
+    <link href="https://iamxcb.com/leetcode-560.html"/>
+    <id>https://iamxcb.com/leetcode-560.html</id>
+    <published>2019-04-01T09:15:01.000Z</published>
+    <updated>2019-04-01T09:23:26.595Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过遍历<code>nums</code>，记录连续数值的和<code>sum</code>出现的次数，<code>sum-k</code>表示当前和与前边某一个和相差<code>k</code>，也就是说这两个和值之间的子数组就是和为K的子数组</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">subarraySum</span><span class="params">(nums []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res, sum := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">    hash[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        sum += v</span><br><span class="line">        res += hash[sum-k]</span><br><span class="line">        hash[sum]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过遍历&lt;code&gt;nums&lt;/code&gt;，记录连续数值的和&lt;code&gt;sum&lt;/code&gt;出现的次数，&lt;code&gt;sum-k&lt;/code&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 200. 岛屿的个数</title>
@@ -421,27 +442,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 812. 最大三角形面积</title>
-    <link href="https://iamxcb.com/leetcode-812.html"/>
-    <id>https://iamxcb.com/leetcode-812.html</id>
-    <published>2019-03-04T09:40:46.000Z</published>
-    <updated>2019-03-04T09:49:26.259Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过三点可以计算出三角形的面积，<code>area = (x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">largestTriangleArea</span><span class="params">(points [][]<span class="keyword">int</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    res := <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(points)<span class="number">-2</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i+<span class="number">1</span>; j &lt; <span class="built_in">len</span>(points)<span class="number">-1</span>; j++ &#123;</span><br><span class="line">            <span class="keyword">for</span> k := j+<span class="number">1</span>; k &lt; <span class="built_in">len</span>(points); k++ &#123;</span><br><span class="line">                area := computeArea(points[i], points[j], points[k])</span><br><span class="line">                <span class="keyword">if</span> area &gt; res &#123;</span><br><span class="line">                    res = area</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computeArea</span><span class="params">(a, b, c []<span class="keyword">int</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    area := a[<span class="number">0</span>]*(b[<span class="number">1</span>]-c[<span class="number">1</span>]) + b[<span class="number">0</span>]*(c[<span class="number">1</span>]-a[<span class="number">1</span>]) + c[<span class="number">0</span>]*(a[<span class="number">1</span>]-b[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> area &lt; <span class="number">0</span> &#123;</span><br><span class="line">        area = -area</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">float64</span>(area) / <span class="number">2.0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过三点可以计算出三角形的面积，&lt;code&gt;area = (x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 
       
     
     </summary>
