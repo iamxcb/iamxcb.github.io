@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-03-29T06:47:26.114Z</updated>
+  <updated>2019-04-01T06:56:27.409Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 200. 岛屿的个数</title>
+    <link href="https://iamxcb.com/leetcode-200.html"/>
+    <id>https://iamxcb.com/leetcode-200.html</id>
+    <published>2019-04-01T06:52:52.000Z</published>
+    <updated>2019-04-01T06:56:27.409Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历<code>grid</code>，遇到数值为<code>1</code>时置为<code>0</code>，然后不断递归上下左右的位置为<code>0</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numIslands</span><span class="params">(grid [][]<span class="keyword">byte</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    m := <span class="built_in">len</span>(grid)</span><br><span class="line">    <span class="keyword">if</span> m == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    n, res := <span class="built_in">len</span>(grid[<span class="number">0</span>]), <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">                res++</span><br><span class="line">                dfs(grid, i, j, m, n)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(grid [][]<span class="keyword">byte</span>, i, j, m, n <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    grid[i][j] = <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[i<span class="number">-1</span>][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i<span class="number">-1</span>, j, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> j<span class="number">-1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[i][j<span class="number">-1</span>] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i, j<span class="number">-1</span>, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; m &amp;&amp; grid[i+<span class="number">1</span>][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i+<span class="number">1</span>, j, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> j+<span class="number">1</span> &lt; n &amp;&amp; grid[i][j+<span class="number">1</span>] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i, j+<span class="number">1</span>, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;遍历&lt;code&gt;grid&lt;/code&gt;，遇到数值为&lt;code&gt;1&lt;/code&gt;时置为&lt;code&gt;0&lt;/code&gt;，然后不断递归上下左右的位置
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 198. 打家劫舍</title>
@@ -421,27 +442,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过三点可以计算出三角形的面积，&lt;code&gt;area = (x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 17. 电话号码的字母组合</title>
-    <link href="https://iamxcb.com/leetcode-17.html"/>
-    <id>https://iamxcb.com/leetcode-17.html</id>
-    <published>2019-03-02T12:26:18.000Z</published>
-    <updated>2019-03-04T01:50:13.244Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，首先把<code>digits</code>中的每一个数字，依次转化为相对应的字符串存入<code>strings</code>数组中，然后依次递归遍历<code>strings[0], strings[1]...strings[n]</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">letterCombinations</span><span class="params">(digits <span class="keyword">string</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    arr := []<span class="keyword">string</span>&#123;<span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>&#125;</span><br><span class="line">    <span class="keyword">if</span> digits == <span class="string">""</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    strings := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="built_in">len</span>(digits))</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> digits &#123;</span><br><span class="line">        strings[i] = arr[v-<span class="string">'2'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    recursion(strings, &amp;res, <span class="string">""</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">recursion</span><span class="params">(strings []<span class="keyword">string</span>, res *[]<span class="keyword">string</span>, str <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(strings) == <span class="number">0</span> &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, str)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> strings[<span class="number">0</span>] &#123;</span><br><span class="line">        recursion(strings[<span class="number">1</span>:], res, str+<span class="keyword">string</span>(v))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，首先把&lt;code&gt;digits&lt;/code&gt;中的每一个数字，依次转化为相对应的字符串存入&lt;code&gt;strings&lt;/code&gt;数组中
       
     
     </summary>
