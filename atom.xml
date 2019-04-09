@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-08T07:37:02.610Z</updated>
+  <updated>2019-04-09T02:02:49.949Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 437. 路径总和 III</title>
+    <link href="https://iamxcb.com/leetcode-437.html"/>
+    <id>https://iamxcb.com/leetcode-437.html</id>
+    <published>2019-04-09T01:59:19.000Z</published>
+    <updated>2019-04-09T02:02:49.949Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，注意递归结束条件，<code>cur == 0</code>时不要结束递归，因为可能还有更长的路径和等于<code>sum</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">pathSum</span><span class="params">(root *TreeNode, sum <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := preTrav(root, sum)</span><br><span class="line">    res += pathSum(root.Left, sum)</span><br><span class="line">    res += pathSum(root.Right, sum)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">preTrav</span><span class="params">(root *TreeNode, cur <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    cur -= root.Val</span><br><span class="line">    <span class="keyword">if</span> cur == <span class="number">0</span> &#123;</span><br><span class="line">        res++</span><br><span class="line">    &#125;</span><br><span class="line">    res += preTrav(root.Left, cur)</span><br><span class="line">    res += preTrav(root.Right, cur)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，注意递归结束条件，&lt;code&gt;cur == 0&lt;/code&gt;时不要结束递归，因为可能还有更长的路径和等于&lt;code&gt;sum&lt;/code
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 279. 完全平方数</title>
@@ -419,28 +440,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过&lt;code&gt;stack&lt;/code&gt;模拟栈进行中序遍历&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; 
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 22. 括号生成</title>
-    <link href="https://iamxcb.com/leetcode-22.html"/>
-    <id>https://iamxcb.com/leetcode-22.html</id>
-    <published>2019-03-18T05:34:34.000Z</published>
-    <updated>2019-03-18T05:39:38.813Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，左括号小于<code>n</code>时递归，右括号小于左括号时递归，左右括号数量为<code>n</code>时停止递归</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generateParenthesis</span><span class="params">(n <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    generate(&amp;res, <span class="string">""</span>, n, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">generate</span><span class="params">(arr *[]<span class="keyword">string</span>, str <span class="keyword">string</span>, left, right <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> left == <span class="number">0</span> &amp;&amp; right == <span class="number">0</span> &#123;</span><br><span class="line">        *arr = <span class="built_in">append</span>(*arr, str)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> left &gt; <span class="number">0</span> &#123;</span><br><span class="line">        generate(arr, str+<span class="string">"("</span>, left<span class="number">-1</span>, right+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> right &gt; <span class="number">0</span> &#123;</span><br><span class="line">        generate(arr, str+<span class="string">")"</span>, left, right<span class="number">-1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，左括号小于&lt;code&gt;n&lt;/code&gt;时递归，右括号小于左括号时递归，左右括号数量为&lt;code&gt;n&lt;/code&gt;时停止递归&lt;/p&gt;
-&lt;
       
     
     </summary>
