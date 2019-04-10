@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解创建字符串数组arr，字符位置表indexMap，遍历字符串s，如果字符已经存在arr中就加在后面，不存在则新增，然后根据arr中元素的字符串长度排序，最后返回连接后的字符串 示例代码(go)12345678910111213141516func frequencySort(s string) string &amp;#123;    arr := make([]string, 0)    index">
+<meta name="description" content="题解首先找出柱子的最大高度maxHeight，然后分别找出从1, 2, 3...maxHeight高度所能接到的雨水，每一次高度所能接到的雨水，就是两个相邻的不低于此高度的柱子之间的距离 示例代码(go)1234567891011121314151617181920func trap(height []int) int &amp;#123;    maxHeight, res := 0, 0    for">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 451. 根据字符出现频率排序">
-<meta property="og:url" content="https://iamxcb.com/leetcode-451.html">
+<meta property="og:title" content="leetcode 42. 接雨水">
+<meta property="og:url" content="https://iamxcb.com/leetcode-42.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解创建字符串数组arr，字符位置表indexMap，遍历字符串s，如果字符已经存在arr中就加在后面，不存在则新增，然后根据arr中元素的字符串长度排序，最后返回连接后的字符串 示例代码(go)12345678910111213141516func frequencySort(s string) string &amp;#123;    arr := make([]string, 0)    index">
+<meta property="og:description" content="题解首先找出柱子的最大高度maxHeight，然后分别找出从1, 2, 3...maxHeight高度所能接到的雨水，每一次高度所能接到的雨水，就是两个相邻的不低于此高度的柱子之间的距离 示例代码(go)1234567891011121314151617181920func trap(height []int) int &amp;#123;    maxHeight, res := 0, 0    for">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-02T08:29:16.283Z">
+<meta property="og:updated_time" content="2019-04-10T02:44:02.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 451. 根据字符出现频率排序">
-<meta name="twitter:description" content="题解创建字符串数组arr，字符位置表indexMap，遍历字符串s，如果字符已经存在arr中就加在后面，不存在则新增，然后根据arr中元素的字符串长度排序，最后返回连接后的字符串 示例代码(go)12345678910111213141516func frequencySort(s string) string &amp;#123;    arr := make([]string, 0)    index">
+<meta name="twitter:title" content="leetcode 42. 接雨水">
+<meta name="twitter:description" content="题解首先找出柱子的最大高度maxHeight，然后分别找出从1, 2, 3...maxHeight高度所能接到的雨水，每一次高度所能接到的雨水，就是两个相邻的不低于此高度的柱子之间的距离 示例代码(go)1234567891011121314151617181920func trap(height []int) int &amp;#123;    maxHeight, res := 0, 0    for">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/leetcode-451.html"/>
+  <link rel="canonical" href="https://iamxcb.com/leetcode-42.html"/>
 
 
 
 
 
-  <title>leetcode 451. 根据字符出现频率排序 | 下午三点钟的太阳</title>
+  <title>leetcode 42. 接雨水 | 下午三点钟的太阳</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-451.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-42.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -287,7 +287,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 451. 根据字符出现频率排序</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 42. 接雨水</h2>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T16:21:21+08:00">
-                2019-01-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T10:38:19+08:00">
+                2019-04-10
               </time>
             
 
@@ -318,8 +318,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode-451.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-451.html" itemprop="commentCount"></span>
+                <a href="/leetcode-42.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-42.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,8 +347,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>创建字符串数组<code>arr</code>，字符位置表<code>indexMap</code>，遍历字符串<code>s</code>，如果字符已经存在<code>arr</code>中就加在后面，不存在则新增，然后根据<code>arr</code>中元素的字符串长度排序，最后返回连接后的字符串</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">frequencySort</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    arr := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    indexMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">rune</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> _, ok := indexMap[v]; ok &#123;</span><br><span class="line">            arr[indexMap[v]] += <span class="keyword">string</span>(v)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            arr = <span class="built_in">append</span>(arr, <span class="keyword">string</span>(v))</span><br><span class="line">            indexMap[v] = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort.Slice(arr, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(arr[i]) &gt; <span class="built_in">len</span>(arr[j])</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> strings.Join(arr, <span class="string">""</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先找出柱子的最大高度<code>maxHeight</code>，然后分别找出从<code>1, 2, 3...maxHeight</code>高度所能接到的雨水，每一次高度所能接到的雨水，就是两个相邻的不低于此高度的柱子之间的距离</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trap</span><span class="params">(height []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    maxHeight, res := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> height &#123;</span><br><span class="line">        <span class="keyword">if</span> maxHeight &lt; v &#123;</span><br><span class="line">            maxHeight = v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= maxHeight; i++ &#123;</span><br><span class="line">        cur := <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> j, v := <span class="keyword">range</span> height &#123;</span><br><span class="line">            <span class="keyword">if</span> cur != <span class="number">-1</span> &amp;&amp; v &gt;= i &#123;</span><br><span class="line">                res += j-cur<span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v &gt;= i &#123;</span><br><span class="line">                cur = j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -372,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode-791.html" rel="next" title="leetcode 791. 自定义字符串排序">
-                <i class="fa fa-chevron-left"></i> leetcode 791. 自定义字符串排序
+              <a href="/leetcode-437.html" rel="next" title="leetcode 437. 路径总和 III">
+                <i class="fa fa-chevron-left"></i> leetcode 437. 路径总和 III
               </a>
             
           </div>
@@ -381,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-508.html" rel="prev" title="leetcode 508. 出现次数最多的子树元素和">
-                leetcode 508. 出现次数最多的子树元素和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

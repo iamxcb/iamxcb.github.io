@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-09T02:02:49.949Z</updated>
+  <updated>2019-04-10T02:44:02.825Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 42. 接雨水</title>
+    <link href="https://iamxcb.com/leetcode-42.html"/>
+    <id>https://iamxcb.com/leetcode-42.html</id>
+    <published>2019-04-10T02:38:19.000Z</published>
+    <updated>2019-04-10T02:44:02.825Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先找出柱子的最大高度<code>maxHeight</code>，然后分别找出从<code>1, 2, 3...maxHeight</code>高度所能接到的雨水，每一次高度所能接到的雨水，就是两个相邻的不低于此高度的柱子之间的距离</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trap</span><span class="params">(height []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    maxHeight, res := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> height &#123;</span><br><span class="line">        <span class="keyword">if</span> maxHeight &lt; v &#123;</span><br><span class="line">            maxHeight = v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= maxHeight; i++ &#123;</span><br><span class="line">        cur := <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> j, v := <span class="keyword">range</span> height &#123;</span><br><span class="line">            <span class="keyword">if</span> cur != <span class="number">-1</span> &amp;&amp; v &gt;= i &#123;</span><br><span class="line">                res += j-cur<span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v &gt;= i &#123;</span><br><span class="line">                cur = j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先找出柱子的最大高度&lt;code&gt;maxHeight&lt;/code&gt;，然后分别找出从&lt;code&gt;1, 2, 3...maxHeight&lt;/co
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 437. 路径总和 III</title>
@@ -418,28 +439,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过使用&lt;code&gt;nums&lt;/code&gt;的值作为序号&lt;code&gt;i&lt;/code&gt;，让相应位置取反，因为重复数值会访问相同位置多次，从而找出
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 94. 二叉树的中序遍历</title>
-    <link href="https://iamxcb.com/leetcode-94.html"/>
-    <id>https://iamxcb.com/leetcode-94.html</id>
-    <published>2019-03-19T03:14:33.000Z</published>
-    <updated>2019-03-19T03:17:10.389Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过<code>stack</code>模拟栈进行中序遍历</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraversal</span><span class="params">(root *TreeNode)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    stack := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> root != <span class="literal">nil</span> || <span class="built_in">len</span>(stack) != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> root != <span class="literal">nil</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, root)</span><br><span class="line">            root = root.Left</span><br><span class="line">        &#125;</span><br><span class="line">        root = stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">        stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">        res = <span class="built_in">append</span>(res, root.Val)</span><br><span class="line">        root = root.Right</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过&lt;code&gt;stack&lt;/code&gt;模拟栈进行中序遍历&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; 
       
     
     </summary>
