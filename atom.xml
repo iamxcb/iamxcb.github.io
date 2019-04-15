@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-10T02:44:02.825Z</updated>
+  <updated>2019-04-15T06:51:24.948Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 15. 三数之和</title>
+    <link href="https://iamxcb.com/leetcode-15.html"/>
+    <id>https://iamxcb.com/leetcode-15.html</id>
+    <published>2019-04-15T06:41:00.000Z</published>
+    <updated>2019-04-15T06:51:24.948Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先对数组进行排序，接着把三数问题变为两数问题，即遍历第一个数，找剩下的两个数；主要注意重复问题，每一个数要保证与上一次找到的数不同，<code>nums[i]==nums[1-1], nums[j]==nums[j-1], nums[k]==nums[k+1]</code>都是要跳过的</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">threeSum</span><span class="params">(nums []<span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    sort.Ints(nums)</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n<span class="number">-2</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i<span class="number">-1</span>] &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        j, k := i+<span class="number">1</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> j &lt; k &#123;</span><br><span class="line">            sum := nums[i] + nums[j] + nums[k]</span><br><span class="line">            <span class="keyword">if</span> sum &gt; <span class="number">0</span> &#123;</span><br><span class="line">                k--</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> sum &lt; <span class="number">0</span> &#123;</span><br><span class="line">                j++</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res = <span class="built_in">append</span>(res, []<span class="keyword">int</span>&#123;nums[i], nums[j], nums[k]&#125;)</span><br><span class="line">                j++</span><br><span class="line">                k--</span><br><span class="line">                <span class="keyword">for</span> nums[j] == nums[j<span class="number">-1</span>] &amp;&amp; j &lt; k &#123;</span><br><span class="line">                    j++</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> nums[k] == nums[k+<span class="number">1</span>] &amp;&amp; j &lt; k &#123;</span><br><span class="line">                    k--</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先对数组进行排序，接着把三数问题变为两数问题，即遍历第一个数，找剩下的两个数；主要注意重复问题，每一个数要保证与上一次找到的数不同，&lt;co
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 75. 颜色分类</title>
+    <link href="https://iamxcb.com/leetcode-75.html"/>
+    <id>https://iamxcb.com/leetcode-75.html</id>
+    <published>2019-04-12T11:30:05.000Z</published>
+    <updated>2019-04-15T06:40:42.591Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历数组<code>nums</code>，分为三种情况，值为1直接跳过，值为0则与前面的数对换（<code>i</code>前面的数已经排好），值为2则与后面的数对换（<code>j</code>后面的数已经排好）</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortColors</span><span class="params">(nums []<span class="keyword">int</span>)</span></span>  &#123;</span><br><span class="line">    <span class="keyword">for</span> cur, i, j := <span class="number">0</span>, <span class="number">-1</span>, <span class="built_in">len</span>(nums); cur &lt; j; &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[cur] == <span class="number">0</span> &#123;</span><br><span class="line">            i++</span><br><span class="line">            nums[i], nums[cur] = nums[cur], nums[i]</span><br><span class="line">            cur++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[cur] == <span class="number">1</span> &#123;</span><br><span class="line">            cur++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[cur] == <span class="number">2</span> &#123;</span><br><span class="line">            j--</span><br><span class="line">            nums[j], nums[cur] = nums[cur], nums[j]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;遍历数组&lt;code&gt;nums&lt;/code&gt;，分为三种情况，值为1直接跳过，值为0则与前面的数对换（&lt;code&gt;i&lt;/code&gt;前面的数已经排
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 42. 接雨水</title>
@@ -397,48 +439,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划问题，&lt;code&gt;grid[i][j] += min(grid[i-1][j], grid[i][j-1])&lt;/code&gt;&lt;/p&gt;
 
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 39. 组合总和</title>
-    <link href="https://iamxcb.com/leetcode-39.html"/>
-    <id>https://iamxcb.com/leetcode-39.html</id>
-    <published>2019-03-21T06:55:25.000Z</published>
-    <updated>2019-03-21T07:07:43.179Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，遍历数组<code>candidates</code>，通过<code>target</code>减去数组中相应的值，不断缩小<code>target</code>进行递归，同时为了避免重复，从数组中取的值不能大于<code>target/2</code>，同时不能小于上一次的取值<code>prev</code><br>例如, <code>candidates=[2,3,5,6,7,8,9,11,12]; target = 14</code>，可以递归<code>(2,12),(3,11),(5,9),(6,8),(7,7)</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combinationSum</span><span class="params">(candidates []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> combination(candidates, []<span class="keyword">int</span>&#123;&#125;, <span class="number">0</span>, target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combination</span><span class="params">(candidates []<span class="keyword">int</span>, arr []<span class="keyword">int</span>, prev, target <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> target == <span class="number">0</span> &#123;</span><br><span class="line">        tmp := <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;&#125;, arr...)</span><br><span class="line">        res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> candidates &#123;</span><br><span class="line">        <span class="keyword">if</span> (v &lt;= target/<span class="number">2</span> &amp;&amp; v &gt;= prev) || v == target &#123;</span><br><span class="line">            arr = <span class="built_in">append</span>(arr, v)</span><br><span class="line">            res = <span class="built_in">append</span>(res, combination(candidates, arr, v, target-v)...)</span><br><span class="line">            arr = arr[:<span class="built_in">len</span>(arr)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，遍历数组&lt;code&gt;candidates&lt;/code&gt;，通过&lt;code&gt;target&lt;/code&gt;减去数组中相应的值，不断缩小&lt;cod
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 287. 寻找重复数</title>
-    <link href="https://iamxcb.com/leetcode-287.html"/>
-    <id>https://iamxcb.com/leetcode-287.html</id>
-    <published>2019-03-20T09:21:56.000Z</published>
-    <updated>2019-03-20T09:26:26.933Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过使用<code>nums</code>的值作为序号<code>i</code>，让相应位置取反，因为重复数值会访问相同位置多次，从而找出重复数值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findDuplicate</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        i := abs(v)</span><br><span class="line">        <span class="keyword">if</span> nums[i] &lt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums[i] = -nums[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">abs</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过使用&lt;code&gt;nums&lt;/code&gt;的值作为序号&lt;code&gt;i&lt;/code&gt;，让相应位置取反，因为重复数值会访问相同位置多次，从而找出
       
     
     </summary>
