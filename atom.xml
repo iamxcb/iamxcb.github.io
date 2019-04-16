@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-15T06:51:24.948Z</updated>
+  <updated>2019-04-16T05:15:22.343Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 240. 搜索二维矩阵 II</title>
+    <link href="https://iamxcb.com/leetcode-240.html"/>
+    <id>https://iamxcb.com/leetcode-240.html</id>
+    <published>2019-04-16T04:33:38.000Z</published>
+    <updated>2019-04-16T05:15:22.343Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为数组从左到右，从上到下都是递增的，所以可以从数组左下角的开始判断，比目标值大就往上比较，比目标小就往右比较</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">searchMatrix</span><span class="params">(matrix [][]<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    m, n := <span class="built_in">len</span>(matrix), <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> m &gt; <span class="number">0</span> &#123;</span><br><span class="line">        n = <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, j := m<span class="number">-1</span>, <span class="number">0</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; n; &#123;</span><br><span class="line">        <span class="keyword">if</span> matrix[i][j] &gt; target &#123;</span><br><span class="line">            i--</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> matrix[i][j] &lt; target &#123;</span><br><span class="line">            j++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;因为数组从左到右，从上到下都是递增的，所以可以从数组左下角的开始判断，比目标值大就往上比较，比目标小就往右比较&lt;/p&gt;
+&lt;h2 id=&quot;示例
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 15. 三数之和</title>
@@ -417,28 +439,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;哈希表保存位置&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerlink&quot; tit
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 64. 最小路径和</title>
-    <link href="https://iamxcb.com/leetcode-64.html"/>
-    <id>https://iamxcb.com/leetcode-64.html</id>
-    <published>2019-03-22T04:41:08.000Z</published>
-    <updated>2019-03-22T04:44:00.288Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划问题，<code>grid[i][j] += min(grid[i-1][j], grid[i][j-1])</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minPathSum</span><span class="params">(grid [][]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    m := <span class="built_in">len</span>(grid)</span><br><span class="line">    <span class="keyword">if</span> m == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; n; i++ &#123;</span><br><span class="line">        grid[<span class="number">0</span>][i] += grid[<span class="number">0</span>][i<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; m; i++ &#123;</span><br><span class="line">        grid[i][<span class="number">0</span>] += grid[i<span class="number">-1</span>][<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt; n; j++ &#123;</span><br><span class="line">            grid[i][j] += min(grid[i<span class="number">-1</span>][j], grid[i][j<span class="number">-1</span>])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> grid[m<span class="number">-1</span>][n<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt;= b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划问题，&lt;code&gt;grid[i][j] += min(grid[i-1][j], grid[i][j-1])&lt;/code&gt;&lt;/p&gt;
-
       
     
     </summary>
