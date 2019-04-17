@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-16T05:15:22.343Z</updated>
+  <updated>2019-04-17T02:58:11.554Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 128. 最长连续序列</title>
+    <link href="https://iamxcb.com/leetcode-128.html"/>
+    <id>https://iamxcb.com/leetcode-128.html</id>
+    <published>2019-04-17T02:46:16.000Z</published>
+    <updated>2019-04-17T02:58:11.554Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>哈希表存储连续区间的长度，遍历数组，如果数已在哈希表中则跳过，若还没有加入，则取出其左右相邻数表示的连续区间长度相加，然后更新左右区间两端点的长度值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">longestConsecutive</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">num := nums[i]</span><br><span class="line"><span class="keyword">if</span> _, ok := hash[num]; ok &#123;</span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line">&#125;</span><br><span class="line">        hash[num] += <span class="number">1</span></span><br><span class="line">        v1, ok1 := hash[num<span class="number">-1</span>]</span><br><span class="line">        v2, ok2 := hash[num+<span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ok1 &#123;</span><br><span class="line">            hash[num] += v1</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ok2 &#123;</span><br><span class="line">            hash[num] += v2</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> hash[num] &gt; res &#123;</span><br><span class="line">            res = hash[num]</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ok1 &#123;</span><br><span class="line">            hash[num-v1] = hash[num]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ok2 &#123;</span><br><span class="line">            hash[num+v2] = hash[num]</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;哈希表存储连续区间的长度，遍历数组，如果数已在哈希表中则跳过，若还没有加入，则取出其左右相邻数表示的连续区间长度相加，然后更新左右区间两端点
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 240. 搜索二维矩阵 II</title>
@@ -417,28 +438,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;倒序遍历字符串&lt;code&gt;s&lt;/code&gt;，如果不是&lt;code&gt;[&lt;/code&gt;则直接入栈；遇到&lt;code&gt;[&lt;/code&gt;时，先找出&lt;co
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 1. 两数之和</title>
-    <link href="https://iamxcb.com/leetcode-1.html"/>
-    <id>https://iamxcb.com/leetcode-1.html</id>
-    <published>2019-03-25T08:37:52.000Z</published>
-    <updated>2019-03-25T08:39:42.103Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>哈希表保存位置</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">2</span>)</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        hash[v] = i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> j, ok := hash[target-v]; ok &amp;&amp; j != i &#123;</span><br><span class="line">            res[<span class="number">0</span>] = i</span><br><span class="line">            res[<span class="number">1</span>] = j</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;哈希表保存位置&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerlink&quot; tit
       
     
     </summary>
