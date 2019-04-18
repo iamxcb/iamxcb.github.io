@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-17T02:58:11.554Z</updated>
+  <updated>2019-04-18T03:03:59.261Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 300. 最长上升子序列</title>
+    <link href="https://iamxcb.com/leetcode-300.html"/>
+    <id>https://iamxcb.com/leetcode-300.html</id>
+    <published>2019-04-18T02:58:49.000Z</published>
+    <updated>2019-04-18T03:03:59.261Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，<code>dp[j] = max(dp[j], dp[i]+1)</code>，表示当<code>j &gt; i, nums[j] &gt; nums[i]</code>时取最大的上升子序</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lengthOfLIS</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, n)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> dp[i] == <span class="number">0</span> &#123;</span><br><span class="line">            dp[i] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> j := i+<span class="number">1</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[i] &#123;</span><br><span class="line">                dp[j] = max(dp[j], dp[i]+<span class="number">1</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = max(res, dp[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，&lt;code&gt;dp[j] = max(dp[j], dp[i]+1)&lt;/code&gt;，表示当&lt;code&gt;j &amp;gt; i, nums[
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 128. 最长连续序列</title>
@@ -417,27 +438,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过移动两个序号&lt;code&gt;i,j&lt;/code&gt;，找出最大值，具体步骤就是高度较低的往内移动&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 394. 字符串解码</title>
-    <link href="https://iamxcb.com/leetcode-394.html"/>
-    <id>https://iamxcb.com/leetcode-394.html</id>
-    <published>2019-03-26T01:52:11.000Z</published>
-    <updated>2019-03-26T01:52:16.201Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>倒序遍历字符串<code>s</code>，如果不是<code>[</code>则直接入栈；遇到<code>[</code>时，先找出<code>[</code>前边的数字<code>nums</code>表示为<code>k</code>，然后找出编码字符串<code>encodedStr</code>，重复<code>k</code>次入栈，跳过数字继续遍历</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">decodeString</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(s)<span class="number">-1</span>; i &gt;=<span class="number">0</span>;&#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] == <span class="string">'['</span> &#123;</span><br><span class="line">            nums := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> j := i<span class="number">-1</span>; j &gt;= <span class="number">0</span>; j-- &#123;</span><br><span class="line">                <span class="keyword">if</span> s[j] &gt;= <span class="string">'0'</span> &amp;&amp; s[j] &lt;= <span class="string">'9'</span> &#123;</span><br><span class="line">                    nums = <span class="built_in">append</span>(nums, <span class="keyword">string</span>(s[j]))</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            reverse(nums)</span><br><span class="line">            k, _ := strconv.Atoi(strings.Join(nums, <span class="string">""</span>)) </span><br><span class="line">            encodedStr := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] != <span class="string">"]"</span> &#123;</span><br><span class="line">                encodedStr = <span class="built_in">append</span>(encodedStr, stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>])</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">            reverse(encodedStr)</span><br><span class="line">            <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; k; j++ &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, encodedStr...)</span><br><span class="line">            &#125;</span><br><span class="line">            i -= <span class="built_in">len</span>(nums)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, <span class="keyword">string</span>(s[i]))</span><br><span class="line">        &#125;</span><br><span class="line">        i -= <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    reverse(stack)</span><br><span class="line">    <span class="keyword">return</span> strings.Join(stack, <span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverse</span><span class="params">(arr []<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length/<span class="number">2</span>; i++ &#123;</span><br><span class="line">        arr[i], arr[length-i<span class="number">-1</span>] = arr[length-i<span class="number">-1</span>], arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;倒序遍历字符串&lt;code&gt;s&lt;/code&gt;，如果不是&lt;code&gt;[&lt;/code&gt;则直接入栈；遇到&lt;code&gt;[&lt;/code&gt;时，先找出&lt;co
       
     
     </summary>
