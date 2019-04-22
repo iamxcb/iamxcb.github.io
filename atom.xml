@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-19T02:10:06.680Z</updated>
+  <updated>2019-04-22T03:53:56.724Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 416. 分割等和子集</title>
+    <link href="https://iamxcb.com/leetcode-416.html"/>
+    <id>https://iamxcb.com/leetcode-416.html</id>
+    <published>2019-04-22T03:38:05.000Z</published>
+    <updated>2019-04-22T03:53:56.724Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>两个子集相等，可以知道数组的和<code>sum</code>肯定为偶数，然后问题就变为，判断数组中是否存在和为<code>sum/2</code>的子集，使用背包问题的动态规划，计算出<code>pack</code>可以存储的数值和</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canPartition</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    sum := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        sum += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> sum % <span class="number">2</span> != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    capacity := sum / <span class="number">2</span></span><br><span class="line">pack := <span class="built_in">make</span>([]<span class="keyword">bool</span>, capacity+<span class="number">1</span>)</span><br><span class="line">pack[<span class="number">0</span>] = <span class="literal">true</span></span><br><span class="line"><span class="keyword">for</span> _, v1 := <span class="keyword">range</span> nums &#123;</span><br><span class="line"><span class="keyword">for</span> v2 := capacity; v2 &gt;= v1; v2-- &#123;</span><br><span class="line">            <span class="keyword">if</span> pack[v2-v1] &#123;</span><br><span class="line">                pack[v2] = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> pack[capacity] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;两个子集相等，可以知道数组的和&lt;code&gt;sum&lt;/code&gt;肯定为偶数，然后问题就变为，判断数组中是否存在和为&lt;code&gt;sum/2&lt;/c
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 105 . 从前序与中序遍历序列构造二叉树</title>
@@ -415,28 +436,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树&lt;/p&gt;
 &lt;
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 494. 目标和</title>
-    <link href="https://iamxcb.com/leetcode-494.html"/>
-    <id>https://iamxcb.com/leetcode-494.html</id>
-    <published>2019-03-27T06:59:58.000Z</published>
-    <updated>2019-03-27T07:02:43.660Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>简单粗暴，直接根据上一次的结果存储各种可能性</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findTargetSumWays</span><span class="params">(nums []<span class="keyword">int</span>, S <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    hash[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        tmp := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">        <span class="keyword">for</span> k, _ := <span class="keyword">range</span> hash &#123;</span><br><span class="line">            tmp[k+v] += hash[k]</span><br><span class="line">            tmp[k-v] += hash[k]</span><br><span class="line">        &#125;</span><br><span class="line">        hash = tmp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hash[S]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;简单粗暴，直接根据上一次的结果存储各种可能性&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;
       
     
     </summary>
