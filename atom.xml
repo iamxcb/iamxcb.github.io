@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-23T03:18:40.389Z</updated>
+  <updated>2019-04-24T02:42:27.109Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 20. 有效的括号</title>
+    <link href="https://iamxcb.com/leetcode-20.html"/>
+    <id>https://iamxcb.com/leetcode-20.html</id>
+    <published>2019-04-24T02:39:49.000Z</published>
+    <updated>2019-04-24T02:42:27.109Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过栈解决，左括号入栈，右括号出栈比较</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isValid</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">        v1 := <span class="keyword">byte</span>(v)</span><br><span class="line">        <span class="keyword">if</span> v1 == <span class="string">'('</span> || v1 == <span class="string">'&#123;'</span> || v1 == <span class="string">'['</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, v1)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            n := <span class="built_in">len</span>(stack)</span><br><span class="line">            <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">            v2 := stack[n<span class="number">-1</span>]</span><br><span class="line">            stack = stack[:n<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> v1 == <span class="string">')'</span> &amp;&amp; v2 != <span class="string">'('</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v1 == <span class="string">'&#125;'</span> &amp;&amp; v2 != <span class="string">'&#123;'</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v1 == <span class="string">']'</span> &amp;&amp; v2 != <span class="string">'['</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(stack) != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过栈解决，左括号入栈，右括号出栈比较&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;hea
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 438. 找到字符串中所有字母异位词</title>
@@ -415,27 +437,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;遍历&lt;code&gt;grid&lt;/code&gt;，遇到数值为&lt;code&gt;1&lt;/code&gt;时置为&lt;code&gt;0&lt;/code&gt;，然后不断递归上下左右的位置
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 198. 打家劫舍</title>
-    <link href="https://iamxcb.com/leetcode-198.html"/>
-    <id>https://iamxcb.com/leetcode-198.html</id>
-    <published>2019-03-29T06:44:28.000Z</published>
-    <updated>2019-03-29T06:47:26.114Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划问题，状态转移方程<code>nums[i] = max(nums[i-1], nums[i-2]+nums[i])</code>（PS：注意初始化nums[0], nums[1]）</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rob</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    nums[<span class="number">1</span>] = max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt; n; i++ &#123;</span><br><span class="line">        nums[i] = max(nums[i<span class="number">-1</span>], nums[i<span class="number">-2</span>]+nums[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums[n<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划问题，状态转移方程&lt;code&gt;nums[i] = max(nums[i-1], nums[i-2]+nums[i])&lt;/code&gt;（
       
     
     </summary>
