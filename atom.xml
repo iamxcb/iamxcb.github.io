@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-04-24T02:42:27.109Z</updated>
+  <updated>2019-04-25T03:25:09.529Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 234. 回文链表</title>
+    <link href="https://iamxcb.com/leetcode-234.html"/>
+    <id>https://iamxcb.com/leetcode-234.html</id>
+    <published>2019-04-25T03:20:37.000Z</published>
+    <updated>2019-04-25T03:25:09.529Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>分为三步，首先通过快慢指针找到链表的中点，然后算出中点后面的逆序链表，最后比较链表中点前后的值是否相同</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPalindrome</span><span class="params">(head *ListNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    fast, slow := head, head</span><br><span class="line">    <span class="keyword">var</span> reverse *ListNode</span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &#123;</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">            fast = fast.Next.Next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            fast = fast.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> slow != <span class="literal">nil</span> &#123;</span><br><span class="line">        tmp := slow.Next</span><br><span class="line">        slow.Next = reverse</span><br><span class="line">        reverse = slow</span><br><span class="line">        slow = tmp</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> head != <span class="literal">nil</span> &amp;&amp; reverse != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> head.Val != reverse.Val &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        head = head.Next</span><br><span class="line">        reverse = reverse.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h1&gt;&lt;p&gt;分为三步，首先通过快慢指针找到链表的中点，然后算出中点后面的逆序链表，最后比较链表中点前后的值是否相同&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-g
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 20. 有效的括号</title>
@@ -416,27 +438,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过遍历&lt;code&gt;nums&lt;/code&gt;，记录连续数值的和&lt;code&gt;sum&lt;/code&gt;出现的次数，&lt;code&gt;sum-k&lt;/code&gt;
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 200. 岛屿的个数</title>
-    <link href="https://iamxcb.com/leetcode-200.html"/>
-    <id>https://iamxcb.com/leetcode-200.html</id>
-    <published>2019-04-01T06:52:52.000Z</published>
-    <updated>2019-04-01T06:56:27.409Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历<code>grid</code>，遇到数值为<code>1</code>时置为<code>0</code>，然后不断递归上下左右的位置为<code>0</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numIslands</span><span class="params">(grid [][]<span class="keyword">byte</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    m := <span class="built_in">len</span>(grid)</span><br><span class="line">    <span class="keyword">if</span> m == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    n, res := <span class="built_in">len</span>(grid[<span class="number">0</span>]), <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">                res++</span><br><span class="line">                dfs(grid, i, j, m, n)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(grid [][]<span class="keyword">byte</span>, i, j, m, n <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    grid[i][j] = <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[i<span class="number">-1</span>][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i<span class="number">-1</span>, j, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> j<span class="number">-1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[i][j<span class="number">-1</span>] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i, j<span class="number">-1</span>, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> i+<span class="number">1</span> &lt; m &amp;&amp; grid[i+<span class="number">1</span>][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i+<span class="number">1</span>, j, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> j+<span class="number">1</span> &lt; n &amp;&amp; grid[i][j+<span class="number">1</span>] == <span class="string">'1'</span> &#123;</span><br><span class="line">        dfs(grid, i, j+<span class="number">1</span>, m, n)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;遍历&lt;code&gt;grid&lt;/code&gt;，遇到数值为&lt;code&gt;1&lt;/code&gt;时置为&lt;code&gt;0&lt;/code&gt;，然后不断递归上下左右的位置
       
     
     </summary>
