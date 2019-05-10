@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-05-08T06:18:09.703Z</updated>
+  <updated>2019-05-10T03:33:38.193Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 79. 单词搜索</title>
+    <link href="https://iamxcb.com/leetcode-79.html"/>
+    <id>https://iamxcb.com/leetcode-79.html</id>
+    <published>2019-05-10T02:44:01.000Z</published>
+    <updated>2019-05-10T03:33:38.193Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，查看元素的上下左右位置，注意已经搜索过的位置，把搜索过的置为非字母，同时也不要忘了还原</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exist</span><span class="params">(board [][]<span class="keyword">byte</span>, word <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> x := <span class="number">0</span>; x &lt; <span class="built_in">len</span>(board); x++ &#123;</span><br><span class="line">        <span class="keyword">for</span> y := <span class="number">0</span>; y &lt; <span class="built_in">len</span>(board[x]); y++ &#123;</span><br><span class="line">            <span class="keyword">if</span> dfs(board, word, x, y, <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(board [][]<span class="keyword">byte</span>, word <span class="keyword">string</span>, x, y, i <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> i == <span class="built_in">len</span>(word) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span> || x == <span class="built_in">len</span>(board) || y == <span class="built_in">len</span>(board[x]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> board[x][y] != word[i] &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">board[x][y] ^= <span class="number">255</span>;</span><br><span class="line">    exists := dfs(board, word, x+<span class="number">1</span>, y, i+<span class="number">1</span>) || dfs(board, word, x<span class="number">-1</span>, y, i+<span class="number">1</span>) || dfs(board, word, x, y+<span class="number">1</span>, i+<span class="number">1</span>) || dfs(board, word, x, y<span class="number">-1</span>, i+<span class="number">1</span>)</span><br><span class="line">board[x][y] ^= <span class="number">255</span>;</span><br><span class="line"><span class="keyword">return</span> exists</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归，查看元素的上下左右位置，注意已经搜索过的位置，把搜索过的置为非字母，同时也不要忘了还原&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 301. 删除无效的括号</title>
@@ -416,28 +438,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，&lt;code&gt;dp[i] = min(dp[i], dp[j]+dp[i-j])&lt;/code&gt;，如果&lt;code&gt;i&lt;/code&gt;为完
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 572. 另一个树的子树</title>
-    <link href="https://iamxcb.com/leetcode-572.html"/>
-    <id>https://iamxcb.com/leetcode-572.html</id>
-    <published>2019-04-08T02:59:27.000Z</published>
-    <updated>2019-04-08T03:01:47.500Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归判断两个二叉树是否相同</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubtree</span><span class="params">(s *TreeNode, t *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="literal">nil</span> &amp;&amp; t != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isSame(s, t) || isSubtree(s.Left, t) || isSubtree(s.Right, t)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSame</span><span class="params">(s *TreeNode, t *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s != <span class="literal">nil</span> &amp;&amp; t == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="literal">nil</span> &amp;&amp; t != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="literal">nil</span> &amp;&amp; t == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s.Val != t.Val &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isSame(s.Left, t.Left) &amp;&amp; isSame(s.Right, t.Right)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归判断两个二叉树是否相同&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerlin
       
     
     </summary>
