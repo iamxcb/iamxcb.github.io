@@ -92,17 +92,16 @@
 
 
 
-<meta name="description" content="题解拓扑排序，找出入度为0的点，然后邻接点的入度各自减1（PS：有向无环图才存在拓扑排序） 示例代码(go)12345678910111213141516171819202122232425262728293031323334func canFinish(numCourses int, prerequisites [][]int) bool &amp;#123;    graph := make([][]">
-<meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 207. 课程表">
-<meta property="og:url" content="https://iamxcb.com/leetcode-207.html">
+<meta name="description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="下午三点钟的太阳">
+<meta property="og:url" content="https://iamxcb.com/page/10/index.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解拓扑排序，找出入度为0的点，然后邻接点的入度各自减1（PS：有向无环图才存在拓扑排序） 示例代码(go)12345678910111213141516171819202122232425262728293031323334func canFinish(numCourses int, prerequisites [][]int) bool &amp;#123;    graph := make([][]">
+<meta property="og:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-06T02:39:32.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 207. 课程表">
-<meta name="twitter:description" content="题解拓扑排序，找出入度为0的点，然后邻接点的入度各自减1（PS：有向无环图才存在拓扑排序） 示例代码(go)12345678910111213141516171819202122232425262728293031323334func canFinish(numCourses int, prerequisites [][]int) bool &amp;#123;    graph := make([][]">
+<meta name="twitter:title" content="下午三点钟的太阳">
+<meta name="twitter:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
 
 
 
@@ -132,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/leetcode-207.html"/>
+  <link rel="canonical" href="https://iamxcb.com/page/10/"/>
 
 
 
 
 
-  <title>leetcode 207. 课程表 | 下午三点钟的太阳</title>
+  <title>下午三点钟的太阳</title>
   
 
 
@@ -166,7 +165,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,9 +255,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-207.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode739.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -287,7 +287,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 207. 课程表</h2>
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode739.html" itemprop="url">leetcode 739. Daily Temperatures 每日温度</a></h2>
         
 
         <div class="post-meta">
@@ -299,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T10:32:20+08:00">
-                2019-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T16:59:44+08:00">
+                2018-12-10
               </time>
             
 
@@ -318,8 +320,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode-207.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-207.html" itemprop="commentCount"></span>
+                <a href="/leetcode739.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode739.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,8 +349,19 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拓扑排序，找出入度为0的点，然后邻接点的入度各自减1（PS：有向无环图才存在拓扑排序）</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canFinish</span><span class="params">(numCourses <span class="keyword">int</span>, prerequisites [][]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    graph := <span class="built_in">make</span>([][]<span class="keyword">int</span>, numCourses)</span><br><span class="line">    indegree := <span class="built_in">make</span>([]<span class="keyword">int</span>, numCourses)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> prerequisites &#123;</span><br><span class="line">        indegree[v[<span class="number">0</span>]]++</span><br><span class="line">        graph[v[<span class="number">1</span>]] = <span class="built_in">append</span>(graph[v[<span class="number">1</span>]], v[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        flag := <span class="literal">true</span></span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> indegree &#123;</span><br><span class="line">            <span class="keyword">if</span> v != <span class="number">-1</span> &#123;</span><br><span class="line">                flag = <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> flag &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        flag = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">for</span> i, v := <span class="keyword">range</span> indegree &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">0</span> &#123;</span><br><span class="line">                flag = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">for</span> _, v1 := <span class="keyword">range</span> graph[i] &#123;</span><br><span class="line">                    indegree[v1]--</span><br><span class="line">                &#125;</span><br><span class="line">                indegree[i]--</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> flag &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数组stack作为栈，通过append和切片模拟入栈出栈操作</p>
+<ol>
+<li>迭代数组T</li>
+<li>数组T的索引0入栈</li>
+<li>迭代的值大于栈顶索引的值，即v &gt; T[stack[len(stack)-1]]，则栈顶元素出栈，并存入res</li>
+<li>重复步骤3, 直到栈为空 或 v不大于T[stack[len(stack)-1]]</li>
+<li>数组T迭代完毕，返回数组res</li>
+</ol>
+<h3 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dailyTemperatures</span><span class="params">(T []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(T))</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> T &#123;</span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">len</span>(stack) &gt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> v &gt; T[stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]] &#123;</span><br><span class="line">                res[stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]] = i - stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stack = <span class="built_in">append</span>(stack, i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
       
     </div>
     
@@ -365,32 +378,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/leetcode-96.html" rel="next" title="leetcode 96. 不同的二叉搜索树">
-                <i class="fa fa-chevron-left"></i> leetcode 96. 不同的二叉搜索树
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-301.html" rel="prev" title="leetcode 301. 删除无效的括号">
-                leetcode 301. 删除无效的括号 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -400,11 +393,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+  </nav>
+
 
 
           </div>
@@ -412,13 +408,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -439,17 +428,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -532,22 +512,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -681,10 +645,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
