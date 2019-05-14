@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-05-13T08:17:27.430Z</updated>
+  <updated>2019-05-14T07:28:52.630Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 31. 下一个排列</title>
+    <link href="https://iamxcb.com/leetcode-31.html"/>
+    <id>https://iamxcb.com/leetcode-31.html</id>
+    <published>2019-05-14T07:20:58.000Z</published>
+    <updated>2019-05-14T07:28:52.630Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>从后往前遍历数组，找出比当前值<code>nums[i]</code>大的最小值所在的位置<code>k</code>，然后交换<code>nums[i]，nums[k]</code>，并把<code>i</code>之后的数进行升序排序</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextPermutation</span><span class="params">(nums []<span class="keyword">int</span>)</span></span>  &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    min, k := math.MaxInt64, <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> i := n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i+<span class="number">1</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[i] &amp;&amp; nums[j] &lt; min &#123;</span><br><span class="line">                min = nums[j]</span><br><span class="line">                k = j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> k != <span class="number">-1</span> &#123;</span><br><span class="line">            nums[i], nums[k] = nums[k], nums[i]</span><br><span class="line">            sort.Ints(nums[i+<span class="number">1</span>:])</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> k == <span class="number">-1</span> &#123;</span><br><span class="line">        sort.Ints(nums)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;从后往前遍历数组，找出比当前值&lt;code&gt;nums[i]&lt;/code&gt;大的最小值所在的位置&lt;code&gt;k&lt;/code&gt;，然后交换&lt;code&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 2. 两数相加</title>
@@ -418,27 +439,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;遍历数组&lt;code&gt;nums&lt;/code&gt;，分为三种情况，值为1直接跳过，值为0则与前面的数对换（&lt;code&gt;i&lt;/code&gt;前面的数已经排
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 42. 接雨水</title>
-    <link href="https://iamxcb.com/leetcode-42.html"/>
-    <id>https://iamxcb.com/leetcode-42.html</id>
-    <published>2019-04-10T02:38:19.000Z</published>
-    <updated>2019-04-10T02:44:02.825Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先找出柱子的最大高度<code>maxHeight</code>，然后分别找出从<code>1, 2, 3...maxHeight</code>高度所能接到的雨水，每一次高度所能接到的雨水，就是两个相邻的不低于此高度的柱子之间的距离</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trap</span><span class="params">(height []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    maxHeight, res := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> height &#123;</span><br><span class="line">        <span class="keyword">if</span> maxHeight &lt; v &#123;</span><br><span class="line">            maxHeight = v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= maxHeight; i++ &#123;</span><br><span class="line">        cur := <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> j, v := <span class="keyword">range</span> height &#123;</span><br><span class="line">            <span class="keyword">if</span> cur != <span class="number">-1</span> &amp;&amp; v &gt;= i &#123;</span><br><span class="line">                res += j-cur<span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v &gt;= i &#123;</span><br><span class="line">                cur = j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先找出柱子的最大高度&lt;code&gt;maxHeight&lt;/code&gt;，然后分别找出从&lt;code&gt;1, 2, 3...maxHeight&lt;/co
       
     
     </summary>
