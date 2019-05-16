@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-05-16T03:27:56.786Z</updated>
+  <updated>2019-05-16T06:56:04.826Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 55. 跳跃游戏</title>
+    <link href="https://iamxcb.com/leetcode-55.html"/>
+    <id>https://iamxcb.com/leetcode-55.html</id>
+    <published>2019-05-16T06:49:17.000Z</published>
+    <updated>2019-05-16T06:56:04.826Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>从后往前遍历，如果某个点的右边可以跳到最后，则该点只要能跳一步就可以，否则就要多跳一步</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canJump</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    c := <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := n<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= c &#123;</span><br><span class="line">            hash[i] = <span class="literal">true</span></span><br><span class="line">            c = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            c++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hash[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;从后往前遍历，如果某个点的右边可以跳到最后，则该点只要能跳一步就可以，否则就要多跳一步&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 19. 删除链表的倒数第N个节点</title>
@@ -419,28 +441,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;哈希表存储连续区间的长度，遍历数组，如果数已在哈希表中则跳过，若还没有加入，则取出其左右相邻数表示的连续区间长度相加，然后更新左右区间两端点
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 240. 搜索二维矩阵 II</title>
-    <link href="https://iamxcb.com/leetcode-240.html"/>
-    <id>https://iamxcb.com/leetcode-240.html</id>
-    <published>2019-04-16T04:33:38.000Z</published>
-    <updated>2019-04-16T05:15:22.343Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为数组从左到右，从上到下都是递增的，所以可以从数组左下角的开始判断，比目标值大就往上比较，比目标小就往右比较</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">searchMatrix</span><span class="params">(matrix [][]<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    m, n := <span class="built_in">len</span>(matrix), <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> m &gt; <span class="number">0</span> &#123;</span><br><span class="line">        n = <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, j := m<span class="number">-1</span>, <span class="number">0</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; n; &#123;</span><br><span class="line">        <span class="keyword">if</span> matrix[i][j] &gt; target &#123;</span><br><span class="line">            i--</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> matrix[i][j] &lt; target &#123;</span><br><span class="line">            j++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;因为数组从左到右，从上到下都是递增的，所以可以从数组左下角的开始判断，比目标值大就往上比较，比目标小就往右比较&lt;/p&gt;
-&lt;h2 id=&quot;示例
       
     
     </summary>
