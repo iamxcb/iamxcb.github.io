@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-05-16T06:58:58.040Z</updated>
+  <updated>2019-05-20T08:22:25.593Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 322. 零钱兑换</title>
+    <link href="https://iamxcb.com/leetcode-322.html"/>
+    <id>https://iamxcb.com/leetcode-322.html</id>
+    <published>2019-05-20T08:13:45.000Z</published>
+    <updated>2019-05-20T08:22:25.593Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，dp[n] = min(dp[n], dp[n-v]+1)，其中<code>n</code>代表总金额， <code>v</code>代表不同的硬币</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">coinChange</span><span class="params">(coins []<span class="keyword">int</span>, amount <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, amount+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> n := <span class="number">1</span>; n &lt;= amount; n++ &#123;</span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> coins &#123;</span><br><span class="line">            <span class="keyword">if</span> n &gt;= v &amp;&amp; dp[n-v] != <span class="number">-1</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> dp[n] == <span class="number">0</span> &#123;</span><br><span class="line">                    dp[n] = dp[n-v] + <span class="number">1</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> dp[n] &gt; dp[n-v] + <span class="number">1</span> &#123;</span><br><span class="line">                    dp[n] = dp[n-v] + <span class="number">1</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> dp[n] == <span class="number">0</span> &#123;</span><br><span class="line">            dp[n] = <span class="number">-1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amount]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，dp[n] = min(dp[n], dp[n-v]+1)，其中&lt;code&gt;n&lt;/code&gt;代表总金额， &lt;code&gt;v&lt;/cod
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 55. 跳跃游戏</title>
@@ -420,27 +441,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，&lt;code&gt;dp[j] = max(dp[j], dp[i]+1)&lt;/code&gt;，表示当&lt;code&gt;j &amp;gt; i, nums[
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 128. 最长连续序列</title>
-    <link href="https://iamxcb.com/leetcode-128.html"/>
-    <id>https://iamxcb.com/leetcode-128.html</id>
-    <published>2019-04-17T02:46:16.000Z</published>
-    <updated>2019-04-17T02:58:11.554Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>哈希表存储连续区间的长度，遍历数组，如果数已在哈希表中则跳过，若还没有加入，则取出其左右相邻数表示的连续区间长度相加，然后更新左右区间两端点的长度值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">longestConsecutive</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">num := nums[i]</span><br><span class="line"><span class="keyword">if</span> _, ok := hash[num]; ok &#123;</span><br><span class="line"><span class="keyword">continue</span></span><br><span class="line">&#125;</span><br><span class="line">        hash[num] += <span class="number">1</span></span><br><span class="line">        v1, ok1 := hash[num<span class="number">-1</span>]</span><br><span class="line">        v2, ok2 := hash[num+<span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ok1 &#123;</span><br><span class="line">            hash[num] += v1</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ok2 &#123;</span><br><span class="line">            hash[num] += v2</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> hash[num] &gt; res &#123;</span><br><span class="line">            res = hash[num]</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> ok1 &#123;</span><br><span class="line">            hash[num-v1] = hash[num]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ok2 &#123;</span><br><span class="line">            hash[num+v2] = hash[num]</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;哈希表存储连续区间的长度，遍历数组，如果数已在哈希表中则跳过，若还没有加入，则取出其左右相邻数表示的连续区间长度相加，然后更新左右区间两端点
       
     
     </summary>
