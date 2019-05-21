@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-05-20T08:22:25.593Z</updated>
+  <updated>2019-05-21T06:04:24.993Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 152. 乘积最大子序列</title>
+    <link href="https://iamxcb.com/leetcode-152.html"/>
+    <id>https://iamxcb.com/leetcode-152.html</id>
+    <published>2019-05-21T05:58:41.000Z</published>
+    <updated>2019-05-21T06:04:24.993Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><code>a, b</code>表示后续相乘可以用到的最大最小值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProduct</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    a, b := <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">    res := math.MinInt32</span><br><span class="line">    <span class="keyword">for</span> _, v1 := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        v2 := a * v1</span><br><span class="line">        v3 := b * v1</span><br><span class="line">        res = max(res, v2)</span><br><span class="line">        res = max(res, v3)</span><br><span class="line">        <span class="keyword">if</span> v2 &gt; <span class="number">0</span> &amp;&amp; v3 &gt; <span class="number">0</span> &#123;</span><br><span class="line">            a = max(v2, v3)</span><br><span class="line">            b = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v2 == <span class="number">0</span> &amp;&amp; v3 == <span class="number">0</span> &#123;</span><br><span class="line">            a = <span class="number">1</span></span><br><span class="line">            b = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v2 &lt; <span class="number">0</span> &amp;&amp; v3 &lt; <span class="number">0</span> &#123;</span><br><span class="line">            a = min(v2, v3)</span><br><span class="line">            b = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            a = v2</span><br><span class="line">            b = v3</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;&lt;code&gt;a, b&lt;/code&gt;表示后续相乘可以用到的最大最小值&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 322. 零钱兑换</title>
@@ -420,27 +442,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;前序遍历顺序为根左右，中序遍历顺序为左根右，所以可以看出&lt;code&gt;preorder&lt;/code&gt;中的每一个数，在&lt;code&gt;inorder
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 300. 最长上升子序列</title>
-    <link href="https://iamxcb.com/leetcode-300.html"/>
-    <id>https://iamxcb.com/leetcode-300.html</id>
-    <published>2019-04-18T02:58:49.000Z</published>
-    <updated>2019-04-18T03:03:59.261Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，<code>dp[j] = max(dp[j], dp[i]+1)</code>，表示当<code>j &gt; i, nums[j] &gt; nums[i]</code>时取最大的上升子序</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lengthOfLIS</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, n)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> dp[i] == <span class="number">0</span> &#123;</span><br><span class="line">            dp[i] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> j := i+<span class="number">1</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[i] &#123;</span><br><span class="line">                dp[j] = max(dp[j], dp[i]+<span class="number">1</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = max(res, dp[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，&lt;code&gt;dp[j] = max(dp[j], dp[i]+1)&lt;/code&gt;，表示当&lt;code&gt;j &amp;gt; i, nums[
       
     
     </summary>
