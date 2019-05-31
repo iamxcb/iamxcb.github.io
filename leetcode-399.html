@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解BFS思想，通过不断从字符串中减去一位，找出各种可能的子序列，然后判断是否合法（PS：合法的字符串的长度一定都是相同的) 示例代码(go)123456789101112131415161718192021222324252627282930313233343536373839404142434445func removeInvalidParentheses(s string) []string">
+<meta name="description" content="题解dfs深度搜索思想，首先遍历 queries 找出被除数 a，除数 b，然后根据 equations 找出 a / b 的值 示例代码(go)1234567891011121314151617181920212223242526272829303132333435363738394041func calcEquation(equations [][]string, values []float">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 301. 删除无效的括号">
-<meta property="og:url" content="https://iamxcb.com/leetcode-301.html">
+<meta property="og:title" content="leetcode 399. 除法求值">
+<meta property="og:url" content="https://iamxcb.com/leetcode-399.html">
 <meta property="og:site_name" content="下午三点钟的太阳">
-<meta property="og:description" content="题解BFS思想，通过不断从字符串中减去一位，找出各种可能的子序列，然后判断是否合法（PS：合法的字符串的长度一定都是相同的) 示例代码(go)123456789101112131415161718192021222324252627282930313233343536373839404142434445func removeInvalidParentheses(s string) []string">
+<meta property="og:description" content="题解dfs深度搜索思想，首先遍历 queries 找出被除数 a，除数 b，然后根据 equations 找出 a / b 的值 示例代码(go)1234567891011121314151617181920212223242526272829303132333435363738394041func calcEquation(equations [][]string, values []float">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-08T06:18:09.703Z">
+<meta property="og:updated_time" content="2019-05-31T07:41:49.781Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 301. 删除无效的括号">
-<meta name="twitter:description" content="题解BFS思想，通过不断从字符串中减去一位，找出各种可能的子序列，然后判断是否合法（PS：合法的字符串的长度一定都是相同的) 示例代码(go)123456789101112131415161718192021222324252627282930313233343536373839404142434445func removeInvalidParentheses(s string) []string">
+<meta name="twitter:title" content="leetcode 399. 除法求值">
+<meta name="twitter:description" content="题解dfs深度搜索思想，首先遍历 queries 找出被除数 a，除数 b，然后根据 equations 找出 a / b 的值 示例代码(go)1234567891011121314151617181920212223242526272829303132333435363738394041func calcEquation(equations [][]string, values []float">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/leetcode-301.html"/>
+  <link rel="canonical" href="https://iamxcb.com/leetcode-399.html"/>
 
 
 
 
 
-  <title>leetcode 301. 删除无效的括号 | 下午三点钟的太阳</title>
+  <title>leetcode 399. 除法求值 | 下午三点钟的太阳</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-301.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-399.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -287,7 +287,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 301. 删除无效的括号</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 399. 除法求值</h2>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T13:53:00+08:00">
-                2019-05-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-31T15:29:06+08:00">
+                2019-05-31
               </time>
             
 
@@ -318,8 +318,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode-301.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-301.html" itemprop="commentCount"></span>
+                <a href="/leetcode-399.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-399.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,8 +347,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>BFS思想，通过不断从字符串中减去一位，找出各种可能的子序列，然后判断是否合法（PS：合法的字符串的长度一定都是相同的)</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeInvalidParentheses</span><span class="params">(s <span class="keyword">string</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">bool</span>)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">	queue := []<span class="keyword">string</span>&#123;s&#125;</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		next := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">for</span> _, str := <span class="keyword">range</span> queue &#123;</span><br><span class="line">			<span class="keyword">if</span> isValid(str) &#123;</span><br><span class="line">                res = <span class="built_in">append</span>(res, str)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">            <span class="keyword">for</span> i, v := <span class="keyword">range</span> str &#123;</span><br><span class="line">                <span class="keyword">if</span> v != <span class="string">'('</span> &amp;&amp; v != <span class="string">')'</span> &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                s := str[:i] + str[i+<span class="number">1</span>:]</span><br><span class="line">                <span class="keyword">if</span> _, ok := hash[s]; ok &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                hash[s] = <span class="literal">true</span></span><br><span class="line">                next = <span class="built_in">append</span>(next, s)</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(res) &gt; <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> res</span><br><span class="line">		&#125;</span><br><span class="line">		queue = next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isValid</span><span class="params">(str <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">	count := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> str &#123;</span><br><span class="line">		<span class="keyword">if</span> v == <span class="string">'('</span> &#123;</span><br><span class="line">			count++</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> v == <span class="string">')'</span> &#123;</span><br><span class="line">			count--</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> count &lt; <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> count == <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>dfs深度搜索思想，首先遍历 <code>queries</code> 找出被除数 <code>a</code>，除数 <code>b</code>，然后根据 <code>equations</code> 找出 <code>a / b</code> 的值</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calcEquation</span><span class="params">(equations [][]<span class="keyword">string</span>, values []<span class="keyword">float64</span>, queries [][]<span class="keyword">string</span>)</span> []<span class="title">float64</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(queries)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">float64</span>, n)</span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        res[i] = calc(equations, values, visited, queries[i][<span class="number">0</span>], queries[i][<span class="number">1</span>], <span class="number">1.0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calc</span><span class="params">(equations [][]<span class="keyword">string</span>, values []<span class="keyword">float64</span>, visited <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>, a, b <span class="keyword">string</span>, answer <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> equations &#123;</span><br><span class="line">        <span class="keyword">if</span> visited[i] &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> v[<span class="number">0</span>] == a &amp;&amp; a == b || v[<span class="number">1</span>] == a &amp;&amp; a == b &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v[<span class="number">0</span>] == a &#123;</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">1</span>] == b &#123;</span><br><span class="line">                <span class="keyword">return</span> answer * values[i]</span><br><span class="line">            &#125;</span><br><span class="line">            visited[i] = <span class="literal">true</span></span><br><span class="line">            k := calc(equations, values, visited, v[<span class="number">1</span>], b, answer * values[i])</span><br><span class="line">            visited[i] = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">if</span> k != <span class="number">-1.0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> k</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v[<span class="number">1</span>] == a &amp;&amp; values[i] != <span class="number">0.0</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">0</span>] == b &#123;</span><br><span class="line">                <span class="keyword">return</span> answer / values[i]</span><br><span class="line">            &#125;</span><br><span class="line">            visited[i] = <span class="literal">true</span></span><br><span class="line">            k := calc(equations, values, visited, v[<span class="number">0</span>], b, answer / values[i])</span><br><span class="line">            visited[i] = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">if</span> k != <span class="number">-1.0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> k</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1.0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -372,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode-207.html" rel="next" title="leetcode 207. 课程表">
-                <i class="fa fa-chevron-left"></i> leetcode 207. 课程表
+              <a href="/leetcode-538.html" rel="next" title="leetcode 538. 把二叉搜索树转换为累加树">
+                <i class="fa fa-chevron-left"></i> leetcode 538. 把二叉搜索树转换为累加树
               </a>
             
           </div>
@@ -381,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-79.html" rel="prev" title="leetcode 79. 单词搜索">
-                leetcode 79. 单词搜索 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
