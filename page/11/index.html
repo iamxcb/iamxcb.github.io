@@ -270,6 +270,266 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-638.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode-638.html" itemprop="url">leetcode 638. 大礼包</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T16:48:02+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-638.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-638.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>迭代，如果某个礼包<code>special[i]</code>是可以合法购买的（礼包物品的数量小于预购物品数），则以该礼包的价格<code>special[i][len(needs)]</code>加上购买剩余商品的最低价格，即对<code>remainNeeds</code>进行迭代</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">shoppingOffers</span><span class="params">(price []<span class="keyword">int</span>, special [][]<span class="keyword">int</span>, needs []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    minPrice := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(price); i++ &#123;</span><br><span class="line">        minPrice += price[i] * needs[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(special); i++ &#123;</span><br><span class="line">        isValid := <span class="literal">true</span></span><br><span class="line">        remainNeeds := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(needs))</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="built_in">len</span>(needs); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> special[i][j] &gt; needs[j] &#123;</span><br><span class="line">                isValid  = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">            remainNeeds[j] = needs[j] - special[i][j]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> isValid &#123;</span><br><span class="line">            price := shoppingOffers(price, special, remainNeeds) + special[i][<span class="built_in">len</span>(needs)]</span><br><span class="line">            <span class="keyword">if</span> price &lt; minPrice &#123;</span><br><span class="line">                minPrice = price</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minPrice</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-401.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode-401.html" itemprop="url">leetcode 401. 二进制手表</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-14T13:07:05+08:00">
+                2018-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-401.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-401.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>前六位代表分钟，后四位代表时钟，组成十位二进制，当<code>num=1</code>时，共计<code>0000000001</code>~<code>1000000000</code> 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以<code>hour</code>小时就等于十进制数值除以64，<code>minute</code>分钟则是对64取模，当<code>num=2,3,4...</code>时，对于<code>bits</code>每一个值，左边依次找一个二进制位变为1，比如<code>0000010000</code>可以变成<code>0000110000</code>, <code>0001010000</code>一直到<code>1000010000</code>，同时也要排除掉大于768和在[60,64]之间的值，因为时钟不能为12，分钟不能大于59</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">readBinaryWatch</span><span class="params">(num <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    times := []<span class="keyword">string</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="keyword">string</span>&#123;<span class="string">"0:00"</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    bits := []<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">9</span>; i++ &#123;</span><br><span class="line">        bits = <span class="built_in">append</span>(bits, bits[i]*<span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; num; i++ &#123;</span><br><span class="line">        nextBits := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> bits &#123;</span><br><span class="line">            <span class="keyword">for</span> add := <span class="number">1</span>; add &lt;= <span class="number">512</span>; add *= <span class="number">2</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> v + add &gt;= <span class="number">768</span>  || (v + add &gt;= <span class="number">60</span> &amp;&amp; v + add &lt; <span class="number">64</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> add &gt; v &#123;</span><br><span class="line">                    nextBits = <span class="built_in">append</span>(nextBits, v + add)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        bits = nextBits</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> bits &#123;</span><br><span class="line">        hour := v / <span class="number">64</span></span><br><span class="line">        minute := v % <span class="number">64</span></span><br><span class="line">        times = <span class="built_in">append</span>(times, fmt.Sprintf(<span class="string">"%d:%02d"</span>, hour, minute))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> times</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-932.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1107,7 +1367,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">108</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

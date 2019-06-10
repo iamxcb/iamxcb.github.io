@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-06-05T03:33:06.502Z</updated>
+  <updated>2019-06-10T09:15:20.842Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 127. 单词接龙</title>
+    <link href="https://iamxcb.com/leetcode-127.html"/>
+    <id>https://iamxcb.com/leetcode-127.html</id>
+    <published>2019-06-10T09:08:21.000Z</published>
+    <updated>2019-06-10T09:15:20.842Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>bfs 思想，根据前面已经入队 <code>queue</code> 的单词 <code>beginWord</code>，然后把可以转换的单词 <code>word</code> 加入队列</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ladderLength</span><span class="params">(beginWord <span class="keyword">string</span>, endWord <span class="keyword">string</span>, wordList []<span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    queue = <span class="built_in">append</span>(queue, beginWord)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        res++</span><br><span class="line">        n := <span class="built_in">len</span>(queue)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">            beginWord := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">for</span> j, word := <span class="keyword">range</span> wordList &#123;</span><br><span class="line">                <span class="keyword">if</span> !visited[j] &amp;&amp; canTransform(beginWord, word) &#123;</span><br><span class="line">                    <span class="keyword">if</span> word == endWord &#123;</span><br><span class="line">                        <span class="keyword">return</span> res + <span class="number">1</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    visited[j] = <span class="literal">true</span></span><br><span class="line">                    queue = <span class="built_in">append</span>(queue, word)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canTransform</span><span class="params">(beginWord <span class="keyword">string</span>, endWord <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(beginWord)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> beginWord[:i] + beginWord[i+<span class="number">1</span>:] == endWord[:i] + endWord[i+<span class="number">1</span>:] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;bfs 思想，根据前面已经入队 &lt;code&gt;queue&lt;/code&gt; 的单词 &lt;code&gt;beginWord&lt;/code&gt;，然后把可以转换的
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 227. 基本计算器 II</title>
+    <link href="https://iamxcb.com/leetcode-227.html"/>
+    <id>https://iamxcb.com/leetcode-227.html</id>
+    <published>2019-06-06T08:03:23.000Z</published>
+    <updated>2019-06-06T08:04:51.797Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>将减法转化为加法（取相反数），由于乘除法优先级高，直接计算</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calculate</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">var</span> op <span class="keyword">byte</span></span><br><span class="line">    op = <span class="string">'+'</span></span><br><span class="line">    num := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] &gt;= <span class="string">'0'</span> &#123;</span><br><span class="line">            num = num * <span class="number">10</span> + <span class="keyword">int</span>(s[i] - <span class="string">'0'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &lt; <span class="string">'0'</span> &amp;&amp; s[i] != <span class="string">' '</span>) || i == n<span class="number">-1</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'+'</span> &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, num)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'-'</span> &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, -num)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'*'</span> &#123;</span><br><span class="line">                tmp := stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] * num</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, tmp)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'/'</span> &#123;</span><br><span class="line">                tmp := stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] / num</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, tmp)</span><br><span class="line">            &#125;</span><br><span class="line">            num = <span class="number">0</span></span><br><span class="line">            op = s[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> stack &#123;</span><br><span class="line">        res += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;将减法转化为加法（取相反数），由于乘除法优先级高，直接计算&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; 
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 454. 四数相加 II</title>
@@ -398,49 +441,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;拓扑排序，找出入度为0的点，然后邻接点的入度各自减1（PS：有向无环图才存在拓扑排序）&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 96. 不同的二叉搜索树</title>
-    <link href="https://iamxcb.com/leetcode-96.html"/>
-    <id>https://iamxcb.com/leetcode-96.html</id>
-    <published>2019-05-03T13:18:00.000Z</published>
-    <updated>2019-05-10T03:36:24.432Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，dp[n] = dp[0]<em>dp[n-1]+dp[1]</em>dp[n-2]+dp[2]<em>dp[n-3]+…dp[n-1]</em>dp[0]，其中<code>dp[n]</code>表示n个节点所能代表的二叉搜索树个数，因为二叉搜索树的左节点要小于根节点，右节点要大于根节点，所以当根节点为1时，左节点有为空，右节点有n-1个，当根节点为2时，左节点有为1个，右节点有n-2个，依次类推</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numTrees</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt;= i; j++ &#123;</span><br><span class="line">            dp[i] += dp[j<span class="number">-1</span>] * dp[i-j]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，dp[n] = dp[0]&lt;em&gt;dp[n-1]+dp[1]&lt;/em&gt;dp[n-2]+dp[2]&lt;em&gt;dp[n-3]+…dp[n
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 946. 验证栈序列</title>
-    <link href="https://iamxcb.com/leetcode-946.html"/>
-    <id>https://iamxcb.com/leetcode-946.html</id>
-    <published>2019-04-30T09:10:18.000Z</published>
-    <updated>2019-04-30T09:15:03.654Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过<code>stack</code>模拟入栈出栈</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">validateStackSequences</span><span class="params">(pushed []<span class="keyword">int</span>, popped []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(pushed)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    i, j := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    stack = <span class="built_in">append</span>(stack, pushed[i])</span><br><span class="line">    i++</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        m := <span class="built_in">len</span>(stack)</span><br><span class="line">        <span class="keyword">if</span> m &gt; <span class="number">0</span> &amp;&amp; stack[m<span class="number">-1</span>] == popped[j] &#123;</span><br><span class="line">            stack = stack[:m<span class="number">-1</span>]</span><br><span class="line">            j++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> i == n &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, pushed[i])</span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(stack) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;通过&lt;code&gt;stack&lt;/code&gt;模拟入栈出栈&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; cla
       
     
     </summary>
