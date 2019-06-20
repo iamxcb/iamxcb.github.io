@@ -270,6 +270,395 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-41.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode-41.html" itemprop="url">leetcode 41. 缺失的第一个正数</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T14:19:41+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-41.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-41.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>缺失的第一个正数不会大于 <code>n+1</code>；首先将小于 1 的值置为 <code>n+1</code>，然后数组的值作为下标，把相对应的位置 <code>nums[v-1]</code> 变为负数，最后遍历数组判断是否有正数</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">firstMissingPositive</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> v &lt; <span class="number">1</span> &#123;</span><br><span class="line">            nums[i] = n+<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        v1 := abs(v)</span><br><span class="line">        <span class="keyword">if</span> v1 &gt; <span class="number">0</span> &amp;&amp; v1 &lt;= n &#123;</span><br><span class="line">            nums[v1<span class="number">-1</span>] = -abs(nums[v1<span class="number">-1</span>])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> v &gt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> i+<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n+<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">abs</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> -a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode-3.html" itemprop="url">leetcode 3. 无重复字符的最长子串</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-17T15:21:48+08:00">
+                2019-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-3.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-3.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过哈希表保存重复字符上一次出现的位置，然后从重复字符的后一个字符作为新的开始，重新计算最长子串的长度</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    res, start := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> last, ok := hash[s[i]]; ok &amp;&amp; last &gt;= start &#123;</span><br><span class="line">            start = last+<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        hash[s[i]] = i</span><br><span class="line">        res = max(res, i-start+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-146.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="下午三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode-146.html" itemprop="url">leetcode 146. LRU缓存机制</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T17:08:17+08:00">
+                2019-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-146.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-146.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> node <span class="keyword">struct</span> &#123;</span><br><span class="line">    key <span class="keyword">int</span></span><br><span class="line">	value <span class="keyword">int</span></span><br><span class="line">	pre   *node</span><br><span class="line">	next  *node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">	capacity <span class="keyword">int</span></span><br><span class="line">	hash        <span class="keyword">map</span>[<span class="keyword">int</span>]*node</span><br><span class="line">	head     *node</span><br><span class="line">	tail     *node</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="keyword">int</span>)</span> <span class="title">LRUCache</span></span> &#123;</span><br><span class="line">    cache := LRUCache&#123;capacity: capacity, hash: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]*node)&#125;</span><br><span class="line">    cache.head = &amp;node&#123;&#125;</span><br><span class="line">    cache.tail = &amp;node&#123;&#125;</span><br><span class="line">    cache.head.next = cache.tail</span><br><span class="line">    cache.tail.pre = cache.head</span><br><span class="line">	<span class="keyword">return</span> cache</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">Get</span><span class="params">(key <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	n, ok := this.hash[key]</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">    this.remove(n)</span><br><span class="line">	this.setHead(n)</span><br><span class="line">	<span class="keyword">return</span> n.value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">Put</span><span class="params">(key <span class="keyword">int</span>, value <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> income *node</span><br><span class="line">    <span class="keyword">if</span> n, ok := this.hash[key]; ok &#123;</span><br><span class="line">        n.value = value</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        income = &amp;node&#123;key: key, value: value&#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(this.hash) &gt;= this.capacity &#123;</span><br><span class="line">            <span class="built_in">delete</span>(this.hash, this.tail.pre.key)</span><br><span class="line">            this.remove(this.tail.pre)</span><br><span class="line">        &#125;</span><br><span class="line">        this.hash[key] = income</span><br><span class="line">        this.setHead(income)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">setHead</span><span class="params">(n *node)</span></span> &#123;</span><br><span class="line">    headNext := this.head.next</span><br><span class="line">    this.head.next = n</span><br><span class="line">    n.pre = this.head</span><br><span class="line">    n.next = headNext</span><br><span class="line">    headNext.pre = n</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span> <span class="title">remove</span><span class="params">(n *node)</span></span> &#123;</span><br><span class="line">    n.pre.next = n.next</span><br><span class="line">    n.next.pre = n.pre</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-179.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -821,7 +1210,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T16:03:23+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T20:03:23+08:00">
                 2019-06-06
               </time>
             
@@ -871,7 +1260,7 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>将减法转化为加法（取相反数），由于乘除法优先级高，直接计算</p>
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历字符串 <code>s</code> ，取出数值 <code>num</code> 存入 <code>stack</code> 栈中，主要是通过前边的操作符 <code>op</code> 判断如何存入数值，<code>+, -</code> 则直接存 <code>num</code> 的值或者取反后再存入，<code>*, /</code> 的话则要计算之后再存入，最后把 <code>stack</code> 栈中的数值相加起来</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calculate</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">var</span> op <span class="keyword">byte</span></span><br><span class="line">    op = <span class="string">'+'</span></span><br><span class="line">    num := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] &gt;= <span class="string">'0'</span> &#123;</span><br><span class="line">            num = num * <span class="number">10</span> + <span class="keyword">int</span>(s[i] - <span class="string">'0'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &lt; <span class="string">'0'</span> &amp;&amp; s[i] != <span class="string">' '</span>) || i == n<span class="number">-1</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'+'</span> &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, num)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'-'</span> &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, -num)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'*'</span> &#123;</span><br><span class="line">                tmp := stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] * num</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, tmp)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'/'</span> &#123;</span><br><span class="line">                tmp := stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] / num</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, tmp)</span><br><span class="line">            &#125;</span><br><span class="line">            num = <span class="number">0</span></span><br><span class="line">            op = s[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> stack &#123;</span><br><span class="line">        res += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -1167,396 +1556,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-399.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="iamxcb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="下午三点钟的太阳">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode-399.html" itemprop="url">leetcode 399. 除法求值</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-31T15:29:06+08:00">
-                2019-05-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/leetcode-399.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-399.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>dfs深度搜索思想，首先遍历 <code>queries</code> 找出被除数 <code>a</code>，除数 <code>b</code>，然后根据 <code>equations</code> 找出 <code>a / b</code> 的值</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calcEquation</span><span class="params">(equations [][]<span class="keyword">string</span>, values []<span class="keyword">float64</span>, queries [][]<span class="keyword">string</span>)</span> []<span class="title">float64</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(queries)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">float64</span>, n)</span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        res[i] = calc(equations, values, visited, queries[i][<span class="number">0</span>], queries[i][<span class="number">1</span>], <span class="number">1.0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calc</span><span class="params">(equations [][]<span class="keyword">string</span>, values []<span class="keyword">float64</span>, visited <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>, a, b <span class="keyword">string</span>, answer <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> equations &#123;</span><br><span class="line">        <span class="keyword">if</span> visited[i] &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> v[<span class="number">0</span>] == a &amp;&amp; a == b || v[<span class="number">1</span>] == a &amp;&amp; a == b &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v[<span class="number">0</span>] == a &#123;</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">1</span>] == b &#123;</span><br><span class="line">                <span class="keyword">return</span> answer * values[i]</span><br><span class="line">            &#125;</span><br><span class="line">            visited[i] = <span class="literal">true</span></span><br><span class="line">            k := calc(equations, values, visited, v[<span class="number">1</span>], b, answer * values[i])</span><br><span class="line">            visited[i] = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">if</span> k != <span class="number">-1.0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> k</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v[<span class="number">1</span>] == a &amp;&amp; values[i] != <span class="number">0.0</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">0</span>] == b &#123;</span><br><span class="line">                <span class="keyword">return</span> answer / values[i]</span><br><span class="line">            &#125;</span><br><span class="line">            visited[i] = <span class="literal">true</span></span><br><span class="line">            k := calc(equations, values, visited, v[<span class="number">0</span>], b, answer / values[i])</span><br><span class="line">            visited[i] = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">if</span> k != <span class="number">-1.0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> k</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1.0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-538.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="iamxcb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="下午三点钟的太阳">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode-538.html" itemprop="url">leetcode 538. 把二叉搜索树转换为累加树</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-30T11:29:56+08:00">
-                2019-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/leetcode-538.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-538.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据二叉搜索树的特点，左子树节点的值小于根节点的值，根节点的值小于右子树节点的值，可以按照右-根-左的顺序遍历二叉树，将遍历顺序的结点的值累加起来，和当前结点的值相加</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> pre <span class="keyword">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">convertBST</span><span class="params">(root *TreeNode)</span> *<span class="title">TreeNode</span></span> &#123;</span><br><span class="line">    pre = <span class="number">0</span></span><br><span class="line">    inorder(root)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorder</span><span class="params">(root *TreeNode)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    inorder(root.Right)</span><br><span class="line">    root.Val += pre</span><br><span class="line">    pre = root.Val</span><br><span class="line">    inorder(root.Left)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-763.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="iamxcb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="下午三点钟的太阳">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode-763.html" itemprop="url">leetcode 763. 划分字母区间</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-28T10:55:10+08:00">
-                2019-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/leetcode-763.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-763.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先遍历字符串找到每个字母出现的最后位置，然后判断相同字母所代表区间中的每个字母，看下字母的最后位置是否超出原区间，超出则更新区间</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partitionLabels</span><span class="params">(S <span class="keyword">string</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    n := <span class="built_in">len</span>(S)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        hash[S[i]] = i</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    i := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i &lt; n &#123;</span><br><span class="line">        m := hash[S[i]]</span><br><span class="line">        j := i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j &lt;= m &#123;</span><br><span class="line">            <span class="keyword">if</span> hash[S[j]] &gt; m &#123;</span><br><span class="line">                m = hash[S[j]]</span><br><span class="line">            &#125;</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, j-i)</span><br><span class="line">        i = j</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1611,7 +1610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-count">114</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
