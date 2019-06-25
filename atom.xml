@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-06-20T06:35:45.256Z</updated>
+  <updated>2019-06-25T06:14:38.730Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 131. 分割回文串</title>
+    <link href="https://iamxcb.com/leetcode-131.html"/>
+    <id>https://iamxcb.com/leetcode-131.html</id>
+    <published>2019-06-25T06:11:31.000Z</published>
+    <updated>2019-06-25T06:14:38.730Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归回溯，如果字符串的 <code>s[:i]</code> 子串回文，则对剩下的 <code>s[i:]</code> 子串进行递归</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="keyword">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partition</span><span class="params">(s <span class="keyword">string</span>)</span> [][]<span class="title">string</span></span> &#123;</span><br><span class="line">    res = [][]<span class="keyword">string</span>&#123;&#125;</span><br><span class="line">    dfs(s, []<span class="keyword">string</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s <span class="keyword">string</span>, arr []<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">""</span> &#123;</span><br><span class="line">        tmp := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">        tmp = <span class="built_in">append</span>(tmp, arr...)</span><br><span class="line">        res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> isPalindrome(s[:i]) &#123;</span><br><span class="line">            dfs(s[i:], <span class="built_in">append</span>(arr, <span class="keyword">string</span>(s[:i])))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPalindrome</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n/<span class="number">2</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] != s[n-i<span class="number">-1</span>] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;递归回溯，如果字符串的 &lt;code&gt;s[:i]&lt;/code&gt; 子串回文，则对剩下的 &lt;code&gt;s[i:]&lt;/code&gt; 子串进行递归&lt;/p
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 41. 缺失的第一个正数</title>
@@ -415,28 +436,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;从后往前遍历，如果某个点的右边可以跳到最后，则该点只要能跳一步就可以，否则就要多跳一步&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 19. 删除链表的倒数第N个节点</title>
-    <link href="https://iamxcb.com/leetcode-19.html"/>
-    <id>https://iamxcb.com/leetcode-19.html</id>
-    <published>2019-05-16T03:22:37.000Z</published>
-    <updated>2019-05-16T03:27:56.786Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>两次遍历，第一次算出链表的长度，第二次从前往后删除指定节点</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(head *ListNode, n <span class="keyword">int</span>)</span> *<span class="title">ListNode</span></span> &#123;</span><br><span class="line">    node := head</span><br><span class="line">    m := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> head != <span class="literal">nil</span> &#123;</span><br><span class="line">        m++</span><br><span class="line">        head = head.Next</span><br><span class="line">    &#125;</span><br><span class="line">    head = node</span><br><span class="line">    <span class="keyword">if</span> m == n &#123;</span><br><span class="line">        <span class="keyword">return</span> head.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m-n<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        node = node.Next</span><br><span class="line">    &#125;</span><br><span class="line">    node.Next = node.Next.Next</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;两次遍历，第一次算出链表的长度，第二次从前往后删除指定节点&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; 
       
     
     </summary>
