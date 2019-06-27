@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-06-25T06:14:38.730Z</updated>
+  <updated>2019-06-27T03:10:40.877Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 556. 下一个更大元素 III</title>
+    <link href="https://iamxcb.com/leetcode-556.html"/>
+    <id>https://iamxcb.com/leetcode-556.html</id>
+    <published>2019-06-27T02:01:05.000Z</published>
+    <updated>2019-06-27T03:10:40.877Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><code>n</code> 转为字节数组 <code>b</code>，首先从右到左找到 <code>b[i-1] &lt; b[i]</code> 表明有更大的值大于 <code>n</code>（但不一定是最小的），然后在 <code>b[i:]</code> 里找到大于 <code>b[i-1]</code> 的最小值 <code>b[j]</code>，接着交换 <code>b[i-1], b[j]</code>，反转 <code>b[i:]</code> 按升序排列</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextGreaterElement</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    b := []<span class="keyword">byte</span>(strconv.Itoa(n))</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(b)<span class="number">-1</span>; i &gt; <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">if</span> b[i<span class="number">-1</span>] &lt; b[i] &#123;</span><br><span class="line">            <span class="keyword">for</span> j := <span class="built_in">len</span>(b)<span class="number">-1</span>; j &gt;= i; j-- &#123;</span><br><span class="line">                <span class="keyword">if</span> b[j] &gt; b[i<span class="number">-1</span>] &#123;</span><br><span class="line">                    b[j], b[i<span class="number">-1</span>] = b[i<span class="number">-1</span>], b[j]</span><br><span class="line">                    reverse(b, i)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res, _ := strconv.Atoi(<span class="keyword">string</span>(b))</span><br><span class="line">    <span class="keyword">if</span> res == n || res &gt; math.MaxInt32 &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverse</span><span class="params">(b []<span class="keyword">byte</span>, i <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    l, r := i, <span class="built_in">len</span>(b)<span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> l &lt; r &#123;</span><br><span class="line">        b[l], b[r] = b[r], b[l]</span><br><span class="line">        l++</span><br><span class="line">        r--</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;&lt;code&gt;n&lt;/code&gt; 转为字节数组 &lt;code&gt;b&lt;/code&gt;，首先从右到左找到 &lt;code&gt;b[i-1] &amp;lt; b[i]&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 131. 分割回文串</title>
@@ -414,28 +435,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，dp[n] = min(dp[n], dp[n-v]+1)，其中&lt;code&gt;n&lt;/code&gt;代表总金额， &lt;code&gt;v&lt;/cod
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 55. 跳跃游戏</title>
-    <link href="https://iamxcb.com/leetcode-55.html"/>
-    <id>https://iamxcb.com/leetcode-55.html</id>
-    <published>2019-05-16T06:49:17.000Z</published>
-    <updated>2019-05-16T06:58:58.040Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>从后往前遍历，如果某个点的右边可以跳到最后，则该点只要能跳一步就可以，否则就要多跳一步</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canJump</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    c := <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := n<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= c &#123;</span><br><span class="line">            c = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            c++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c == <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;从后往前遍历，如果某个点的右边可以跳到最后，则该点只要能跳一步就可以，否则就要多跳一步&lt;/p&gt;
-&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a hr
       
     
     </summary>
