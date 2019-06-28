@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-06-27T03:10:40.877Z</updated>
+  <updated>2019-06-28T06:35:49.818Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 165. 比较版本号</title>
+    <link href="https://iamxcb.com/leetcode-165.html"/>
+    <id>https://iamxcb.com/leetcode-165.html</id>
+    <published>2019-06-28T06:31:02.000Z</published>
+    <updated>2019-06-28T06:35:49.818Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先根据 “.” 分割成数组，然后依次比较每一项的值（可以先转为整数再比较，方便一点）</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">compareVersion</span><span class="params">(version1 <span class="keyword">string</span>, version2 <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    arr1 := strings.Split(version1, <span class="string">"."</span>)</span><br><span class="line">    arr2 := strings.Split(version2, <span class="string">"."</span>)</span><br><span class="line">    m, n := <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="number">0</span> ;i &lt; m || j &lt; n; &#123;</span><br><span class="line">        <span class="keyword">if</span> i &lt; m &amp;&amp; j &lt; n &#123;</span><br><span class="line">            num1, _ := strconv.Atoi(arr1[i])</span><br><span class="line">            num2, _ := strconv.Atoi(arr2[j])</span><br><span class="line">            <span class="keyword">if</span> num1 &gt; num2 &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> num1 &lt; num2 &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            i++</span><br><span class="line">            j++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> i == m &amp;&amp; j &lt; n &#123;</span><br><span class="line">            num2, _ := strconv.Atoi(arr2[j])</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt; num2 &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            j++</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> i &lt; m &amp;&amp; j == n &#123;</span><br><span class="line">            num1, _ := strconv.Atoi(arr1[i])</span><br><span class="line">            <span class="keyword">if</span> num1 &gt; <span class="number">0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先根据 “.” 分割成数组，然后依次比较每一项的值（可以先转为整数再比较，方便一点）&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 556. 下一个更大元素 III</title>
@@ -414,27 +436,6 @@
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;&lt;code&gt;a, b&lt;/code&gt;表示后续相乘可以用到的最大最小值&lt;/p&gt;
 &lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 322. 零钱兑换</title>
-    <link href="https://iamxcb.com/leetcode-322.html"/>
-    <id>https://iamxcb.com/leetcode-322.html</id>
-    <published>2019-05-20T08:13:45.000Z</published>
-    <updated>2019-05-20T08:22:25.593Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，dp[n] = min(dp[n], dp[n-v]+1)，其中<code>n</code>代表总金额， <code>v</code>代表不同的硬币</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">coinChange</span><span class="params">(coins []<span class="keyword">int</span>, amount <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, amount+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> n := <span class="number">1</span>; n &lt;= amount; n++ &#123;</span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> coins &#123;</span><br><span class="line">            <span class="keyword">if</span> n &gt;= v &amp;&amp; dp[n-v] != <span class="number">-1</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> dp[n] == <span class="number">0</span> &#123;</span><br><span class="line">                    dp[n] = dp[n-v] + <span class="number">1</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> dp[n] &gt; dp[n-v] + <span class="number">1</span> &#123;</span><br><span class="line">                    dp[n] = dp[n-v] + <span class="number">1</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> dp[n] == <span class="number">0</span> &#123;</span><br><span class="line">            dp[n] = <span class="number">-1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amount]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，dp[n] = min(dp[n], dp[n-v]+1)，其中&lt;code&gt;n&lt;/code&gt;代表总金额， &lt;code&gt;v&lt;/cod
       
     
     </summary>
