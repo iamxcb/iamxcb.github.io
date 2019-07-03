@@ -92,16 +92,17 @@
 
 
 
-<meta name="description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="三点钟的太阳">
-<meta property="og:url" content="https://iamxcb.com/archives/2019/05/page/2/index.html">
+<meta name="description" content="题解从后往前遍历 nums，构建二叉搜索树，每个节点要记录其左子树节点的个数 Count 示例代码(go)1234567891011121314151617181920212223242526272829type Node struct &amp;#123;    Left *Node    Right *Node    Val int    Count int&amp;#125;func countSmalle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode 315. 计算右侧小于当前元素的个数">
+<meta property="og:url" content="https://iamxcb.com/leetcode-315.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta property="og:description" content="题解从后往前遍历 nums，构建二叉搜索树，每个节点要记录其左子树节点的个数 Count 示例代码(go)1234567891011121314151617181920212223242526272829type Node struct &amp;#123;    Left *Node    Right *Node    Val int    Count int&amp;#125;func countSmalle">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-03T06:19:56.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三点钟的太阳">
-<meta name="twitter:description" content="个人技术分享，主要包含LeetCode的题解，python和golang语言的学习教程，以及其他杂七杂八的前端或后端的开发技术。">
+<meta name="twitter:title" content="leetcode 315. 计算右侧小于当前元素的个数">
+<meta name="twitter:description" content="题解从后往前遍历 nums，构建二叉搜索树，每个节点要记录其左子树节点的个数 Count 示例代码(go)1234567891011121314151617181920212223242526272829type Node struct &amp;#123;    Left *Node    Right *Node    Val int    Count int&amp;#125;func countSmalle">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/archives/2019/05/page/2/"/>
+  <link rel="canonical" href="https://iamxcb.com/leetcode-315.html"/>
 
 
 
 
 
-  <title>归档 | 三点钟的太阳</title>
+  <title>leetcode 315. 计算右侧小于当前元素的个数 | 三点钟的太阳</title>
   
 
 
@@ -165,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,299 +256,151 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-315.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h2 class="post-title" itemprop="name headline">leetcode 315. 计算右侧小于当前元素的个数</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-03T14:11:01+08:00">
+                2019-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        很好! 目前共计 120 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-315.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-315.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-34.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 34. 在排序数组中查找元素的第一个和最后一个位置</span>
-              
-            </a>
-        
-      </h3>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-15T13:23:22+08:00"
-              content="2019-05-15" >
-          05-15
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-31.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 31. 下一个排列</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-14T15:20:58+08:00"
-              content="2019-05-14" >
-          05-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-2.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 2. 两数相加</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-13T16:07:54+08:00"
-              content="2019-05-13" >
-          05-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-79.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 79. 单词搜索</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-10T10:44:01+08:00"
-              content="2019-05-10" >
-          05-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>从后往前遍历 <code>nums</code>，构建二叉搜索树，每个节点要记录其左子树节点的个数 <code>Count</code></p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Node <span class="keyword">struct</span> &#123;</span><br><span class="line">    Left *Node</span><br><span class="line">    Right *Node</span><br><span class="line">    Val <span class="keyword">int</span></span><br><span class="line">    Count <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countSmaller</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> root *Node</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, n)</span><br><span class="line">    <span class="keyword">for</span> i := n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        root = insert(root, nums[i], i, res)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">insert</span><span class="params">(root *Node, val, index <span class="keyword">int</span>, res []<span class="keyword">int</span>)</span> *<span class="title">Node</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        root = &amp;Node&#123;<span class="literal">nil</span>, <span class="literal">nil</span>, val, <span class="number">0</span>&#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> val &lt;= root.Val &#123;</span><br><span class="line">        root.Count++</span><br><span class="line">        root.Left = insert(root.Left, val, index, res)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        res[index] += root.Count + <span class="number">1</span></span><br><span class="line">        root.Right = insert(root.Right, val, index, res)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-301.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 301. 删除无效的括号</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-08T13:53:00+08:00"
-              content="2019-05-08" >
-          05-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-207.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 207. 课程表</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-06T10:32:20+08:00"
-              content="2019-05-06" >
-          05-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/leetcode-96.html" itemprop="url">
-              
-                <span itemprop="name">leetcode 96. 不同的二叉搜索树</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-03T21:18:00+08:00"
-              content="2019-05-03" >
-          05-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/leetcode-72.html" rel="next" title="leetcode 72. 编辑距离">
+                <i class="fa fa-chevron-left"></i> leetcode 72. 编辑距离
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/05/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/05/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -555,6 +408,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -575,8 +435,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -645,6 +514,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -784,6 +669,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
