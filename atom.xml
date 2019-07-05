@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-04T03:12:03.735Z</updated>
+  <updated>2019-07-05T06:48:41.288Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 140. 单词拆分 II</title>
+    <link href="https://iamxcb.com/leetcode-140.html"/>
+    <id>https://iamxcb.com/leetcode-140.html</id>
+    <published>2019-07-05T06:36:09.000Z</published>
+    <updated>2019-07-05T06:48:41.288Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>记忆化回溯，<code>hash[s]</code> 保存相应字符串 <code>s</code> 对应的单词组合</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wordBreak</span><span class="params">(s <span class="keyword">string</span>, wordDict []<span class="keyword">string</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">string</span>)</span><br><span class="line">wordHash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">bool</span>)</span><br><span class="line"><span class="keyword">for</span> _, word := <span class="keyword">range</span> wordDict &#123;</span><br><span class="line">wordHash[word] = <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(s, wordDict, hash, wordHash)    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s <span class="keyword">string</span>, wordDict []<span class="keyword">string</span>, hash <span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">string</span>, wordHash <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">bool</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> _, ok := hash[s]; ok &#123;</span><br><span class="line">        <span class="keyword">return</span> hash[s]</span><br><span class="line">    &#125;</span><br><span class="line">res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        res = <span class="built_in">append</span>(res, <span class="string">""</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line"><span class="keyword">if</span> wordHash[s[:i+<span class="number">1</span>]] &#123;</span><br><span class="line">sublist := dfs(s[i+<span class="number">1</span>:], wordDict, hash, wordHash)</span><br><span class="line"><span class="keyword">for</span> _, sub := <span class="keyword">range</span> sublist &#123;</span><br><span class="line">space := <span class="string">" "</span></span><br><span class="line"><span class="keyword">if</span> sub == <span class="string">""</span> &#123;</span><br><span class="line">space = <span class="string">""</span></span><br><span class="line">&#125;</span><br><span class="line">res = <span class="built_in">append</span>(res, s[:i+<span class="number">1</span>] + space + sub)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">    hash[s] = res</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;记忆化回溯，&lt;code&gt;hash[s]&lt;/code&gt; 保存相应字符串 &lt;code&gt;s&lt;/code&gt; 对应的单词组合&lt;/p&gt;
+&lt;h2 id=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 4. 寻找两个有序数组的中位数</title>
@@ -412,28 +434,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;根据二叉搜索树的特点，左子树节点的值小于根节点的值，根节点的值小于右子树节点的值，可以按照右-根-左的顺序遍历二叉树，将遍历顺序的结点的值累
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 763. 划分字母区间</title>
-    <link href="https://iamxcb.com/leetcode-763.html"/>
-    <id>https://iamxcb.com/leetcode-763.html</id>
-    <published>2019-05-28T02:55:10.000Z</published>
-    <updated>2019-05-28T03:01:02.016Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先遍历字符串找到每个字母出现的最后位置，然后判断相同字母所代表区间中的每个字母，看下字母的最后位置是否超出原区间，超出则更新区间</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partitionLabels</span><span class="params">(S <span class="keyword">string</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    n := <span class="built_in">len</span>(S)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        hash[S[i]] = i</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    i := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i &lt; n &#123;</span><br><span class="line">        m := hash[S[i]]</span><br><span class="line">        j := i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j &lt;= m &#123;</span><br><span class="line">            <span class="keyword">if</span> hash[S[j]] &gt; m &#123;</span><br><span class="line">                m = hash[S[j]]</span><br><span class="line">            &#125;</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, j-i)</span><br><span class="line">        i = j</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先遍历字符串找到每个字母出现的最后位置，然后判断相同字母所代表区间中的每个字母，看下字母的最后位置是否超出原区间，超出则更新区间&lt;/p&gt;
-
       
     
     </summary>
