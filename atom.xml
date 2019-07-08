@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-05T07:00:37.116Z</updated>
+  <updated>2019-07-08T07:32:22.623Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 828. 独特字符串</title>
+    <link href="https://iamxcb.com/leetcode-828.html"/>
+    <id>https://iamxcb.com/leetcode-828.html</id>
+    <published>2019-07-08T06:32:23.000Z</published>
+    <updated>2019-07-08T07:32:22.623Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先子串的独特字符的个数和即 <code>sum(UNIQ(substring))</code>，可以转化为求解包含 <code>S[i]</code> 的子串中，<code>S[i]</code> 为独特字符的和即 <code>sum(UNIQ(S[i]))</code> ；<br>同时包含 <code>S[i]</code> 的子串中，可能会存在 <code>S[i]</code> 永远不会为独特字符的子串；<br>当 <code>j &lt; i &amp;&amp; S[j] == S[i]</code> 时，以 <code>S[j]</code> 开始的子串会使 <code>S[i]</code> 永远成不了独特字符；<br>当 <code>k &gt; i &amp;&amp; S[k] == S[i]</code> 时，以 <code>S[k]</code> 结尾的子串会使 <code>S[i]</code> 永远成不了独特字符；<br>所以可以去除这两种情况，在 <code>S[j+1:k]</code> 之间统计 <code>UNIQ(S[i])</code>；<br>最终问题就变成了计算在 <code>S[j+1:k]</code> 之间，包含 <code>S[i]</code> 的子串有多少种可能，因为每个子串中 <code>S[i]</code> 都会是独特字符；<br>在 <code>S[j+1:k]</code> 之间，包含 <code>S[i]</code> 的子串的数量其实就等于 <code>(i - j) * (k - i)</code>；<br><code>S[j+1:i+1], S[j+1:i+2], ..., S[j+1:k]</code>，<code>S[j+2:i+1], S[j+2:i+2], ...., S[j+1:k]</code>，….，<code>S[i:i+1], S[i:i+2], ...., S[i:k]</code></p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">uniqueLetterString</span><span class="params">(S <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res, n := <span class="number">0</span>, <span class="built_in">len</span>(S)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        j, k := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span>; j-- &#123;</span><br><span class="line">            <span class="keyword">if</span> S[j] == S[i] &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> k = i+<span class="number">1</span>; k &lt; n; k++ &#123;</span><br><span class="line">            <span class="keyword">if</span> S[k] == S[i] &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res += (i - j) * (k - i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先子串的独特字符的个数和即 &lt;code&gt;sum(UNIQ(substring))&lt;/code&gt;，可以转化为求解包含 &lt;code&gt;S[i]&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 140. 单词拆分 II</title>
@@ -413,27 +434,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;dfs深度搜索思想，首先遍历 &lt;code&gt;queries&lt;/code&gt; 找出被除数 &lt;code&gt;a&lt;/code&gt;，除数 &lt;code&gt;b&lt;/c
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 538. 把二叉搜索树转换为累加树</title>
-    <link href="https://iamxcb.com/leetcode-538.html"/>
-    <id>https://iamxcb.com/leetcode-538.html</id>
-    <published>2019-05-30T03:29:56.000Z</published>
-    <updated>2019-05-30T03:37:18.235Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据二叉搜索树的特点，左子树节点的值小于根节点的值，根节点的值小于右子树节点的值，可以按照右-根-左的顺序遍历二叉树，将遍历顺序的结点的值累加起来，和当前结点的值相加</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> pre <span class="keyword">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">convertBST</span><span class="params">(root *TreeNode)</span> *<span class="title">TreeNode</span></span> &#123;</span><br><span class="line">    pre = <span class="number">0</span></span><br><span class="line">    inorder(root)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorder</span><span class="params">(root *TreeNode)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    inorder(root.Right)</span><br><span class="line">    root.Val += pre</span><br><span class="line">    pre = root.Val</span><br><span class="line">    inorder(root.Left)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;根据二叉搜索树的特点，左子树节点的值小于根节点的值，根节点的值小于右子树节点的值，可以按照右-根-左的顺序遍历二叉树，将遍历顺序的结点的值累
       
     
     </summary>
