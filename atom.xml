@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-08T07:32:22.623Z</updated>
+  <updated>2019-07-09T03:25:09.310Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 76. 最小覆盖子串</title>
+    <link href="https://iamxcb.com/leetcode-76.html"/>
+    <id>https://iamxcb.com/leetcode-76.html</id>
+    <published>2019-07-09T03:08:36.000Z</published>
+    <updated>2019-07-09T03:25:09.310Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>双指针，滑动窗口</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minWindow</span><span class="params">(s <span class="keyword">string</span>, t <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    res := <span class="string">""</span></span><br><span class="line">    left, right := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    hashS := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    hashT := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> t &#123;</span><br><span class="line">        hashT[<span class="keyword">byte</span>(v)]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> right &lt; n &#123;</span><br><span class="line">        hashS[s[right]]++</span><br><span class="line">        <span class="keyword">for</span> left &lt;= right &amp;&amp; contains(hashS, hashT) &#123;</span><br><span class="line">            <span class="keyword">if</span> res == <span class="string">""</span> &#123;</span><br><span class="line">                res = s[left:right+<span class="number">1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(res) &gt; right-left+<span class="number">1</span> &#123;</span><br><span class="line">                res = s[left:right+<span class="number">1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            hashS[s[left]]--</span><br><span class="line">            left++</span><br><span class="line">        &#125;</span><br><span class="line">        right++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">contains</span><span class="params">(hashS, hashT <span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> hashT &#123;</span><br><span class="line">        <span class="keyword">if</span> hashS[k] &lt; v &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;双指针，滑动窗口&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 828. 独特字符串</title>
@@ -413,27 +435,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;动态规划，&lt;code&gt;dp[i][j]&lt;/code&gt; 表示正方形的边长（其中i, j代表正方形的右下角）, 地推公式：&lt;code&gt;dp[i]
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 399. 除法求值</title>
-    <link href="https://iamxcb.com/leetcode-399.html"/>
-    <id>https://iamxcb.com/leetcode-399.html</id>
-    <published>2019-05-31T07:29:06.000Z</published>
-    <updated>2019-05-31T07:41:49.781Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>dfs深度搜索思想，首先遍历 <code>queries</code> 找出被除数 <code>a</code>，除数 <code>b</code>，然后根据 <code>equations</code> 找出 <code>a / b</code> 的值</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calcEquation</span><span class="params">(equations [][]<span class="keyword">string</span>, values []<span class="keyword">float64</span>, queries [][]<span class="keyword">string</span>)</span> []<span class="title">float64</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(queries)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">float64</span>, n)</span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        res[i] = calc(equations, values, visited, queries[i][<span class="number">0</span>], queries[i][<span class="number">1</span>], <span class="number">1.0</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calc</span><span class="params">(equations [][]<span class="keyword">string</span>, values []<span class="keyword">float64</span>, visited <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>, a, b <span class="keyword">string</span>, answer <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> equations &#123;</span><br><span class="line">        <span class="keyword">if</span> visited[i] &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> v[<span class="number">0</span>] == a &amp;&amp; a == b || v[<span class="number">1</span>] == a &amp;&amp; a == b &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1.0</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v[<span class="number">0</span>] == a &#123;</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">1</span>] == b &#123;</span><br><span class="line">                <span class="keyword">return</span> answer * values[i]</span><br><span class="line">            &#125;</span><br><span class="line">            visited[i] = <span class="literal">true</span></span><br><span class="line">            k := calc(equations, values, visited, v[<span class="number">1</span>], b, answer * values[i])</span><br><span class="line">            visited[i] = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">if</span> k != <span class="number">-1.0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> k</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v[<span class="number">1</span>] == a &amp;&amp; values[i] != <span class="number">0.0</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> v[<span class="number">0</span>] == b &#123;</span><br><span class="line">                <span class="keyword">return</span> answer / values[i]</span><br><span class="line">            &#125;</span><br><span class="line">            visited[i] = <span class="literal">true</span></span><br><span class="line">            k := calc(equations, values, visited, v[<span class="number">0</span>], b, answer / values[i])</span><br><span class="line">            visited[i] = <span class="literal">false</span></span><br><span class="line">            <span class="keyword">if</span> k != <span class="number">-1.0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> k</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1.0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;dfs深度搜索思想，首先遍历 &lt;code&gt;queries&lt;/code&gt; 找出被除数 &lt;code&gt;a&lt;/code&gt;，除数 &lt;code&gt;b&lt;/c
       
     
     </summary>
