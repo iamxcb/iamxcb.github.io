@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-10T07:30:55.438Z</updated>
+  <updated>2019-07-11T07:02:42.140Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 982. 按位与为零的三元组</title>
+    <link href="https://iamxcb.com/leetcode-982.html"/>
+    <id>https://iamxcb.com/leetcode-982.html</id>
+    <published>2019-07-11T07:01:00.000Z</published>
+    <updated>2019-07-11T07:02:42.140Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分两步，先计算 <code>A[i] &amp; A[j]</code> 保存出现的次数，再计算 <code>(A[i] &amp; A[j]) &amp; A[k]</code> 判断是否为零</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countTriplets</span><span class="params">(A []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res, n := <span class="number">0</span>, <span class="built_in">len</span>(A)</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            hash[A[i] &amp; A[j]]++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> key, count := <span class="keyword">range</span> hash &#123;</span><br><span class="line">        <span class="keyword">for</span> k := <span class="number">0</span>; k &lt; n; k++ &#123;</span><br><span class="line">            <span class="keyword">if</span> key &amp; A[k] == <span class="number">0</span> &#123;</span><br><span class="line">                res += count</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;分两步，先计算 &lt;code&gt;A[i] &amp;amp; A[j]&lt;/code&gt; 保存出现的次数，再计算 &lt;code&gt;(A[i] &amp;amp; A[j
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 36. 有效的数独</title>
@@ -415,27 +436,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;遍历字符串 &lt;code&gt;s&lt;/code&gt; ，取出数值 &lt;code&gt;num&lt;/code&gt; 存入 &lt;code&gt;stack&lt;/code&gt; 栈中，主
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 454. 四数相加 II</title>
-    <link href="https://iamxcb.com/leetcode-454.html"/>
-    <id>https://iamxcb.com/leetcode-454.html</id>
-    <published>2019-06-05T03:24:02.000Z</published>
-    <updated>2019-06-05T03:33:06.502Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先遍历 <code>A</code> 和 <code>B</code> 元素和的组合情况，并记录在 <code>hash</code> 中，然后遍历 <code>C</code> 和 <code>D</code> 元素和的组合情况，判断取反后的值是否在 <code>hash</code> 表中</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fourSumCount</span><span class="params">(A []<span class="keyword">int</span>, B []<span class="keyword">int</span>, C []<span class="keyword">int</span>, D []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, a := <span class="keyword">range</span> A &#123;</span><br><span class="line">        <span class="keyword">for</span> _, b := <span class="keyword">range</span> B &#123;</span><br><span class="line">            hash[a+b]++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> C &#123;</span><br><span class="line">        <span class="keyword">for</span> _, d := <span class="keyword">range</span> D &#123;</span><br><span class="line">            <span class="keyword">if</span> v, ok := hash[-c-d]; ok &#123;</span><br><span class="line">                res += v</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;首先遍历 &lt;code&gt;A&lt;/code&gt; 和 &lt;code&gt;B&lt;/code&gt; 元素和的组合情况，并记录在 &lt;code&gt;hash&lt;/code&gt; 中
       
     
     </summary>
