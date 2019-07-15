@@ -270,6 +270,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-165.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iamxcb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="三点钟的太阳">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/leetcode-165.html" itemprop="url">leetcode 165. 比较版本号</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T14:31:02+08:00">
+                2019-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/leetcode-165.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-165.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先根据 “.” 分割成数组，然后依次比较每一项的值（可以先转为整数再比较，方便一点）</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">compareVersion</span><span class="params">(version1 <span class="keyword">string</span>, version2 <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    arr1 := strings.Split(version1, <span class="string">"."</span>)</span><br><span class="line">    arr2 := strings.Split(version2, <span class="string">"."</span>)</span><br><span class="line">    m, n := <span class="built_in">len</span>(arr1), <span class="built_in">len</span>(arr2)</span><br><span class="line">    <span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="number">0</span> ;i &lt; m || j &lt; n; &#123;</span><br><span class="line">        <span class="keyword">if</span> i &lt; m &amp;&amp; j &lt; n &#123;</span><br><span class="line">            num1, _ := strconv.Atoi(arr1[i])</span><br><span class="line">            num2, _ := strconv.Atoi(arr2[j])</span><br><span class="line">            <span class="keyword">if</span> num1 &gt; num2 &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> num1 &lt; num2 &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            i++</span><br><span class="line">            j++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> i == m &amp;&amp; j &lt; n &#123;</span><br><span class="line">            num2, _ := strconv.Atoi(arr2[j])</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt; num2 &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            j++</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> i &lt; m &amp;&amp; j == n &#123;</span><br><span class="line">            num1, _ := strconv.Atoi(arr1[i])</span><br><span class="line">            <span class="keyword">if</span> num1 &gt; <span class="number">0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-556.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1427,136 +1557,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-227.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="iamxcb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="三点钟的太阳">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/leetcode-227.html" itemprop="url">leetcode 227. 基本计算器 II</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T20:03:23+08:00">
-                2019-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/leetcode-227.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-227.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历字符串 <code>s</code> ，取出数值 <code>num</code> 存入 <code>stack</code> 栈中，主要是通过前边的操作符 <code>op</code> 判断如何存入数值，<code>+, -</code> 则直接存 <code>num</code> 的值或者取反后再存入，<code>*, /</code> 的话则要计算之后再存入，最后把 <code>stack</code> 栈中的数值相加起来</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">calculate</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">var</span> op <span class="keyword">byte</span></span><br><span class="line">    op = <span class="string">'+'</span></span><br><span class="line">    num := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] &gt;= <span class="string">'0'</span> &#123;</span><br><span class="line">            num = num * <span class="number">10</span> + <span class="keyword">int</span>(s[i] - <span class="string">'0'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (s[i] &lt; <span class="string">'0'</span> &amp;&amp; s[i] != <span class="string">' '</span>) || i == n<span class="number">-1</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'+'</span> &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, num)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'-'</span> &#123;</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, -num)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'*'</span> &#123;</span><br><span class="line">                tmp := stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] * num</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, tmp)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'/'</span> &#123;</span><br><span class="line">                tmp := stack[<span class="built_in">len</span>(stack)<span class="number">-1</span>] / num</span><br><span class="line">                stack = stack[:<span class="built_in">len</span>(stack)<span class="number">-1</span>]</span><br><span class="line">                stack = <span class="built_in">append</span>(stack, tmp)</span><br><span class="line">            &#125;</span><br><span class="line">            num = <span class="number">0</span></span><br><span class="line">            op = s[i]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> stack &#123;</span><br><span class="line">        res += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1611,7 +1611,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">126</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 87. 扰乱字符串]]></title>
+    <url>%2Fleetcode-87.html</url>
+    <content type="text"><![CDATA[题解递归，i 作为分割位，分割之后的两部分 s[:i+1], s[i+1:] 可能交换，也可能不交换，所以有两种可能 示例代码(go)1234567891011121314151617181920212223242526272829303132func isScramble(s1 string, s2 string) bool &#123; if s1 == s2 &#123; return true &#125; if !isSame(s1, s2) &#123; return false &#125; n := len(s1) for i := 1; i &lt; n; i++ &#123; if isScramble(s1[:i], s2[:i]) &amp;&amp; isScramble(s1[i:], s2[i:]) &#123; return true &#125; if isScramble(s1[:i], s2[n-i:]) &amp;&amp; isScramble(s1[i:], s2[:n-i]) &#123; return true &#125; &#125; return false&#125;func isSame(s1, s2 string) bool &#123; hash := make(map[byte]int) for i := len(s1)-1; i &gt;= 0; i-- &#123; hash[s1[i]]++ &#125; for i := len(s2)-1; i &gt;= 0; i-- &#123; hash[s2[i]]-- if hash[s2[i]] &lt; 0 &#123; return false &#125; &#125; return true&#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 982. 按位与为零的三元组]]></title>
     <url>%2Fleetcode-982.html</url>
     <content type="text"><![CDATA[题解分两步，先计算 A[i] &amp; A[j] 保存出现的次数，再计算 (A[i] &amp; A[j]) &amp; A[k] 判断是否为零 示例代码(go)1234567891011121314151617func countTriplets(A []int) int &#123; res, n := 0, len(A) hash := make(map[int]int) for i := 0; i &lt; n; i++ &#123; for j := 0; j &lt; n; j++ &#123; hash[A[i] &amp; A[j]]++ &#125; &#125; for key, count := range hash &#123; for k := 0; k &lt; n; k++ &#123; if key &amp; A[k] == 0 &#123; res += count &#125; &#125; &#125; return res&#125;]]></content>
