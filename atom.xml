@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-15T07:25:17.171Z</updated>
+  <updated>2019-07-16T03:12:29.079Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 30. 串联所有单词的子串</title>
+    <link href="https://iamxcb.com/leetcode-30.html"/>
+    <id>https://iamxcb.com/leetcode-30.html</id>
+    <published>2019-07-16T03:07:39.000Z</published>
+    <updated>2019-07-16T03:12:29.079Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>暴力解法，直接通过哈希表判断每个子串是否符合题目要求</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findSubstring</span><span class="params">(s <span class="keyword">string</span>, words []<span class="keyword">string</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    m, k := <span class="built_in">len</span>(words), <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">if</span> m == <span class="number">0</span> || k == <span class="number">0</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(words[<span class="number">0</span>])</span><br><span class="line">    hashW := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, word := <span class="keyword">range</span> words &#123;</span><br><span class="line">        hashW[word]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= k-m*n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> isSubstring(s[i:i+m*n], m, n, hashW) &#123;</span><br><span class="line">            res = <span class="built_in">append</span>(res, i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubstring</span><span class="params">(s <span class="keyword">string</span>, m, n <span class="keyword">int</span>, hashW <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    hashS := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m*n; i += n &#123;</span><br><span class="line">        hashS[s[i:i+n]]++</span><br><span class="line">        <span class="keyword">if</span> hashW[s[i:i+n]] &lt; <span class="number">1</span> || hashS[s[i:i+n]] &gt; hashW[s[i:i+n]] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;暴力解法，直接通过哈希表判断每个子串是否符合题目要求&lt;/p&gt;
+&lt;h2 id=&quot;示例代码-go&quot;&gt;&lt;a href=&quot;#示例代码-go&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 87. 扰乱字符串</title>
@@ -415,27 +437,6 @@
       
       
         &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;bfs 广度优先搜索，首先把边界上出现的 &lt;code&gt;O&lt;/code&gt; 以及相连的 &lt;code&gt;O&lt;/code&gt; 置为 &lt;code&gt;S&lt;/c
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 127. 单词接龙</title>
-    <link href="https://iamxcb.com/leetcode-127.html"/>
-    <id>https://iamxcb.com/leetcode-127.html</id>
-    <published>2019-06-10T09:08:21.000Z</published>
-    <updated>2019-06-10T09:15:20.842Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>bfs 思想，根据前面已经入队 <code>queue</code> 的单词 <code>beginWord</code>，然后把可以转换的单词 <code>word</code> 加入队列</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ladderLength</span><span class="params">(beginWord <span class="keyword">string</span>, endWord <span class="keyword">string</span>, wordList []<span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    queue = <span class="built_in">append</span>(queue, beginWord)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        res++</span><br><span class="line">        n := <span class="built_in">len</span>(queue)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">            beginWord := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">for</span> j, word := <span class="keyword">range</span> wordList &#123;</span><br><span class="line">                <span class="keyword">if</span> !visited[j] &amp;&amp; canTransform(beginWord, word) &#123;</span><br><span class="line">                    <span class="keyword">if</span> word == endWord &#123;</span><br><span class="line">                        <span class="keyword">return</span> res + <span class="number">1</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    visited[j] = <span class="literal">true</span></span><br><span class="line">                    queue = <span class="built_in">append</span>(queue, word)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canTransform</span><span class="params">(beginWord <span class="keyword">string</span>, endWord <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(beginWord)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> beginWord[:i] + beginWord[i+<span class="number">1</span>:] == endWord[:i] + endWord[i+<span class="number">1</span>:] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;p&gt;bfs 思想，根据前面已经入队 &lt;code&gt;queue&lt;/code&gt; 的单词 &lt;code&gt;beginWord&lt;/code&gt;，然后把可以转换的
       
     
     </summary>
