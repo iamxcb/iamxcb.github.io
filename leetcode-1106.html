@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解递归，i 作为分割位，分割之后的两部分 s[:i+1], s[i+1:] 可能交换，也可能不交换，所以有两种可能 示例代码(go)1234567891011121314151617181920212223242526272829303132func isScramble(s1 string, s2 string) bool &amp;#123;    if s1 == s2 &amp;#123;">
+<meta name="description" content="题解两个栈，一个存操作 stackOp，一个存值 stackVal，遇到字符 ) 时计算相应表达式的值（以(开始的表达式），加入栈 stackVal 示例代码(go)12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152func parseBoolExpr(exp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 87. 扰乱字符串">
-<meta property="og:url" content="https://iamxcb.com/leetcode-87.html">
+<meta property="og:title" content="leetcode 1106. 解析布尔表达式">
+<meta property="og:url" content="https://iamxcb.com/leetcode-1106.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解递归，i 作为分割位，分割之后的两部分 s[:i+1], s[i+1:] 可能交换，也可能不交换，所以有两种可能 示例代码(go)1234567891011121314151617181920212223242526272829303132func isScramble(s1 string, s2 string) bool &amp;#123;    if s1 == s2 &amp;#123;">
+<meta property="og:description" content="题解两个栈，一个存操作 stackOp，一个存值 stackVal，遇到字符 ) 时计算相应表达式的值（以(开始的表达式），加入栈 stackVal 示例代码(go)12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152func parseBoolExpr(exp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-15T07:25:17.171Z">
+<meta property="og:updated_time" content="2019-07-17T06:59:42.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 87. 扰乱字符串">
-<meta name="twitter:description" content="题解递归，i 作为分割位，分割之后的两部分 s[:i+1], s[i+1:] 可能交换，也可能不交换，所以有两种可能 示例代码(go)1234567891011121314151617181920212223242526272829303132func isScramble(s1 string, s2 string) bool &amp;#123;    if s1 == s2 &amp;#123;">
+<meta name="twitter:title" content="leetcode 1106. 解析布尔表达式">
+<meta name="twitter:description" content="题解两个栈，一个存操作 stackOp，一个存值 stackVal，遇到字符 ) 时计算相应表达式的值（以(开始的表达式），加入栈 stackVal 示例代码(go)12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152func parseBoolExpr(exp">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/leetcode-87.html"/>
+  <link rel="canonical" href="https://iamxcb.com/leetcode-1106.html"/>
 
 
 
 
 
-  <title>leetcode 87. 扰乱字符串 | 三点钟的太阳</title>
+  <title>leetcode 1106. 解析布尔表达式 | 三点钟的太阳</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-87.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-1106.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -287,7 +287,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 87. 扰乱字符串</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 1106. 解析布尔表达式</h2>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T15:20:46+08:00">
-                2019-07-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-17T14:40:34+08:00">
+                2019-07-17
               </time>
             
 
@@ -318,8 +318,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode-87.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-87.html" itemprop="commentCount"></span>
+                <a href="/leetcode-1106.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-1106.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,8 +347,8 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，<code>i</code> 作为分割位，分割之后的两部分 <code>s[:i+1], s[i+1:]</code> 可能交换，也可能不交换，所以有两种可能</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isScramble</span><span class="params">(s1 <span class="keyword">string</span>, s2 <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s1 == s2 &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> !isSame(s1, s2) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(s1)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> isScramble(s1[:i], s2[:i]) &amp;&amp; isScramble(s1[i:], s2[i:]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> isScramble(s1[:i], s2[n-i:]) &amp;&amp; isScramble(s1[i:], s2[:n-i]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSame</span><span class="params">(s1, s2 <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(s1)<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        hash[s1[i]]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(s2)<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        hash[s2[i]]--</span><br><span class="line">        <span class="keyword">if</span> hash[s2[i]] &lt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>两个栈，一个存操作 <code>stackOp</code>，一个存值 <code>stackVal</code>，遇到字符 <code>)</code> 时计算相应表达式的值（以<code>(</code>开始的表达式），加入栈 <code>stackVal</code></p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">parseBoolExpr</span><span class="params">(expression <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    stackOp := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">    stackVal := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">    n := <span class="built_in">len</span>(expression)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> expression[i] == <span class="string">'&amp;'</span> || expression[i] == <span class="string">'|'</span> || expression[i] == <span class="string">'!'</span> &#123;</span><br><span class="line">            stackOp = <span class="built_in">append</span>(stackOp, expression[i])</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> expression[i] == <span class="string">'('</span> || expression[i] == <span class="string">'t'</span> || expression[i] == <span class="string">'f'</span> &#123;</span><br><span class="line">            stackVal = <span class="built_in">append</span>(stackVal, expression[i])</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> expression[i] == <span class="string">')'</span> &#123;</span><br><span class="line">            haveT, haveF := <span class="literal">false</span>, <span class="literal">false</span></span><br><span class="line">            op := stackOp[<span class="built_in">len</span>(stackOp)<span class="number">-1</span>]</span><br><span class="line">            stackOp = stackOp[:<span class="built_in">len</span>(stackOp)<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">for</span> stackVal[<span class="built_in">len</span>(stackVal)<span class="number">-1</span>] != <span class="string">'('</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> stackVal[<span class="built_in">len</span>(stackVal)<span class="number">-1</span>] == <span class="string">'t'</span> &#123;</span><br><span class="line">                    haveT = <span class="literal">true</span></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    haveF = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">                stackVal = stackVal[:<span class="built_in">len</span>(stackVal)<span class="number">-1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">            stackVal = stackVal[:<span class="built_in">len</span>(stackVal)<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'!'</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> haveT &#123;</span><br><span class="line">                    stackVal = <span class="built_in">append</span>(stackVal, <span class="string">'f'</span>)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    stackVal = <span class="built_in">append</span>(stackVal, <span class="string">'t'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'&amp;'</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> haveF &#123;</span><br><span class="line">                    stackVal = <span class="built_in">append</span>(stackVal, <span class="string">'f'</span>)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    stackVal = <span class="built_in">append</span>(stackVal, <span class="string">'t'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> op == <span class="string">'|'</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> haveT &#123;</span><br><span class="line">                    stackVal = <span class="built_in">append</span>(stackVal, <span class="string">'t'</span>)</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    stackVal = <span class="built_in">append</span>(stackVal, <span class="string">'f'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> stackVal[<span class="number">0</span>] == <span class="string">'t'</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -372,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode-982.html" rel="next" title="leetcode 982. 按位与为零的三元组">
-                <i class="fa fa-chevron-left"></i> leetcode 982. 按位与为零的三元组
+              <a href="/leetcode-30.html" rel="next" title="leetcode 30. 串联所有单词的子串">
+                <i class="fa fa-chevron-left"></i> leetcode 30. 串联所有单词的子串
               </a>
             
           </div>
@@ -381,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-30.html" rel="prev" title="leetcode 30. 串联所有单词的子串">
-                leetcode 30. 串联所有单词的子串 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
