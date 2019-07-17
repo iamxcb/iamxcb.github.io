@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解递归判断两个二叉树是否相同 示例代码(go)123456789101112131415161718192021222324252627282930/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *     Left *TreeNode *     Right *TreeNo">
+<meta name="description" content="题目描述给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。 示例 1:给定的树 s:  3 / \    4   5  / \ 1   2给定的树 t：    4  / \ 1   2返回 true，因为 t 与 s 的一个子树拥有相同的结构和节点值。 示例 2:给定的树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 572. 另一个树的子树">
 <meta property="og:url" content="https://iamxcb.com/leetcode-572.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解递归判断两个二叉树是否相同 示例代码(go)123456789101112131415161718192021222324252627282930/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *     Left *TreeNode *     Right *TreeNo">
+<meta property="og:description" content="题目描述给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。 示例 1:给定的树 s:  3 / \    4   5  / \ 1   2给定的树 t：    4  / \ 1   2返回 true，因为 t 与 s 的一个子树拥有相同的结构和节点值。 示例 2:给定的树">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T03:01:47.500Z">
+<meta property="og:updated_time" content="2019-07-17T09:39:07.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 572. 另一个树的子树">
-<meta name="twitter:description" content="题解递归判断两个二叉树是否相同 示例代码(go)123456789101112131415161718192021222324252627282930/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *     Left *TreeNode *     Right *TreeNo">
+<meta name="twitter:description" content="题目描述给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。 示例 1:给定的树 s:  3 / \    4   5  / \ 1   2给定的树 t：    4  / \ 1   2返回 true，因为 t 与 s 的一个子树拥有相同的结构和节点值。 示例 2:给定的树">
 
 
 
@@ -347,7 +347,18 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归判断两个二叉树是否相同</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。</p>
+<p>示例 1:<br>给定的树 s:</p>
+<pre><code> 3
+/ \
+</code></pre><p>   4   5<br>  / \<br> 1   2<br>给定的树 t：</p>
+<p>   4<br>  / \<br> 1   2<br>返回 true，因为 t 与 s 的一个子树拥有相同的结构和节点值。</p>
+<p>示例 2:<br>给定的树 s：</p>
+<pre><code> 3
+/ \
+</code></pre><p>   4   5<br>  / \<br> 1   2<br>    /<br>   0<br>给定的树 t：</p>
+<p>   4<br>  / \<br> 1   2<br>返回 false。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归判断两个二叉树是否相同</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubtree</span><span class="params">(s *TreeNode, t *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="literal">nil</span> &amp;&amp; t != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isSame(s, t) || isSubtree(s.Left, t) || isSubtree(s.Right, t)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSame</span><span class="params">(s *TreeNode, t *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s != <span class="literal">nil</span> &amp;&amp; t == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="literal">nil</span> &amp;&amp; t != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="literal">nil</span> &amp;&amp; t == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> s.Val != t.Val &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isSame(s.Left, t.Left) &amp;&amp; isSame(s.Right, t.Right)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

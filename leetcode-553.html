@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了 示例代码(go)12345678910111213141516func optimalDivision(nums []int) string &amp;#123;    length := len(nums)    res := strconv.Itoa(nums[0])    if length == 1 &amp;#123;">
+<meta name="description" content="题目描述给定一组正整数，相邻的整数之间将会进行浮点除法操作。例如， [2,3,4] -&amp;gt; 2 / 3 / 4 。但是，你可以在任意位置添加任意数目的括号，来改变算数的优先级。你需要找出怎么添加括号，才能得到最大的结果，并且返回相应的字符串格式的表达式。你的表达式不应该含有冗余的括号。 示例：输入: [1000,100,10,2]输出: “1000/(100/10/2)”解释:1000/(10">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 553. 最优除法">
 <meta property="og:url" content="https://iamxcb.com/leetcode-553.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了 示例代码(go)12345678910111213141516func optimalDivision(nums []int) string &amp;#123;    length := len(nums)    res := strconv.Itoa(nums[0])    if length == 1 &amp;#123;">
+<meta property="og:description" content="题目描述给定一组正整数，相邻的整数之间将会进行浮点除法操作。例如， [2,3,4] -&amp;gt; 2 / 3 / 4 。但是，你可以在任意位置添加任意数目的括号，来改变算数的优先级。你需要找出怎么添加括号，才能得到最大的结果，并且返回相应的字符串格式的表达式。你的表达式不应该含有冗余的括号。 示例：输入: [1000,100,10,2]输出: “1000/(100/10/2)”解释:1000/(10">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-05T08:40:20.107Z">
+<meta property="og:updated_time" content="2019-07-17T09:34:51.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 553. 最优除法">
-<meta name="twitter:description" content="题解数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了 示例代码(go)12345678910111213141516func optimalDivision(nums []int) string &amp;#123;    length := len(nums)    res := strconv.Itoa(nums[0])    if length == 1 &amp;#123;">
+<meta name="twitter:description" content="题目描述给定一组正整数，相邻的整数之间将会进行浮点除法操作。例如， [2,3,4] -&amp;gt; 2 / 3 / 4 。但是，你可以在任意位置添加任意数目的括号，来改变算数的优先级。你需要找出怎么添加括号，才能得到最大的结果，并且返回相应的字符串格式的表达式。你的表达式不应该含有冗余的括号。 示例：输入: [1000,100,10,2]输出: “1000/(100/10/2)”解释:1000/(10">
 
 
 
@@ -347,7 +347,16 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一组正整数，相邻的整数之间将会进行浮点除法操作。例如， [2,3,4] -&gt; 2 / 3 / 4 。<br>但是，你可以在任意位置添加任意数目的括号，来改变算数的优先级。你需要找出怎么添加括号，才能得到最大的结果，并且返回相应的字符串格式的表达式。你的表达式不应该含有冗余的括号。</p>
+<p>示例：<br>输入: [1000,100,10,2]<br>输出: “1000/(100/10/2)”<br>解释:<br>1000/(100/10/2) = 1000/((100/10)/2) = 200<br>但是，以下加粗的括号 “1000/((100/10)/2)” 是冗余的，<br>因为他们并不影响操作的优先级，所以你需要返回 “1000/(100/10/2)”。</p>
+<p>其他用例:<br>1000/(100/10)/2 = 50<br>1000/(100/(10/2)) = 50<br>1000/100/10/2 = 0.5<br>1000/100/(10/2) = 2</p>
+<p>说明:</p>
+<ol>
+<li>输入数组的长度在 [1, 10] 之间。</li>
+<li>数组中每个元素的大小都在 [2, 1000] 之间。</li>
+<li>每个测试用例只有一个最优除法解。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数学问题，第一个数作为分子不变，找到最小的分母，第一个数后边加括号就可以了</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">optimalDivision</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(nums)</span><br><span class="line">    res := strconv.Itoa(nums[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res + <span class="string">"/"</span> + strconv.Itoa(nums[<span class="number">1</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    res += <span class="string">"/("</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; length<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        res += strconv.Itoa(nums[i]) + <span class="string">"/"</span></span><br><span class="line">    &#125;</span><br><span class="line">    res += strconv.Itoa(nums[length<span class="number">-1</span>]) + <span class="string">")"</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +537,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

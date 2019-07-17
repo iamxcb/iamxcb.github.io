@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解记录牌照licensePlate中每个字母出现的次数，遍历单词表words找出符合要求的最短单词 示例代码(go)12345678910111213141516171819202122232425262728293031func shortestCompletingWord(licensePlate string, words []string) string &amp;#123;    licens">
+<meta name="description" content="题目描述如果单词列表（words）中的一个单词包含牌照（licensePlate）中所有的字母，那么我们称之为完整词。在所有完整词中，最短的单词我们称之为最短完整词。单词在匹配牌照中的字母时不区分大小写，比如牌照中的 “P” 依然可以匹配单词中的 “p” 字母。我们保证一定存在一个最短完整词。当有多个单词都符合最短完整词的匹配条件时取单词列表中最靠前的一个。牌照中可能包含多个相同的字符，比如说：对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 748. 最短完整词">
 <meta property="og:url" content="https://iamxcb.com/leetcode-748.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解记录牌照licensePlate中每个字母出现的次数，遍历单词表words找出符合要求的最短单词 示例代码(go)12345678910111213141516171819202122232425262728293031func shortestCompletingWord(licensePlate string, words []string) string &amp;#123;    licens">
+<meta property="og:description" content="题目描述如果单词列表（words）中的一个单词包含牌照（licensePlate）中所有的字母，那么我们称之为完整词。在所有完整词中，最短的单词我们称之为最短完整词。单词在匹配牌照中的字母时不区分大小写，比如牌照中的 “P” 依然可以匹配单词中的 “p” 字母。我们保证一定存在一个最短完整词。当有多个单词都符合最短完整词的匹配条件时取单词列表中最靠前的一个。牌照中可能包含多个相同的字符，比如说：对">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-25T07:22:43.865Z">
+<meta property="og:updated_time" content="2019-07-17T09:49:34.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 748. 最短完整词">
-<meta name="twitter:description" content="题解记录牌照licensePlate中每个字母出现的次数，遍历单词表words找出符合要求的最短单词 示例代码(go)12345678910111213141516171819202122232425262728293031func shortestCompletingWord(licensePlate string, words []string) string &amp;#123;    licens">
+<meta name="twitter:description" content="题目描述如果单词列表（words）中的一个单词包含牌照（licensePlate）中所有的字母，那么我们称之为完整词。在所有完整词中，最短的单词我们称之为最短完整词。单词在匹配牌照中的字母时不区分大小写，比如牌照中的 “P” 依然可以匹配单词中的 “p” 字母。我们保证一定存在一个最短完整词。当有多个单词都符合最短完整词的匹配条件时取单词列表中最靠前的一个。牌照中可能包含多个相同的字符，比如说：对">
 
 
 
@@ -347,7 +347,17 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>记录牌照<code>licensePlate</code>中每个字母出现的次数，遍历单词表<code>words</code>找出符合要求的最短单词</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>如果单词列表（words）中的一个单词包含牌照（licensePlate）中所有的字母，那么我们称之为完整词。在所有完整词中，最短的单词我们称之为最短完整词。<br>单词在匹配牌照中的字母时不区分大小写，比如牌照中的 “P” 依然可以匹配单词中的 “p” 字母。<br>我们保证一定存在一个最短完整词。当有多个单词都符合最短完整词的匹配条件时取单词列表中最靠前的一个。<br>牌照中可能包含多个相同的字符，比如说：对于牌照 “PP”，单词 “pair” 无法匹配，但是 “supper” 可以匹配。</p>
+<p>示例 1：<br>输入：licensePlate = “1s3 PSt”, words = [“step”, “steps”, “stripe”, “stepple”]<br>输出：”steps”<br>说明：最短完整词应该包括 “s”、”p”、”s” 以及 “t”。对于 “step” 它只包含一个 “s” 所以它不符合条件。同时在匹配过程中我们忽略牌照中的大小写。</p>
+<p>示例 2：<br>输入：licensePlate = “1s3 456”, words = [“looks”, “pest”, “stew”, “show”]<br>输出：”pest”<br>说明：存在 3 个包含字母 “s” 且有着最短长度的完整词，但我们返回最先出现的完整词。</p>
+<p>注意:</p>
+<ol>
+<li>牌照（licensePlate）的长度在区域[1, 7]中。</li>
+<li>牌照（licensePlate）将会包含数字、空格、或者字母（大写和小写）。</li>
+<li>单词列表（words）长度在区间 [10, 1000] 中。</li>
+<li>每一个单词 words[i] 都是小写，并且长度在区间 [1, 15] 中。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>记录牌照<code>licensePlate</code>中每个字母出现的次数，遍历单词表<code>words</code>找出符合要求的最短单词</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">shortestCompletingWord</span><span class="params">(licensePlate <span class="keyword">string</span>, words []<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    licensePlateMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">rune</span>]<span class="keyword">int</span>)</span><br><span class="line">    res := <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> licensePlate &#123;</span><br><span class="line">        <span class="keyword">if</span> v &gt;= <span class="string">'a'</span> &amp;&amp; v &lt;= <span class="string">'z'</span> &#123;</span><br><span class="line">            licensePlateMap[v] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> v &gt;= <span class="string">'A'</span> &amp;&amp; v &lt;= <span class="string">'Z'</span> &#123;</span><br><span class="line">            licensePlateMap[v -<span class="string">'A'</span> + <span class="string">'a'</span>] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, word := <span class="keyword">range</span> words &#123;</span><br><span class="line">        <span class="keyword">if</span> res == <span class="string">""</span> || <span class="built_in">len</span>(word) &lt; <span class="built_in">len</span>(res) &#123;</span><br><span class="line">            wordMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">rune</span>]<span class="keyword">int</span>)</span><br><span class="line">            <span class="keyword">for</span> _, v := <span class="keyword">range</span> word &#123;</span><br><span class="line">                wordMap[v] += <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            flag := <span class="literal">true</span></span><br><span class="line">            <span class="keyword">for</span> k, v := <span class="keyword">range</span> licensePlateMap &#123;</span><br><span class="line">                <span class="keyword">if</span> v &gt; wordMap[k] &#123;</span><br><span class="line">                    flag = <span class="literal">false</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> flag &#123;</span><br><span class="line">                res = word</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

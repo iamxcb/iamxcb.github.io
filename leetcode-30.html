@@ -84,8 +84,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="三点钟的太阳" type="application/atom+xml" />
 
@@ -94,17 +92,17 @@
 
 
 
-<meta name="description" content="题解暴力解法，直接通过哈希表判断每个子串是否符合题目要求 示例代码(go)1234567891011121314151617181920212223242526272829func findSubstring(s string, words []string) []int &amp;#123;    res := make([]int, 0)    m, k := len(words), len(s)">
+<meta name="description" content="题目描述给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。 示例 1：输入：  s = “barfoothefoobarman”,  words = [“foo”,”bar”]输出：[0,9]解释：从索引 0 和 9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 30. 串联所有单词的子串">
 <meta property="og:url" content="https://iamxcb.com/leetcode-30.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解暴力解法，直接通过哈希表判断每个子串是否符合题目要求 示例代码(go)1234567891011121314151617181920212223242526272829func findSubstring(s string, words []string) []int &amp;#123;    res := make([]int, 0)    m, k := len(words), len(s)">
+<meta property="og:description" content="题目描述给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。 示例 1：输入：  s = “barfoothefoobarman”,  words = [“foo”,”bar”]输出：[0,9]解释：从索引 0 和 9">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-16T03:12:29.079Z">
+<meta property="og:updated_time" content="2019-07-17T08:05:25.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 30. 串联所有单词的子串">
-<meta name="twitter:description" content="题解暴力解法，直接通过哈希表判断每个子串是否符合题目要求 示例代码(go)1234567891011121314151617181920212223242526272829func findSubstring(s string, words []string) []int &amp;#123;    res := make([]int, 0)    m, k := len(words), len(s)">
+<meta name="twitter:description" content="题目描述给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。 示例 1：输入：  s = “barfoothefoobarman”,  words = [“foo”,”bar”]输出：[0,9]解释：从索引 0 和 9">
 
 
 
@@ -349,7 +347,10 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>暴力解法，直接通过哈希表判断每个子串是否符合题目要求</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。<br>注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words 中单词串联的顺序。</p>
+<p>示例 1：<br>输入：<br>  s = “barfoothefoobarman”,<br>  words = [“foo”,”bar”]<br>输出：[0,9]<br>解释：<br>从索引 0 和 9 开始的子串分别是 “barfoor” 和 “foobar” 。<br>输出的顺序不重要, [9,0] 也是有效答案。</p>
+<p>示例 2：<br>输入：<br>  s = “wordgoodgoodgoodbestword”,<br>  words = [“word”,”good”,”best”,”word”]<br>输出：[]</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>暴力解法，直接通过哈希表判断每个子串是否符合题目要求</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findSubstring</span><span class="params">(s <span class="keyword">string</span>, words []<span class="keyword">string</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    m, k := <span class="built_in">len</span>(words), <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">if</span> m == <span class="number">0</span> || k == <span class="number">0</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(words[<span class="number">0</span>])</span><br><span class="line">    hashW := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, word := <span class="keyword">range</span> words &#123;</span><br><span class="line">        hashW[word]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= k-m*n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> isSubstring(s[i:i+m*n], m, n, hashW) &#123;</span><br><span class="line">            res = <span class="built_in">append</span>(res, i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSubstring</span><span class="params">(s <span class="keyword">string</span>, m, n <span class="keyword">int</span>, hashW <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    hashS := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m*n; i += n &#123;</span><br><span class="line">        hashS[s[i:i+n]]++</span><br><span class="line">        <span class="keyword">if</span> hashW[s[i:i+n]] &lt; <span class="number">1</span> || hashS[s[i:i+n]] &gt; hashW[s[i:i+n]] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -530,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

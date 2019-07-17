@@ -92,17 +92,19 @@
 
 
 
-<meta name="description" content="题解动态规划问题，机器人每次只能向下或者向右移动一步，所以每个格子的路径数等于上边格子加上左边格子的路径数和，即dp[i][j] = dp[i-1][j] + dp[i][j-1] 示例代码(go)12345678910111213141516func uniquePaths(m int, n int) int &amp;#123;    dp := make([][]int, m)    for i :">
+<meta name="description" content="题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。问总共有多少条不同的路径？  例如，上图是一个7 x 3 的网格。有多少可能的路径？ 说明：m 和 n 的值均不超过 100。 示例 1:输入: m = 3, n = 2输出: 3解释:从左上角开始，总共有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 62. 不同路径">
 <meta property="og:url" content="https://iamxcb.com/leetcode-62.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解动态规划问题，机器人每次只能向下或者向右移动一步，所以每个格子的路径数等于上边格子加上左边格子的路径数和，即dp[i][j] = dp[i-1][j] + dp[i][j-1] 示例代码(go)12345678910111213141516func uniquePaths(m int, n int) int &amp;#123;    dp := make([][]int, m)    for i :">
+<meta property="og:description" content="题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。问总共有多少条不同的路径？  例如，上图是一个7 x 3 的网格。有多少可能的路径？ 说明：m 和 n 的值均不超过 100。 示例 1:输入: m = 3, n = 2输出: 3解释:从左上角开始，总共有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-24T07:04:04.233Z">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/robot_maze.png">
+<meta property="og:updated_time" content="2019-07-17T08:29:14.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 62. 不同路径">
-<meta name="twitter:description" content="题解动态规划问题，机器人每次只能向下或者向右移动一步，所以每个格子的路径数等于上边格子加上左边格子的路径数和，即dp[i][j] = dp[i-1][j] + dp[i][j-1] 示例代码(go)12345678910111213141516func uniquePaths(m int, n int) int &amp;#123;    dp := make([][]int, m)    for i :">
+<meta name="twitter:description" content="题目描述一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。问总共有多少条不同的路径？  例如，上图是一个7 x 3 的网格。有多少可能的路径？ 说明：m 和 n 的值均不超过 100。 示例 1:输入: m = 3, n = 2输出: 3解释:从左上角开始，总共有">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/robot_maze.png">
 
 
 
@@ -347,7 +349,18 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划问题，机器人每次只能向下或者向右移动一步，所以每个格子的路径数等于上边格子加上左边格子的路径数和，即<code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。<br>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。<br>问总共有多少条不同的路径？</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/robot_maze.png" alt=""></p>
+<p>例如，上图是一个7 x 3 的网格。有多少可能的路径？</p>
+<p>说明：m 和 n 的值均不超过 100。</p>
+<p>示例 1:<br>输入: m = 3, n = 2<br>输出: 3<br>解释:<br>从左上角开始，总共有 3 条路径可以到达右下角。</p>
+<ol>
+<li>向右 -&gt; 向右 -&gt; 向下</li>
+<li>向右 -&gt; 向下 -&gt; 向右</li>
+<li>向下 -&gt; 向右 -&gt; 向右</li>
+</ol>
+<p>示例 2:<br>输入: m = 7, n = 3<br>输出: 28</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划问题，机器人每次只能向下或者向右移动一步，所以每个格子的路径数等于上边格子加上左边格子的路径数和，即<code>dp[i][j] = dp[i-1][j] + dp[i][j-1]</code></p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">uniquePaths</span><span class="params">(m <span class="keyword">int</span>, n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="keyword">int</span>, m)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, n)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">0</span> || j == <span class="number">0</span> &#123;</span><br><span class="line">                dp[i][j] = <span class="number">1</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = dp[i<span class="number">-1</span>][j] + dp[i][j<span class="number">-1</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m<span class="number">-1</span>][n<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

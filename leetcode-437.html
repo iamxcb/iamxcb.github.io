@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解递归，注意递归结束条件，cur == 0时不要结束递归，因为可能还有更长的路径和等于sum 示例代码(go)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
+<meta name="description" content="题目描述给定一个二叉树，它的每个结点都存放着一个整数值。找出路径和等于给定数值的路径总数。路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。二叉树不超过1000个节点，且节点数值范围是 [-1000000,1000000] 的整数。 示例：root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8   10">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 437. 路径总和 III">
 <meta property="og:url" content="https://iamxcb.com/leetcode-437.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解递归，注意递归结束条件，cur == 0时不要结束递归，因为可能还有更长的路径和等于sum 示例代码(go)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
+<meta property="og:description" content="题目描述给定一个二叉树，它的每个结点都存放着一个整数值。找出路径和等于给定数值的路径总数。路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。二叉树不超过1000个节点，且节点数值范围是 [-1000000,1000000] 的整数。 示例：root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8   10">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-09T02:02:49.949Z">
+<meta property="og:updated_time" content="2019-07-17T09:25:21.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 437. 路径总和 III">
-<meta name="twitter:description" content="题解递归，注意递归结束条件，cur == 0时不要结束递归，因为可能还有更长的路径和等于sum 示例代码(go)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
+<meta name="twitter:description" content="题目描述给定一个二叉树，它的每个结点都存放着一个整数值。找出路径和等于给定数值的路径总数。路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。二叉树不超过1000个节点，且节点数值范围是 [-1000000,1000000] 的整数。 示例：root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8   10">
 
 
 
@@ -347,7 +347,18 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，注意递归结束条件，<code>cur == 0</code>时不要结束递归，因为可能还有更长的路径和等于<code>sum</code></p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，它的每个结点都存放着一个整数值。<br>找出路径和等于给定数值的路径总数。<br>路径不需要从根节点开始，也不需要在叶子节点结束，但是路径方向必须是向下的（只能从父节点到子节点）。<br>二叉树不超过1000个节点，且节点数值范围是 [-1000000,1000000] 的整数。</p>
+<p>示例：<br>root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8</p>
+<pre><code>  10
+ /  \
+5   -3
+</code></pre><p>   / \    \<br>  3   2   11<br> / \   \<br>3  -2   1<br>返回 3。和等于 8 的路径有:</p>
+<ol>
+<li>5 -&gt; 3</li>
+<li>5 -&gt; 2 -&gt; 1</li>
+<li>-3 -&gt; 11</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，注意递归结束条件，<code>cur == 0</code>时不要结束递归，因为可能还有更长的路径和等于<code>sum</code></p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">pathSum</span><span class="params">(root *TreeNode, sum <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := preTrav(root, sum)</span><br><span class="line">    res += pathSum(root.Left, sum)</span><br><span class="line">    res += pathSum(root.Right, sum)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">preTrav</span><span class="params">(root *TreeNode, cur <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    cur -= root.Val</span><br><span class="line">    <span class="keyword">if</span> cur == <span class="number">0</span> &#123;</span><br><span class="line">        res++</span><br><span class="line">    &#125;</span><br><span class="line">    res += preTrav(root.Left, cur)</span><br><span class="line">    res += preTrav(root.Right, cur)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

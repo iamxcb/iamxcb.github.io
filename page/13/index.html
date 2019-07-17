@@ -351,7 +351,15 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积</p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。</p>
+<p>示例 1:<br>输入: [1,2,3]<br>输出: 6</p>
+<p>示例 2:<br>输入: [1,2,3,4]<br>输出: 24</p>
+<p>注意:</p>
+<ol>
+<li>给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。</li>
+<li>输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maximumProduct</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    firstMax, secondMax, thirdMax := math.MinInt32, math.MinInt32, math.MinInt32</span><br><span class="line">    firstMin, secondMin := math.MaxInt32, math.MaxInt32</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> v &gt; firstMax &#123;</span><br><span class="line">            firstMax, secondMax, thirdMax = v, firstMax, secondMax</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &gt; secondMax &#123;</span><br><span class="line">            secondMax, thirdMax = v, secondMax</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &gt; thirdMax &#123;</span><br><span class="line">            thirdMax = v</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> v &lt; firstMin &#123;</span><br><span class="line">            firstMin, secondMin = v, firstMin</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &lt; secondMin &#123;</span><br><span class="line">            secondMin = v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res = firstMax * secondMax * thirdMax</span><br><span class="line">    <span class="keyword">if</span> res &lt; firstMin * secondMin * firstMax &#123;</span><br><span class="line">        res = firstMin * secondMin * firstMax</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -481,7 +489,16 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>迭代，如果某个礼包<code>special[i]</code>是可以合法购买的（礼包物品的数量小于预购物品数），则以该礼包的价格<code>special[i][len(needs)]</code>加上购买剩余商品的最低价格，即对<code>remainNeeds</code>进行迭代</p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在LeetCode商店中， 有许多在售的物品。<br>然而，也有一些大礼包，每个大礼包以优惠的价格捆绑销售一组物品。<br>现给定每个物品的价格，每个大礼包包含物品的清单，以及待购物品清单。请输出确切完成待购清单的最低花费。<br>每个大礼包的由一个数组中的一组数据描述，最后一个数字代表大礼包的价格，其他数字分别表示内含的其他种类物品的数量。<br>任意大礼包可无限次购买。</p>
+<p>示例 1:<br>输入: [2,5], [[3,0,5],[1,2,10]], [3,2]<br>输出: 14<br>解释:<br>有A和B两种物品，价格分别为¥2和¥5。<br>大礼包1，你可以以¥5的价格购买3A和0B。<br>大礼包2， 你可以以¥10的价格购买1A和2B。<br>你需要购买3个A和2个B， 所以你付了¥10购买了1A和2B（大礼包2），以及¥4购买2A。</p>
+<p>示例 2:<br>输入: [2,3,4], [[1,1,0,4],[2,2,1,9]], [1,2,1]<br>输出: 11<br>解释:<br>A，B，C的价格分别为¥2，¥3，¥4.<br>你可以用¥4购买1A和1B，也可以用¥9购买2A，2B和1C。<br>你需要买1A，2B和1C，所以你付了¥4买了1A和1B（大礼包1），以及¥3购买1B， ¥4购买1C。<br>你不可以购买超出待购清单的物品，尽管购买大礼包2更加便宜。</p>
+<p>说明:</p>
+<ol>
+<li>最多6种物品， 100种大礼包。</li>
+<li>每种物品，你最多只需要购买6个。</li>
+<li>你不可以购买超出待购清单的物品，即使更便宜。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>迭代，如果某个礼包<code>special[i]</code>是可以合法购买的（礼包物品的数量小于预购物品数），则以该礼包的价格<code>special[i][len(needs)]</code>加上购买剩余商品的最低价格，即对<code>remainNeeds</code>进行迭代</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">shoppingOffers</span><span class="params">(price []<span class="keyword">int</span>, special [][]<span class="keyword">int</span>, needs []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    minPrice := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(price); i++ &#123;</span><br><span class="line">        minPrice += price[i] * needs[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(special); i++ &#123;</span><br><span class="line">        isValid := <span class="literal">true</span></span><br><span class="line">        remainNeeds := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="built_in">len</span>(needs))</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="built_in">len</span>(needs); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> special[i][j] &gt; needs[j] &#123;</span><br><span class="line">                isValid  = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">            remainNeeds[j] = needs[j] - special[i][j]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> isValid &#123;</span><br><span class="line">            price := shoppingOffers(price, special, remainNeeds) + special[i][<span class="built_in">len</span>(needs)]</span><br><span class="line">            <span class="keyword">if</span> price &lt; minPrice &#123;</span><br><span class="line">                minPrice = price</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minPrice</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -611,7 +628,17 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>前六位代表分钟，后四位代表时钟，组成十位二进制，当<code>num=1</code>时，共计<code>0000000001</code>~<code>1000000000</code> 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以<code>hour</code>小时就等于十进制数值除以64，<code>minute</code>分钟则是对64取模，当<code>num=2,3,4...</code>时，对于<code>bits</code>每一个值，左边依次找一个二进制位变为1，比如<code>0000010000</code>可以变成<code>0000110000</code>, <code>0001010000</code>一直到<code>1000010000</code>，同时也要排除掉大于768和在[60,64]之间的值，因为时钟不能为12，分钟不能大于59</p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>二进制手表顶部有 4 个 LED 代表小时（0-11），底部的 6 个 LED 代表分钟（0-59）。<br>每个 LED 代表一个 0 或 1，最低位在右侧。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Binary_clock_samui_moon.jpg" alt=""></p>
+<p>例如，上面的二进制手表读取 “3:25”。<br>给定一个非负整数 n 代表当前 LED 亮着的数量，返回所有可能的时间。</p>
+<p>案例:<br>输入: n = 1<br>返回: [“1:00”, “2:00”, “4:00”, “8:00”, “0:01”, “0:02”, “0:04”, “0:08”, “0:16”, “0:32”]</p>
+<p>注意事项:</p>
+<ul>
+<li>输出的顺序没有要求。</li>
+<li>小时不会以零开头，比如 “01:00” 是不允许的，应为 “1:00”。</li>
+<li>分钟必须由两位数组成，可能会以零开头，比如 “10:2” 是无效的，应为 “10:02”。</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>前六位代表分钟，后四位代表时钟，组成十位二进制，当<code>num=1</code>时，共计<code>0000000001</code>~<code>1000000000</code> 10种可能，换成十进制即是1~512，因为前六位代表的分钟，所以<code>hour</code>小时就等于十进制数值除以64，<code>minute</code>分钟则是对64取模，当<code>num=2,3,4...</code>时，对于<code>bits</code>每一个值，左边依次找一个二进制位变为1，比如<code>0000010000</code>可以变成<code>0000110000</code>, <code>0001010000</code>一直到<code>1000010000</code>，同时也要排除掉大于768和在[60,64]之间的值，因为时钟不能为12，分钟不能大于59</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">readBinaryWatch</span><span class="params">(num <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    times := []<span class="keyword">string</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="keyword">string</span>&#123;<span class="string">"0:00"</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    bits := []<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">9</span>; i++ &#123;</span><br><span class="line">        bits = <span class="built_in">append</span>(bits, bits[i]*<span class="number">2</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; num; i++ &#123;</span><br><span class="line">        nextBits := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> bits &#123;</span><br><span class="line">            <span class="keyword">for</span> add := <span class="number">1</span>; add &lt;= <span class="number">512</span>; add *= <span class="number">2</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> v + add &gt;= <span class="number">768</span>  || (v + add &gt;= <span class="number">60</span> &amp;&amp; v + add &lt; <span class="number">64</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> add &gt; v &#123;</span><br><span class="line">                    nextBits = <span class="built_in">append</span>(nextBits, v + add)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        bits = nextBits</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> bits &#123;</span><br><span class="line">        hour := v / <span class="number">64</span></span><br><span class="line">        minute := v % <span class="number">64</span></span><br><span class="line">        times = <span class="built_in">append</span>(times, fmt.Sprintf(<span class="string">"%d:%02d"</span>, hour, minute))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> times</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -871,7 +898,16 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>广度搜索的思想，如果某学生还没有出现在<code>visited</code>数组中，则朋友圈数<code>count</code>加一，并加入队列<code>queue</code>，然后搜索是朋友关系的同学加入<code>queue</code></p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>班上有 N 名学生。其中有些人是朋友，有些则不是。他们的友谊具有是传递性。如果已知 A 是 B 的朋友，B 是 C 的朋友，那么我们可以认为 A 也是 C 的朋友。所谓的朋友圈，是指所有朋友的集合。<br>给定一个 N * N 的矩阵 M，表示班级中学生之间的朋友关系。如果M[i][j] = 1，表示已知第 i 个和 j 个学生互为朋友关系，否则为不知道。你必须输出所有学生中的已知的朋友圈总数。</p>
+<p>示例 1:<br>输入:<br>[[1,1,0],<br> [1,1,0],<br> [0,0,1]]<br>输出: 2<br>说明：已知学生0和学生1互为朋友，他们在一个朋友圈。<br>第2个学生自己在一个朋友圈。所以返回2。</p>
+<p>示例 2:<br>输入:<br>[[1,1,0],<br> [1,1,1],<br> [0,1,1]]<br>输出: 1<br>说明：已知学生0和学生1互为朋友，学生1和学生2互为朋友，所以学生0和学生2也是朋友，所以他们三个在一个朋友圈，返回1。</p>
+<p>注意：</p>
+<ol>
+<li>N 在[1,200]的范围内。</li>
+<li>对于所有学生，有M[i][i] = 1。</li>
+<li>如果有M[i][j] = 1，则有M[j][i] = 1。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>广度搜索的思想，如果某学生还没有出现在<code>visited</code>数组中，则朋友圈数<code>count</code>加一，并加入队列<code>queue</code>，然后搜索是朋友关系的同学加入<code>queue</code></p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findCircleNum</span><span class="params">(M [][]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    students := <span class="built_in">len</span>(M[<span class="number">0</span>])</span><br><span class="line">    visited := <span class="built_in">make</span>([]<span class="keyword">int</span>, students)</span><br><span class="line">    count := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; students; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">0</span> &#123;</span><br><span class="line">            count++</span><br><span class="line">            visited[i] = <span class="number">1</span></span><br><span class="line">            queue := []<span class="keyword">int</span>&#123;i&#125;</span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; students; j++ &#123;</span><br><span class="line">                    <span class="keyword">if</span> visited[j] == <span class="number">0</span> &amp;&amp; M[queue[<span class="number">0</span>]][j] == <span class="number">1</span> &#123;</span><br><span class="line">                        visited[j] = <span class="number">1</span></span><br><span class="line">                        queue = <span class="built_in">append</span>(queue, j)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                queue = queue[<span class="number">1</span>:]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -1059,7 +1095,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode328.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-328.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -1078,7 +1114,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode328.html" itemprop="url">leetcode 328. 奇偶链表</a></h2>
+                <a class="post-title-link" href="/leetcode-328.html" itemprop="url">leetcode 328. 奇偶链表</a></h2>
         
 
         <div class="post-meta">
@@ -1109,8 +1145,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode328.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode328.html" itemprop="commentCount"></span>
+                <a href="/leetcode-328.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-328.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1140,7 +1176,15 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分成奇链和偶链两条链，然后把奇链的尾指向偶链的头</p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。<br>请尝试使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p>
+<p>示例 1:<br>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</p>
+<p>示例 2:<br>输入: 2-&gt;1-&gt;3-&gt;5-&gt;6-&gt;4-&gt;7-&gt;NULL<br>输出: 2-&gt;3-&gt;6-&gt;7-&gt;1-&gt;5-&gt;4-&gt;NULL</p>
+<p>说明:</p>
+<ul>
+<li>应当保持奇数节点和偶数节点的相对顺序。</li>
+<li>链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分成奇链和偶链两条链，然后把奇链的尾指向偶链的头</p>
 <h3 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">oddEvenList</span><span class="params">(head *ListNode)</span> *<span class="title">ListNode</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    odd, even, evenHead := head, head.Next, head.Next</span><br><span class="line">    <span class="keyword">for</span> even != <span class="literal">nil</span> &amp;&amp; even.Next != <span class="literal">nil</span>&#123;</span><br><span class="line">        odd.Next, even.Next = even.Next, even.Next.Next</span><br><span class="line">        odd = odd.Next</span><br><span class="line">        even = even.Next</span><br><span class="line">    &#125;</span><br><span class="line">    odd.Next = evenHead</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -1189,7 +1233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode14.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-14.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -1208,7 +1252,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode14.html" itemprop="url">leetcode 14. 最长公共前缀</a></h2>
+                <a class="post-title-link" href="/leetcode-14.html" itemprop="url">leetcode 14. 最长公共前缀</a></h2>
         
 
         <div class="post-meta">
@@ -1239,8 +1283,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode14.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode14.html" itemprop="commentCount"></span>
+                <a href="/leetcode-14.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-14.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1270,7 +1314,11 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>strs数组中首个字符串与其余字符串，分别比较它们的每一位，如果全部相同则加入到prefix中</p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。<br>如果不存在公共前缀，返回空字符串 “”。</p>
+<p>示例 1:<br>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”</p>
+<p>示例 2:<br>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p>
+<p>说明:<br>所有输入只包含小写字母 a-z 。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>strs数组中首个字符串与其余字符串，分别比较它们的每一位，如果全部相同则加入到prefix中</p>
 <h3 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">longestCommonPrefix</span><span class="params">(strs []<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    prefix := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">    strsNums := <span class="built_in">len</span>(strs)</span><br><span class="line">    <span class="keyword">if</span> strsNums == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">    &#125;</span><br><span class="line">    nums := <span class="built_in">len</span>(strs[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; nums; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt; strsNums; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(strs[j]) == i || strs[j][i] != strs[<span class="number">0</span>][i] &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">string</span>(prefix)</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        prefix = <span class="built_in">append</span>(prefix, strs[<span class="number">0</span>][i])</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">string</span>(prefix)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
@@ -1319,7 +1367,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode739.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-739.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -1338,7 +1386,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/leetcode739.html" itemprop="url">leetcode 739. Daily Temperatures 每日温度</a></h2>
+                <a class="post-title-link" href="/leetcode-739.html" itemprop="url">leetcode 739. Daily Temperatures 每日温度</a></h2>
         
 
         <div class="post-meta">
@@ -1369,8 +1417,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode739.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode739.html" itemprop="commentCount"></span>
+                <a href="/leetcode-739.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-739.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1400,7 +1448,8 @@
       
         
           
-            <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数组stack作为栈，通过append和切片模拟入栈出栈操作</p>
+            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>根据每日 气温 列表，请重新生成一个列表，对应位置的输入是你需要再等待多久温度才会升高超过该日的天数。如果之后都不会升高，请在该位置用 0 来代替。<br>例如，给定一个列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。<br>提示：气温 列表长度的范围是 [1, 30000]。每个气温的值的均为华氏度，都是在 [30, 100] 范围内的整数。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数组stack作为栈，通过append和切片模拟入栈出栈操作</p>
 <ol>
 <li>迭代数组T</li>
 <li>数组T的索引0入栈</li>

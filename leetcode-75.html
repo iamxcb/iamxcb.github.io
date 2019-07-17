@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解遍历数组nums，分为三种情况，值为1直接跳过，值为0则与前面的数对换（i前面的数已经排好），值为2则与后面的数对换（j后面的数已经排好） 示例代码(go)1234567891011121314func sortColors(nums []int)  &amp;#123;    for cur, i, j := 0, -1, len(nums); cur &amp;lt; j; &amp;#123;        i">
+<meta name="description" content="题目描述给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例:输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2] 题解遍历数组nums，分为三种情况，值为1直接跳过，值为0则与前面的数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 75. 颜色分类">
 <meta property="og:url" content="https://iamxcb.com/leetcode-75.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解遍历数组nums，分为三种情况，值为1直接跳过，值为0则与前面的数对换（i前面的数已经排好），值为2则与后面的数对换（j后面的数已经排好） 示例代码(go)1234567891011121314func sortColors(nums []int)  &amp;#123;    for cur, i, j := 0, -1, len(nums); cur &amp;lt; j; &amp;#123;        i">
+<meta property="og:description" content="题目描述给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例:输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2] 题解遍历数组nums，分为三种情况，值为1直接跳过，值为0则与前面的数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-15T06:40:42.591Z">
+<meta property="og:updated_time" content="2019-07-17T08:31:37.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 75. 颜色分类">
-<meta name="twitter:description" content="题解遍历数组nums，分为三种情况，值为1直接跳过，值为0则与前面的数对换（i前面的数已经排好），值为2则与后面的数对换（j后面的数已经排好） 示例代码(go)1234567891011121314func sortColors(nums []int)  &amp;#123;    for cur, i, j := 0, -1, len(nums); cur &amp;lt; j; &amp;#123;        i">
+<meta name="twitter:description" content="题目描述给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。 注意:不能使用代码库中的排序函数来解决这道题。 示例:输入: [2,0,2,1,1,0]输出: [0,0,1,1,2,2] 题解遍历数组nums，分为三种情况，值为1直接跳过，值为0则与前面的数">
 
 
 
@@ -347,7 +347,10 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历数组<code>nums</code>，分为三种情况，值为1直接跳过，值为0则与前面的数对换（<code>i</code>前面的数已经排好），值为2则与后面的数对换（<code>j</code>后面的数已经排好）</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。<br>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
+<p>注意:<br>不能使用代码库中的排序函数来解决这道题。</p>
+<p>示例:<br>输入: [2,0,2,1,1,0]<br>输出: [0,0,1,1,2,2]</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历数组<code>nums</code>，分为三种情况，值为1直接跳过，值为0则与前面的数对换（<code>i</code>前面的数已经排好），值为2则与后面的数对换（<code>j</code>后面的数已经排好）</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortColors</span><span class="params">(nums []<span class="keyword">int</span>)</span></span>  &#123;</span><br><span class="line">    <span class="keyword">for</span> cur, i, j := <span class="number">0</span>, <span class="number">-1</span>, <span class="built_in">len</span>(nums); cur &lt; j; &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[cur] == <span class="number">0</span> &#123;</span><br><span class="line">            i++</span><br><span class="line">            nums[i], nums[cur] = nums[cur], nums[i]</span><br><span class="line">            cur++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[cur] == <span class="number">1</span> &#123;</span><br><span class="line">            cur++</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> nums[cur] == <span class="number">2</span> &#123;</span><br><span class="line">            j--</span><br><span class="line">            nums[j], nums[cur] = nums[cur], nums[j]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

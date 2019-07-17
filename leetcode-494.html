@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解简单粗暴，直接根据上一次的结果存储各种可能性 示例代码(go)12345678910111213func findTargetSumWays(nums []int, S int) int &amp;#123;    hash := make(map[int]int)    hash[0] = 1    for _, v := range nums &amp;#123;        tmp := make(m">
+<meta name="description" content="题目描述给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。返回可以使最终数组和为目标数 S 的所有添加符号的方法数。 示例 1:输入: nums: [1, 1, 1, 1, 1], S: 3输出: 5解释:-1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 494. 目标和">
 <meta property="og:url" content="https://iamxcb.com/leetcode-494.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解简单粗暴，直接根据上一次的结果存储各种可能性 示例代码(go)12345678910111213func findTargetSumWays(nums []int, S int) int &amp;#123;    hash := make(map[int]int)    hash[0] = 1    for _, v := range nums &amp;#123;        tmp := make(m">
+<meta property="og:description" content="题目描述给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。返回可以使最终数组和为目标数 S 的所有添加符号的方法数。 示例 1:输入: nums: [1, 1, 1, 1, 1], S: 3输出: 5解释:-1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-27T07:02:43.660Z">
+<meta property="og:updated_time" content="2019-07-17T09:31:20.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 494. 目标和">
-<meta name="twitter:description" content="题解简单粗暴，直接根据上一次的结果存储各种可能性 示例代码(go)12345678910111213func findTargetSumWays(nums []int, S int) int &amp;#123;    hash := make(map[int]int)    hash[0] = 1    for _, v := range nums &amp;#123;        tmp := make(m">
+<meta name="twitter:description" content="题目描述给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。返回可以使最终数组和为目标数 S 的所有添加符号的方法数。 示例 1:输入: nums: [1, 1, 1, 1, 1], S: 3输出: 5解释:-1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+">
 
 
 
@@ -347,7 +347,15 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>简单粗暴，直接根据上一次的结果存储各种可能性</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。<br>返回可以使最终数组和为目标数 S 的所有添加符号的方法数。</p>
+<p>示例 1:<br>输入: nums: [1, 1, 1, 1, 1], S: 3<br>输出: 5<br>解释:<br>-1+1+1+1+1 = 3<br>+1-1+1+1+1 = 3<br>+1+1-1+1+1 = 3<br>+1+1+1-1+1 = 3<br>+1+1+1+1-1 = 3<br>一共有5种方法让最终目标和为3。</p>
+<p>注意:</p>
+<ol>
+<li>数组的长度不会超过20，并且数组中的值全为正数。</li>
+<li>初始的数组的和不会超过1000。</li>
+<li>保证返回的最终结果为32位整数。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>简单粗暴，直接根据上一次的结果存储各种可能性</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findTargetSumWays</span><span class="params">(nums []<span class="keyword">int</span>, S <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    hash[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        tmp := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">        <span class="keyword">for</span> k, _ := <span class="keyword">range</span> hash &#123;</span><br><span class="line">            tmp[k+v] += hash[k]</span><br><span class="line">            tmp[k-v] += hash[k]</span><br><span class="line">        &#125;</span><br><span class="line">        hash = tmp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hash[S]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

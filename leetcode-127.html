@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解bfs 思想，根据前面已经入队 queue 的单词 beginWord，然后把可以转换的单词 word 加入队列 示例代码(go)12345678910111213141516171819202122232425262728293031323334func ladderLength(beginWord string, endWord string, wordList []string) int">
+<meta name="description" content="题目描述给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：  每次转换只能改变一个字母。 转换过程中的中间单词必须是字典中的单词。  说明:  如果不存在这样的转换序列，返回 0。 所有单词具有相同的长度。 所有单词只由小写字母组成。 字典中不存在重复的单词。 你可以假设 beginWord">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 127. 单词接龙">
 <meta property="og:url" content="https://iamxcb.com/leetcode-127.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解bfs 思想，根据前面已经入队 queue 的单词 beginWord，然后把可以转换的单词 word 加入队列 示例代码(go)12345678910111213141516171819202122232425262728293031323334func ladderLength(beginWord string, endWord string, wordList []string) int">
+<meta property="og:description" content="题目描述给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：  每次转换只能改变一个字母。 转换过程中的中间单词必须是字典中的单词。  说明:  如果不存在这样的转换序列，返回 0。 所有单词具有相同的长度。 所有单词只由小写字母组成。 字典中不存在重复的单词。 你可以假设 beginWord">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-10T09:15:20.842Z">
+<meta property="og:updated_time" content="2019-07-17T08:42:56.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 127. 单词接龙">
-<meta name="twitter:description" content="题解bfs 思想，根据前面已经入队 queue 的单词 beginWord，然后把可以转换的单词 word 加入队列 示例代码(go)12345678910111213141516171819202122232425262728293031323334func ladderLength(beginWord string, endWord string, wordList []string) int">
+<meta name="twitter:description" content="题目描述给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：  每次转换只能改变一个字母。 转换过程中的中间单词必须是字典中的单词。  说明:  如果不存在这样的转换序列，返回 0。 所有单词具有相同的长度。 所有单词只由小写字母组成。 字典中不存在重复的单词。 你可以假设 beginWord">
 
 
 
@@ -347,7 +347,22 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>bfs 思想，根据前面已经入队 <code>queue</code> 的单词 <code>beginWord</code>，然后把可以转换的单词 <code>word</code> 加入队列</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个单词（beginWord 和 endWord）和一个字典，找到从 beginWord 到 endWord 的最短转换序列的长度。转换需遵循如下规则：</p>
+<ol>
+<li>每次转换只能改变一个字母。</li>
+<li>转换过程中的中间单词必须是字典中的单词。</li>
+</ol>
+<p>说明:</p>
+<ul>
+<li>如果不存在这样的转换序列，返回 0。</li>
+<li>所有单词具有相同的长度。</li>
+<li>所有单词只由小写字母组成。</li>
+<li>字典中不存在重复的单词。</li>
+<li>你可以假设 beginWord 和 endWord 是非空的，且二者不相同。</li>
+</ul>
+<p>示例 1:<br>输入:<br>beginWord = “hit”,<br>endWord = “cog”,<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”,”cog”]<br>输出: 5<br>解释: 一个最短转换序列是 “hit” -&gt; “hot” -&gt; “dot” -&gt; “dog” -&gt; “cog”,<br>     返回它的长度 5。</p>
+<p>示例 2:<br>输入:<br>beginWord = “hit”<br>endWord = “cog”<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”]<br>输出: 0<br>解释: endWord “cog” 不在字典中，所以无法进行转换。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>bfs 思想，根据前面已经入队 <code>queue</code> 的单词 <code>beginWord</code>，然后把可以转换的单词 <code>word</code> 加入队列</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ladderLength</span><span class="params">(beginWord <span class="keyword">string</span>, endWord <span class="keyword">string</span>, wordList []<span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    queue = <span class="built_in">append</span>(queue, beginWord)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        res++</span><br><span class="line">        n := <span class="built_in">len</span>(queue)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">            beginWord := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">for</span> j, word := <span class="keyword">range</span> wordList &#123;</span><br><span class="line">                <span class="keyword">if</span> !visited[j] &amp;&amp; canTransform(beginWord, word) &#123;</span><br><span class="line">                    <span class="keyword">if</span> word == endWord &#123;</span><br><span class="line">                        <span class="keyword">return</span> res + <span class="number">1</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    visited[j] = <span class="literal">true</span></span><br><span class="line">                    queue = <span class="built_in">append</span>(queue, word)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canTransform</span><span class="params">(beginWord <span class="keyword">string</span>, endWord <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(beginWord)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> beginWord[:i] + beginWord[i+<span class="number">1</span>:] == endWord[:i] + endWord[i+<span class="number">1</span>:] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>
