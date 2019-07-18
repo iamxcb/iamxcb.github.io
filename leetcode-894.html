@@ -92,17 +92,19 @@
 
 
 
-<meta name="description" content="题解递归，满二叉树对应的N一定不会是偶数，每一个节点的左边或右边可能有1、3、5、7…等奇数个节点 示例代码(go)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
+<meta name="description" content="题目描述满二叉树是一类二叉树，其中每个结点恰好有 0 或 2 个子结点。返回包含 N 个结点的所有可能满二叉树的列表。 答案的每个元素都是一个可能树的根结点。答案中每个树的每个结点都必须有 node.val=0。你可以按任何顺序返回树的最终列表。 示例：输入：7输出：[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 894 . 所有可能的满二叉树">
 <meta property="og:url" content="https://iamxcb.com/leetcode-894.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解递归，满二叉树对应的N一定不会是偶数，每一个节点的左边或右边可能有1、3、5、7…等奇数个节点 示例代码(go)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
+<meta property="og:description" content="题目描述满二叉树是一类二叉树，其中每个结点恰好有 0 或 2 个子结点。返回包含 N 个结点的所有可能满二叉树的列表。 答案的每个元素都是一个可能树的根结点。答案中每个树的每个结点都必须有 node.val=0。你可以按任何顺序返回树的最终列表。 示例：输入：7输出：[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-30T07:34:53.128Z">
+<meta property="og:image" content="https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/08/24/fivetrees.png">
+<meta property="og:updated_time" content="2019-07-18T01:37:58.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 894 . 所有可能的满二叉树">
-<meta name="twitter:description" content="题解递归，满二叉树对应的N一定不会是偶数，每一个节点的左边或右边可能有1、3、5、7…等奇数个节点 示例代码(go)12345678910111213141516171819202122232425262728293031/** * Definition for a binary tree node. * type TreeNode struct &amp;#123; *     Val int *">
+<meta name="twitter:description" content="题目描述满二叉树是一类二叉树，其中每个结点恰好有 0 或 2 个子结点。返回包含 N 个结点的所有可能满二叉树的列表。 答案的每个元素都是一个可能树的根结点。答案中每个树的每个结点都必须有 node.val=0。你可以按任何顺序返回树的最终列表。 示例：输入：7输出：[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,">
+<meta name="twitter:image" content="https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/08/24/fivetrees.png">
 
 
 
@@ -347,7 +349,11 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，满二叉树对应的<code>N</code>一定不会是偶数，每一个节点的左边或右边可能有1、3、5、7…等奇数个节点</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>满二叉树是一类二叉树，其中每个结点恰好有 0 或 2 个子结点。<br>返回包含 N 个结点的所有可能满二叉树的列表。 答案的每个元素都是一个可能树的根结点。<br>答案中每个树的每个结点都必须有 node.val=0。<br>你可以按任何顺序返回树的最终列表。</p>
+<p>示例：<br>输入：7<br>输出：[[0,0,0,null,null,0,0,null,null,0,0],[0,0,0,null,null,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,null,null,null,null,0,0],[0,0,0,0,0,null,null,0,0]]<br>解释：</p>
+<p><img src="https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/08/24/fivetrees.png" alt=""></p>
+<p>提示：1 &lt;= N &lt;= 20</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，满二叉树对应的<code>N</code>一定不会是偶数，每一个节点的左边或右边可能有1、3、5、7…等奇数个节点</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">allPossibleFBT</span><span class="params">(N <span class="keyword">int</span>)</span> []*<span class="title">TreeNode</span></span> &#123;</span><br><span class="line">    arr := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> N % <span class="number">2</span> == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> N == <span class="number">1</span> &#123;</span><br><span class="line">        arr = <span class="built_in">append</span>(arr, <span class="built_in">new</span>(TreeNode))</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; N; i+=<span class="number">2</span> &#123;</span><br><span class="line">        left := allPossibleFBT(i)</span><br><span class="line">        right := allPossibleFBT(N-i<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">for</span> _, lt := <span class="keyword">range</span> left &#123;</span><br><span class="line">            <span class="keyword">for</span> _, rt := <span class="keyword">range</span> right &#123;</span><br><span class="line">                node := <span class="built_in">new</span>(TreeNode)</span><br><span class="line">                node.Left = lt</span><br><span class="line">                node.Right = rt</span><br><span class="line">                arr = <span class="built_in">append</span>(arr, node)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>

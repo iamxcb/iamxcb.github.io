@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题解可以知道A[k] * 2是一个偶数， 当 i &amp;lt; k &amp;lt; j时，为了使 A[k] * 2 != A[i] + A[j]，可以让左边全奇数，右边全偶数 示例代码(go)1234567891011121314151617func beautifulArray(N int) []int &amp;#123;    res := make([]int, 0)        if N == 1 &amp;#">
+<meta name="description" content="题目描述对于某些固定的 N，如果数组 A 是整数 1, 2, …, N 组成的排列，使得：对于每个 i &amp;lt; j，都不存在 k 满足 i &amp;lt; k &amp;lt; j 使得 A[k] * 2 = A[i] + A[j]。那么数组 A 是漂亮数组。给定 N，返回任意漂亮数组 A（保证存在一个）。 示例 1：输入：4输出：[2,1,4,3] 示例 2：输入：5输出：[3,1,2,5,4] 提示：1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 932. 漂亮数组">
 <meta property="og:url" content="https://iamxcb.com/leetcode-932.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题解可以知道A[k] * 2是一个偶数， 当 i &amp;lt; k &amp;lt; j时，为了使 A[k] * 2 != A[i] + A[j]，可以让左边全奇数，右边全偶数 示例代码(go)1234567891011121314151617func beautifulArray(N int) []int &amp;#123;    res := make([]int, 0)        if N == 1 &amp;#">
+<meta property="og:description" content="题目描述对于某些固定的 N，如果数组 A 是整数 1, 2, …, N 组成的排列，使得：对于每个 i &amp;lt; j，都不存在 k 满足 i &amp;lt; k &amp;lt; j 使得 A[k] * 2 = A[i] + A[j]。那么数组 A 是漂亮数组。给定 N，返回任意漂亮数组 A（保证存在一个）。 示例 1：输入：4输出：[2,1,4,3] 示例 2：输入：5输出：[3,1,2,5,4] 提示：1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T03:26:52.165Z">
+<meta property="og:updated_time" content="2019-07-18T01:38:56.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 932. 漂亮数组">
-<meta name="twitter:description" content="题解可以知道A[k] * 2是一个偶数， 当 i &amp;lt; k &amp;lt; j时，为了使 A[k] * 2 != A[i] + A[j]，可以让左边全奇数，右边全偶数 示例代码(go)1234567891011121314151617func beautifulArray(N int) []int &amp;#123;    res := make([]int, 0)        if N == 1 &amp;#">
+<meta name="twitter:description" content="题目描述对于某些固定的 N，如果数组 A 是整数 1, 2, …, N 组成的排列，使得：对于每个 i &amp;lt; j，都不存在 k 满足 i &amp;lt; k &amp;lt; j 使得 A[k] * 2 = A[i] + A[j]。那么数组 A 是漂亮数组。给定 N，返回任意漂亮数组 A（保证存在一个）。 示例 1：输入：4输出：[2,1,4,3] 示例 2：输入：5输出：[3,1,2,5,4] 提示：1">
 
 
 
@@ -347,7 +347,11 @@
       
 
       
-        <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>可以知道<code>A[k] * 2</code>是一个偶数， 当 <code>i &lt; k &lt; j</code>时，为了使 <code>A[k] * 2 != A[i] + A[j]</code>，可以让左边全奇数，右边全偶数</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>对于某些固定的 N，如果数组 A 是整数 1, 2, …, N 组成的排列，使得：<br>对于每个 i &lt; j，都不存在 k 满足 i &lt; k &lt; j 使得 A[k] * 2 = A[i] + A[j]。<br>那么数组 A 是漂亮数组。<br>给定 N，返回任意漂亮数组 A（保证存在一个）。</p>
+<p>示例 1：<br>输入：4<br>输出：[2,1,4,3]</p>
+<p>示例 2：<br>输入：5<br>输出：[3,1,2,5,4]</p>
+<p>提示：1 &lt;= N &lt;= 1000</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>可以知道<code>A[k] * 2</code>是一个偶数， 当 <code>i &lt; k &lt; j</code>时，为了使 <code>A[k] * 2 != A[i] + A[j]</code>，可以让左边全奇数，右边全偶数</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">beautifulArray</span><span class="params">(N <span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> N == <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    left := beautifulArray((N +<span class="number">1</span>) / <span class="number">2</span>)</span><br><span class="line">    right := beautifulArray(N / <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> left &#123;</span><br><span class="line">        res = <span class="built_in">append</span>(res, <span class="number">2</span> * v - <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">for</span> _, v := <span class="keyword">range</span> right &#123;</span><br><span class="line">        res = <span class="built_in">append</span>(res, <span class="number">2</span> * v)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -528,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">2.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码-go"><span class="nav-number">3.</span> <span class="nav-text">示例代码(go)</span></a></li></ol></div>
             
 
           </div>
