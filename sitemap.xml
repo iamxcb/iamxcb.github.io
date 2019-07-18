@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://iamxcb.com/leetcode-227.html</loc>
+    
+    <lastmod>2019-07-18T04:25:52.808Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://iamxcb.com/leetcode-1106.html</loc>
     
     <lastmod>2019-07-18T02:55:46.332Z</lastmod>
@@ -467,13 +474,6 @@
     <loc>https://iamxcb.com/leetcode-228.html</loc>
     
     <lastmod>2019-07-18T02:51:33.020Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://iamxcb.com/leetcode-227.html</loc>
-    
-    <lastmod>2019-07-18T02:51:29.897Z</lastmod>
     
   </url>
   
