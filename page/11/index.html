@@ -350,17 +350,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。<br>现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] <em> nums[i] </em> nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。<br>求所能获得硬币的最大数量。</p>
-<p>说明:</p>
-<ul>
-<li>你可以假设 nums[-1] = nums[n] = 1，但注意它们不是真实存在的所以并不能被戳破。</li>
-<li>0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100</li>
-</ul>
-<p>示例:<br>输入: [3,1,5,8]<br>输出: 167<br>解释: nums = [3,1,5,8] –&gt; [3,5,8] –&gt;   [3,8]   –&gt;  [8]  –&gt; []<br>     coins =  3<em>1</em>5      +  3<em>5</em>8    +  1<em>3</em>8      + 1<em>8</em>1   = 167</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，<code>dp[i][j]</code>表示戳爆从<code>i</code>到<code>j</code>个气球的最大金币数，依次戳爆1、2、3…n个气球，最终得到<code>dp[1][n]</code>表示最大金币数</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxCoins</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="keyword">int</span>, n+<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n+<span class="number">2</span>; i++ &#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    nums = <span class="built_in">append</span>(nums, <span class="number">1</span>)</span><br><span class="line">    nums = <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;, nums...)</span><br><span class="line">    <span class="keyword">for</span> m := <span class="number">1</span>; m &lt;= n; m++ &#123;</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n-m+<span class="number">1</span>; i++ &#123;</span><br><span class="line">            j := i+m<span class="number">-1</span></span><br><span class="line">            <span class="keyword">for</span> k := i; k &lt;= j; k++ &#123;</span><br><span class="line">                sum := nums[i<span class="number">-1</span>] * nums[k] * nums[j+<span class="number">1</span>] + dp[i][k<span class="number">-1</span>] + dp[k+<span class="number">1</span>][j]</span><br><span class="line">                <span class="keyword">if</span> dp[i][j] &lt; sum &#123;</span><br><span class="line">                    dp[i][j] = sum</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="number">1</span>][n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。<br>现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] <em> nums[i] </em> nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。<br>求所能获得硬币的最大数量。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-312.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -487,13 +484,15 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个无重复元素的有序整数数组，返回数组区间范围的汇总。</p>
-<p>示例 1:<br>输入: [0,1,2,4,5,7]<br>输出: [“0-&gt;2”,”4-&gt;5”,”7”]<br>解释: 0,1,2 可组成一个连续的区间; 4,5 可组成一个连续的区间。</p>
-<p>示例 2:<br>输入: [0,2,3,4,6,8,9]<br>输出: [“0”,”2-&gt;4”,”6”,”8-&gt;9”]<br>解释: 2,3,4 可组成一个连续的区间; 8,9 可组成一个连续的区间。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先初始化<code>start</code>、<code>end</code>代表区间的首尾，然后遍历<code>nums</code>找出连续的数字</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">summaryRanges</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) == <span class="number">0</span> &#123;</span><br><span class="line">    	<span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    start, end := nums[<span class="number">0</span>], nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">    	<span class="keyword">if</span> nums[i] == nums[i<span class="number">-1</span>]+<span class="number">1</span> &#123;</span><br><span class="line">    		end = nums[i]</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    	&#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, sprintf(start, end))</span><br><span class="line">    	start = nums[i]</span><br><span class="line">    	end = nums[i]</span><br><span class="line">    &#125;</span><br><span class="line">    res = <span class="built_in">append</span>(res, sprintf(start, end))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sprintf</span><span class="params">(start <span class="keyword">int</span>, end <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    str := <span class="string">""</span></span><br><span class="line">    <span class="keyword">if</span> start != end &#123;</span><br><span class="line">    	str = fmt.Sprintf(<span class="string">"%d-&gt;%d"</span>, start, end)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	str = fmt.Sprintf(<span class="string">"%d"</span>, start)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个无重复元素的有序整数数组，返回数组区间范围的汇总。</p>
+<p>示例 1:<br>输入: [0,1,2,4,5,7]<br>输出: [“0-&gt;2”,”4-&gt;5”,”7”]<br>解释: 0,1,2 可组成一个连续的区间; 4,5 可组成一个连续的区间。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-228.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -620,17 +619,15 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。<br>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被计为是不同的子串。</p>
-<p>示例 1:<br>输入: “abc”<br>输出: 3<br>解释: 三个回文子串: “a”, “b”, “c”.</p>
-<p>示例 2:<br>输入: “aaa”<br>输出: 6<br>说明: 6个回文子串: “a”, “a”, “a”, “aa”, “aa”, “aaa”.</p>
-<p>注意:</p>
-<ol>
-<li>输入的字符串长度不会超过1000。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历字符串<code>s</code>，分为奇偶两种情况，例如，<code>xax</code>中的<code>a</code>是回文子串，则<code>xax</code>也是回文子串；<code>xaax</code>中的<code>aa</code>是回文子串，则<code>xaax</code>也是回文子串</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countSubstrings</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    length, res := <span class="built_in">len</span>(s), <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; i-j &gt;= <span class="number">0</span> &amp;&amp; i+j &lt; length; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> s[i+j] == s[i-j] &#123;</span><br><span class="line">				res++</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; i-j &gt;= <span class="number">0</span> &amp;&amp; i+j+<span class="number">1</span> &lt; length; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> s[i+j+<span class="number">1</span>] == s[i-j] &#123;</span><br><span class="line">				res++</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，你的任务是计算这个字符串中有多少个回文子串。<br>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被计为是不同的子串。</p>
+<p>示例 1:<br>输入: “abc”<br>输出: 3<br>解释: 三个回文子串: “a”, “b”, “c”.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-647.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -757,21 +754,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>某种外星语也使用英文小写字母，但可能顺序 order 不同。字母表的顺序（order）是一些小写字母的排列。<br>给定一组用外星语书写的单词 words，以及其字母表的顺序 order，只有当给定的单词在这种外星语中按字典序排列时，返回 true；否则，返回 false。</p>
-<p>示例 1：<br>输入：words = [“hello”,”leetcode”], order = “hlabcdefgijkmnopqrstuvwxyz”<br>输出：true<br>解释：在该语言的字母表中，’h’ 位于 ‘l’ 之前，所以单词序列是按字典序排列的。</p>
-<p>示例 2：<br>输入：words = [“word”,”world”,”row”], order = “worldabcefghijkmnpqstuvxyz”<br>输出：false<br>解释：在该语言的字母表中，’d’ 位于 ‘l’ 之后，那么 words[0] &gt; words[1]，因此单词序列不是按字典序排列的。</p>
-<p>示例 3：<br>输入：words = [“apple”,”app”], order = “abcdefghijklmnopqrstuvwxyz”<br>输出：false<br>解释：当前三个字符 “app” 匹配时，第二个字符串相对短一些，然后根据词典编纂规则 “apple” &gt; “app”，因为 ‘l’ &gt; ‘∅’，其中 ‘∅’ 是空白字符，定义为比任何其他字符都小（更多信息）。</p>
-<p>提示：</p>
-<ol>
-<li>1 &lt;= words.length &lt;= 100</li>
-<li>1 &lt;= words[i].length &lt;= 20</li>
-<li>order.length == 26</li>
-<li>在 words[i] 和 order 中的所有字符都是英文小写字母。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>依次比较<code>words</code>中连续的两个单词，前一个单词的字典序大于后一个时返回<code>false</code></p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isAlienSorted</span><span class="params">(words []<span class="keyword">string</span>, order <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(words); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> compare(words[i<span class="number">-1</span>], words[i], order) == <span class="number">1</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">compare</span><span class="params">(a <span class="keyword">string</span>, b <span class="keyword">string</span>, order <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    la, lb := <span class="built_in">len</span>(a), <span class="built_in">len</span>(b)</span><br><span class="line">    <span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="number">0</span>; i &lt; la &amp;&amp; j &lt; lb; &#123;</span><br><span class="line">        <span class="keyword">if</span> strings.Index(order, <span class="keyword">string</span>(a[i])) &gt; strings.Index(order, <span class="keyword">string</span>(b[j])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> strings.Index(order, <span class="keyword">string</span>(a[i])) &lt; strings.Index(order, <span class="keyword">string</span>(b[j])) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        &#125;</span><br><span class="line">        i++</span><br><span class="line">        j++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> la &gt; lb &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> la &lt; lb &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>某种外星语也使用英文小写字母，但可能顺序 order 不同。字母表的顺序（order）是一些小写字母的排列。<br>给定一组用外星语书写的单词 words，以及其字母表的顺序 order，只有当给定的单词在这种外星语中按字典序排列时，返回 true；否则，返回 false。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-953.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -898,12 +888,16 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
-<p>示例:<br>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>回溯，每一个组合都是递逐渐增的</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="keyword">int</span>, k <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    backtrack(&amp;res, n, <span class="number">1</span>, k, []<span class="keyword">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backtrack</span><span class="params">(res *[][]<span class="keyword">int</span>, n <span class="keyword">int</span>, num <span class="keyword">int</span>, k <span class="keyword">int</span>, visit []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(visit) == k &#123;</span><br><span class="line">        tmp := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">        tmp = <span class="built_in">append</span>(tmp, visit...)</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, tmp)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> i := num; i &lt;= n; i++ &#123;</span><br><span class="line">            visit = <span class="built_in">append</span>(visit, i)</span><br><span class="line">            backtrack(res, n, i+<span class="number">1</span>, k, visit)</span><br><span class="line">            visit = visit[:<span class="built_in">len</span>(visit)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
+<p>示例:</p>
+<p><pre><br>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]<br></pre><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-77.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1030,18 +1024,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定数组 A，我们可以对其进行煎饼翻转：我们选择一些正整数 k &lt;= A.length，然后反转 A 的前 k 个元素的顺序。我们要执行零次或多次煎饼翻转（按顺序一次接一次地进行）以完成对数组 A 的排序。<br>返回能使 A 排序的煎饼翻转操作所对应的 k 值序列。任何将数组排序且翻转次数在 10 * A.length 范围内的有效答案都将被判断为正确。</p>
-<p>示例 1：<br>输入：[3,2,4,1]<br>输出：[4,2,4,3]<br>解释：<br>我们执行 4 次煎饼翻转，k 值分别为 4，2，4，和 3。<br>初始状态 A = [3, 2, 4, 1]<br>第一次翻转后 (k=4): A = [1, 4, 2, 3]<br>第二次翻转后 (k=2): A = [4, 1, 2, 3]<br>第三次翻转后 (k=4): A = [3, 2, 1, 4]<br>第四次翻转后 (k=3): A = [1, 2, 3, 4]，此时已完成排序。 </p>
-<p>示例 2：<br>输入：[1,2,3]<br>输出：[]<br>解释：<br>输入已经排序，因此不需要翻转任何内容。<br>请注意，其他可能的答案，如[3，3]，也将被接受。</p>
-<p>提示：</p>
-<ol>
-<li>1 &lt;= A.length &lt;= 100</li>
-<li>A[i] 是 [1, 2, …, A.length] 的排列</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先复制<code>A</code>的值到<code>B</code>，对<code>B</code>进行倒序排列，然后遍历<code>B</code>的值，并找出其在<code>A</code>中的位置，接着进行两次翻转，第一次翻转会先把值放在首位，第二次翻转则会把值依次放在后面，最终会完成排序</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">pancakeSort</span><span class="params">(A []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    length := <span class="built_in">len</span>(A)</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    B := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    B = <span class="built_in">append</span>(B, A...)</span><br><span class="line">    sort.Sort(sort.Reverse(sort.IntSlice(B)))</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> B &#123;</span><br><span class="line">        index := find(A, v)</span><br><span class="line">        res = <span class="built_in">append</span>(res, index + <span class="number">1</span>)</span><br><span class="line">        res = <span class="built_in">append</span>(res, length - i)</span><br><span class="line">        reverse(A, index + <span class="number">1</span>)</span><br><span class="line">        reverse(A, length - i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">find</span><span class="params">(arr []<span class="keyword">int</span>, num <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> arr &#123;</span><br><span class="line">        <span class="keyword">if</span> num == v &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverse</span><span class="params">(arr []<span class="keyword">int</span>, k <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; (k / <span class="number">2</span>); i++ &#123;</span><br><span class="line">        arr[i], arr[k-i<span class="number">-1</span>] = arr[k-i<span class="number">-1</span>], arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定数组 A，我们可以对其进行煎饼翻转：我们选择一些正整数 k &lt;= A.length，然后反转 A 的前 k 个元素的顺序。我们要执行零次或多次煎饼翻转（按顺序一次接一次地进行）以完成对数组 A 的排序。<br>返回能使 A 排序的煎饼翻转操作所对应的 k 值序列。任何将数组排序且翻转次数在 10 * A.length 范围内的有效答案都将被判断为正确。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-969.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1168,14 +1158,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，它的每个结点都存放一个 0-9 的数字，每条从根到叶子节点的路径都代表一个数字。<br>例如，从根到叶子节点路径 1-&gt;2-&gt;3 代表数字 123。<br>计算从根到叶子节点生成的所有数字之和。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例 1:<br>输入: [1,2,3]<br>    1<br>   / \<br>  2   3<br>输出: 25<br>解释:<br>从根到叶子节点路径 1-&gt;2 代表数字 12.<br>从根到叶子节点路径 1-&gt;3 代表数字 13.<br>因此，数字总和 = 12 + 13 = 25.</p>
-<p>示例 2:<br>输入: [4,9,0,5,1]<br>    4<br>   / \<br>  9   0<br> / \<br>5   1<br>输出: 1026<br>解释:<br>从根到叶子节点路径 4-&gt;9-&gt;5 代表数字 495.<br>从根到叶子节点路径 4-&gt;9-&gt;1 代表数字 491.<br>从根到叶子节点路径 4-&gt;0 代表数字 40.<br>因此，数字总和 = 495 + 491 + 40 = 1026.</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历二叉树，依次改变节点值，子节点值 = 子节点值 + 父节点值 * 10，最后返回所有叶子节点值的和</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumNumbers</span><span class="params">(root *TreeNode)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">        root.Left.Val += root.Val * <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        root.Right.Val += root.Val * <span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right == <span class="literal">nil</span> &#123;</span><br><span class="line">        res += root.Val</span><br><span class="line">    &#125;</span><br><span class="line">    res += sumNumbers(root.Left)</span><br><span class="line">    res += sumNumbers(root.Right)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，它的每个结点都存放一个 0-9 的数字，每条从根到叶子节点的路径都代表一个数字。<br>例如，从根到叶子节点路径 1-&gt;2-&gt;3 代表数字 123。<br>计算从根到叶子节点生成的所有数字之和。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-129.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1302,12 +1292,15 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</p>
-<p>例如，给定三角形：<br>[<br>     [2],<br>    [3,4],<br>   [6,5,7],<br>  [4,1,8,3]<br>]<br>自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>自底向上依次选取最小值相加</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minimumTotal</span><span class="params">(triangle [][]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="built_in">len</span>(triangle)<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="built_in">len</span>(triangle[i]); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> triangle[i+<span class="number">1</span>][j] &gt; triangle[i+<span class="number">1</span>][j+<span class="number">1</span>] &#123;</span><br><span class="line">                triangle[i][j] += triangle[i+<span class="number">1</span>][j+<span class="number">1</span>]</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                triangle[i][j] += triangle[i+<span class="number">1</span>][j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> triangle[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。<br>例如，给定三角形：</p>
+<p><pre><br>[<br>     [2],<br>    [3,4],<br>   [6,5,7],<br>  [4,1,8,3]<br>]<br></pre><br>自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-120.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1434,19 +1427,16 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>如果一个矩阵的每一方向由左上到右下的对角线上具有相同元素，那么这个矩阵是托普利茨矩阵。<br>给定一个 M x N 的矩阵，当且仅当它是托普利茨矩阵时返回 True。</p>
-<p>示例 1:<br>输入:<br>matrix = [<br>  [1,2,3,4],<br>  [5,1,2,3],<br>  [9,5,1,2]<br>]<br>输出: True<br>解释:<br>在上述矩阵中, 其对角线为:<br>“[9]”, “[5, 5]”, “[1, 1, 1]”, “[2, 2, 2]”, “[3, 3]”, “[4]”。<br>各条对角线上的所有元素均相同, 因此答案是True。</p>
-<p>示例 2:<br>输入:<br>matrix = [<br>  [1,2],<br>  [2,2]<br>]<br>输出: False<br>解释:<br>对角线”[1, 2]”上的元素不同。</p>
-<p>说明:</p>
-<ol>
-<li>matrix 是一个包含整数的二维数组。</li>
-<li>matrix 的行数和列数均在 [1, 20]范围内。</li>
-<li>matrix[i][j] 包含的整数在 [0, 99]范围内。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历数组<code>matrix</code>，比较当前元素与下一个对角线元素</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isToeplitzMatrix</span><span class="params">(matrix [][]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    isToeplitz := <span class="literal">true</span></span><br><span class="line">    m, n := <span class="built_in">len</span>(matrix[<span class="number">0</span>]), <span class="built_in">len</span>(matrix)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; m; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (i+<span class="number">1</span>) &lt; n &amp;&amp; (j+<span class="number">1</span>) &lt; m &amp;&amp; matrix[i][j] != matrix[i+<span class="number">1</span>][j+<span class="number">1</span>] &#123;</span><br><span class="line">                isToeplitz = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isToeplitz</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>如果一个矩阵的每一方向由左上到右下的对角线上具有相同元素，那么这个矩阵是托普利茨矩阵。<br>给定一个 M x N 的矩阵，当且仅当它是托普利茨矩阵时返回 True。</p>
+<p>示例 1:</p>
+<p><pre><br>输入:<br>matrix = [<br>  [1,2,3,4],<br>  [5,1,2,3],<br>  [9,5,1,2]<br>]<br>输出: True<br>解释:<br>在上述矩阵中, 其对角线为:<br>“[9]”, “[5, 5]”, “[1, 1, 1]”, “[2, 2, 2]”, “[3, 3]”, “[4]”。<br>各条对角线上的所有元素均相同, 因此答案是True。<br></pre><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-766.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1573,13 +1563,16 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出二叉树的根，找出出现次数最多的子树元素和。一个结点的子树元素和定义为以该结点为根的二叉树上所有结点的元素之和（包括结点本身）。然后求出出现次数最多的子树元素和。如果有多个元素出现的次数相同，返回所有出现次数最多的元素（不限顺序）。</p>
-<p>示例 1<br>输入:<br>  5<br> /  \<br>2   -3<br>返回 [2, -3, 4]，所有的值均只出现一次，以任意顺序返回所有值。</p>
-<p>示例 2<br>输入:<br>  5<br> /  \<br>2   -5<br>返回 [2]，只有 2 出现两次，-5 只出现 1 次。<br>提示： 假设任意子树元素和均可以用 32 位有符号整数表示。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>找出子树元素和的出现次数存入<code>hashMap</code>，出现次数最大值<code>max</code></p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findFrequentTreeSum</span><span class="params">(root *TreeNode)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    arr := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    hashMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    max := <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">    findMap(root, hashMap, &amp;max)</span><br><span class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> hashMap &#123;</span><br><span class="line">        <span class="keyword">if</span> v == max &#123;</span><br><span class="line">            arr = <span class="built_in">append</span>(arr, k)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findMap</span><span class="params">(root *TreeNode, hashMap <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>, max *<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    sum := root.Val</span><br><span class="line">    <span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">        sum += findMap(root.Left, hashMap, max)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        sum += findMap(root.Right, hashMap, max)</span><br><span class="line">    &#125;</span><br><span class="line">    hashMap[sum]++</span><br><span class="line">    <span class="keyword">if</span> hashMap[sum] &gt; *max &#123;</span><br><span class="line">        *max = hashMap[sum]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出二叉树的根，找出出现次数最多的子树元素和。一个结点的子树元素和定义为以该结点为根的二叉树上所有结点的元素之和（包括结点本身）。然后求出出现次数最多的子树元素和。如果有多个元素出现的次数相同，返回所有出现次数最多的元素（不限顺序）。</p>
+<p>示例 1</p>
+<p><pre><br>输入:<br>  5<br> /  \<br>2   -3<br>返回 [2, -3, 4]，所有的值均只出现一次，以任意顺序返回所有值。<br></pre><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-508.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

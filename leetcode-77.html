@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。 示例:输入: n = 4, k = 2输出:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],] 题解回溯，每一个组合都是递逐渐增的 示例代码(go)12345678910111213141516171819func combine(n int, k int) [][">
+<meta name="description" content="题目描述给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。 示例: 输入: n = 4, k = 2输出:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 77. 组合">
 <meta property="og:url" content="https://iamxcb.com/leetcode-77.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。 示例:输入: n = 4, k = 2输出:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],] 题解回溯，每一个组合都是递逐渐增的 示例代码(go)12345678910111213141516171819func combine(n int, k int) [][">
+<meta property="og:description" content="题目描述给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。 示例: 输入: n = 4, k = 2输出:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:32:40.913Z">
+<meta property="og:updated_time" content="2019-07-18T02:48:33.479Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 77. 组合">
-<meta name="twitter:description" content="题目描述给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。 示例:输入: n = 4, k = 2输出:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],] 题解回溯，每一个组合都是递逐渐增的 示例代码(go)12345678910111213141516171819func combine(n int, k int) [][">
+<meta name="twitter:description" content="题目描述给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。 示例: 输入: n = 4, k = 2输出:[  [2,4],  [3,4],  [2,3],  [1,2],  [1,3],  [1,4],]">
 
 
 
@@ -348,7 +348,8 @@
 
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个整数 n 和 k，返回 1 … n 中所有可能的 k 个数的组合。</p>
-<p>示例:<br>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]</p>
+<p>示例:</p>
+<p><pre><br>输入: n = 4, k = 2<br>输出:<br>[<br>  [2,4],<br>  [3,4],<br>  [2,3],<br>  [1,2],<br>  [1,3],<br>  [1,4],<br>]<br></pre><br><a id="more"></a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>回溯，每一个组合都是递逐渐增的</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="keyword">int</span>, k <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    backtrack(&amp;res, n, <span class="number">1</span>, k, []<span class="keyword">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backtrack</span><span class="params">(res *[][]<span class="keyword">int</span>, n <span class="keyword">int</span>, num <span class="keyword">int</span>, k <span class="keyword">int</span>, visit []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(visit) == k &#123;</span><br><span class="line">        tmp := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">        tmp = <span class="built_in">append</span>(tmp, visit...)</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, tmp)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> i := num; i &lt;= n; i++ &#123;</span><br><span class="line">            visit = <span class="built_in">append</span>(visit, i)</span><br><span class="line">            backtrack(res, n, i+<span class="number">1</span>, k, visit)</span><br><span class="line">            visit = visit[:<span class="built_in">len</span>(visit)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

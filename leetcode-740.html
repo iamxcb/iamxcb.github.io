@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。 示例 1:输入: nums = [3, 4, 2]输出: 6解释:删除 4 来获得 4 个点数，因此 3 也">
+<meta name="description" content="题目描述给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 740. 删除与获得点数">
 <meta property="og:url" content="https://iamxcb.com/leetcode-740.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。 示例 1:输入: nums = [3, 4, 2]输出: 6解释:删除 4 来获得 4 个点数，因此 3 也">
+<meta property="og:description" content="题目描述给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:48:42.552Z">
+<meta property="og:updated_time" content="2019-07-18T02:54:37.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 740. 删除与获得点数">
-<meta name="twitter:description" content="题目描述给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。 示例 1:输入: nums = [3, 4, 2]输出: 6解释:删除 4 来获得 4 个点数，因此 3 也">
+<meta name="twitter:description" content="题目描述给定一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。">
 
 
 
@@ -347,7 +347,7 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组 nums ，你可以对它进行一些操作。<br>每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。<br>开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组 nums ，你可以对它进行一些操作。<br>每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除每个等于 nums[i] - 1 或 nums[i] + 1 的元素。<br>开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。<br><a id="more"></a></p>
 <p>示例 1:<br>输入: nums = [3, 4, 2]<br>输出: 6<br>解释:<br>删除 4 来获得 4 个点数，因此 3 也被删除。<br>之后，删除 2 来获得 2 个点数。总共获得 6 个点数。</p>
 <p>示例 2:<br>输入: nums = [2, 2, 3, 3, 3, 4]<br>输出: 9<br>解释:<br>删除 3 来获得 3 个点数，接着要删除两个 2 和 4 。<br>之后，再次删除 3 获得 3 个点数，再次删除 3 获得 3 个点数。<br>总共获得 9 个点数。</p>
 <p>注意:</p>

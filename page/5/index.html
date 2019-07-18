@@ -350,18 +350,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>现在你总共有 n 门课需要选，记为 0 到 n-1。<br>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们: [0,1]<br>给定课程总量以及它们的先决条件，判断是否可能完成所有课程的学习？</p>
-<p>示例 1:<br>输入: 2, [[1,0]]<br>输出: true<br>解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。</p>
-<p>示例 2:<br>输入: 2, [[1,0],[0,1]]<br>输出: false<br>解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。</p>
-<p>说明:</p>
-<ol>
-<li>输入的先决条件是由边缘列表表示的图形，而不是邻接矩阵。详情请参见图的表示法。</li>
-<li>你可以假定输入的先决条件中没有重复的边。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拓扑排序，找出入度为0的点，然后邻接点的入度各自减1（PS：有向无环图才存在拓扑排序）</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canFinish</span><span class="params">(numCourses <span class="keyword">int</span>, prerequisites [][]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    graph := <span class="built_in">make</span>([][]<span class="keyword">int</span>, numCourses)</span><br><span class="line">    indegree := <span class="built_in">make</span>([]<span class="keyword">int</span>, numCourses)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> prerequisites &#123;</span><br><span class="line">        indegree[v[<span class="number">0</span>]]++</span><br><span class="line">        graph[v[<span class="number">1</span>]] = <span class="built_in">append</span>(graph[v[<span class="number">1</span>]], v[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        flag := <span class="literal">true</span></span><br><span class="line">        <span class="keyword">for</span> _, v := <span class="keyword">range</span> indegree &#123;</span><br><span class="line">            <span class="keyword">if</span> v != <span class="number">-1</span> &#123;</span><br><span class="line">                flag = <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> flag &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        flag = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">for</span> i, v := <span class="keyword">range</span> indegree &#123;</span><br><span class="line">            <span class="keyword">if</span> v == <span class="number">0</span> &#123;</span><br><span class="line">                flag = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">for</span> _, v1 := <span class="keyword">range</span> graph[i] &#123;</span><br><span class="line">                    indegree[v1]--</span><br><span class="line">                &#125;</span><br><span class="line">                indegree[i]--</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> flag &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>现在你总共有 n 门课需要选，记为 0 到 n-1。<br>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们: [0,1]<br>给定课程总量以及它们的先决条件，判断是否可能完成所有课程的学习？<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-207.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -488,13 +484,17 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数 n，求以 1 … n 为节点组成的二叉搜索树有多少种？</p>
-<p>示例:<br>输入: 3<br>输出: 5<br>解释:<br>给定 n = 3, 一共有 5 种不同结构的二叉搜索树:</p>
-<p>   1         3     3      2      1<br>    \       /     /      / \      \<br>     3     2     1      1   3      2<br>    /     /       \                 \<br>   2     1         2                 3</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，dp[n] = dp[0]<em>dp[n-1]+dp[1]</em>dp[n-2]+dp[2]<em>dp[n-3]+…dp[n-1]</em>dp[0]，其中<code>dp[n]</code>表示n个节点所能代表的二叉搜索树个数，因为二叉搜索树的左节点要小于根节点，右节点要大于根节点，所以当根节点为1时，左节点有为空，右节点有n-1个，当根节点为2时，左节点有为1个，右节点有n-2个，依次类推</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numTrees</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">1</span>; j &lt;= i; j++ &#123;</span><br><span class="line">            dp[i] += dp[j<span class="number">-1</span>] * dp[i-j]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数 n，求以 1 … n 为节点组成的二叉搜索树有多少种？</p>
+<p>示例:</p>
+<p><pre><br>输入: 3<br>输出: 5<br>解释:<br>给定 n = 3, 一共有 5 种不同结构的二叉搜索树:</pre></p>
+<p>   1         3     3      2      1<br>    \       /     /      / \      \<br>     3     2     1      1   3      2<br>    /     /       \                 \<br>   2     1         2                 3<br><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-96.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -621,19 +621,15 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定 pushed 和 popped 两个序列，只有当它们可能是在最初空栈上进行的推入 push 和弹出 pop 操作序列的结果时，返回 true；否则，返回 false 。</p>
-<p>示例 1：<br>输入：pushed = [1,2,3,4,5], popped = [4,5,3,2,1]<br>输出：true<br>解释：我们可以按以下顺序执行：<br>push(1), push(2), push(3), push(4), pop() -&gt; 4,<br>push(5), pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1</p>
-<p>示例 2：<br>输入：pushed = [1,2,3,4,5], popped = [4,3,5,1,2]<br>输出：false<br>解释：1 不能在 2 之前弹出。</p>
-<p>提示：</p>
-<ol>
-<li>0 &lt;= pushed.length == popped.length &lt;= 1000</li>
-<li>0 &lt;= pushed[i], popped[i] &lt; 1000</li>
-<li>pushed 是 popped 的排列。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过<code>stack</code>模拟入栈出栈</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">validateStackSequences</span><span class="params">(pushed []<span class="keyword">int</span>, popped []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(pushed)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    i, j := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    stack = <span class="built_in">append</span>(stack, pushed[i])</span><br><span class="line">    i++</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        m := <span class="built_in">len</span>(stack)</span><br><span class="line">        <span class="keyword">if</span> m &gt; <span class="number">0</span> &amp;&amp; stack[m<span class="number">-1</span>] == popped[j] &#123;</span><br><span class="line">            stack = stack[:m<span class="number">-1</span>]</span><br><span class="line">            j++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> i == n &#123;</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, pushed[i])</span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(stack) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定 pushed 和 popped 两个序列，只有当它们可能是在最初空栈上进行的推入 push 和弹出 pop 操作序列的结果时，返回 true；否则，返回 false 。</p>
+<p>示例 1：<br>输入：pushed = [1,2,3,4,5], popped = [4,5,3,2,1]<br>输出：true<br>解释：我们可以按以下顺序执行：<br>push(1), push(2), push(3), push(4), pop() -&gt; 4,<br>push(5), pop() -&gt; 5, pop() -&gt; 3, pop() -&gt; 2, pop() -&gt; 1<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-946.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -760,19 +756,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
-<p>说明：</p>
-<ul>
-<li>拆分时可以重复使用字典中的单词。</li>
-<li>你可以假设字典中没有重复的单词。</li>
-</ul>
-<p>示例 1：<br>输入: s = “leetcode”, wordDict = [“leet”, “code”]<br>输出: true<br>解释: 返回 true 因为 “leetcode” 可以被拆分成 “leet code”。</p>
-<p>示例 2：<br>输入: s = “applepenapple”, wordDict = [“apple”, “pen”]<br>输出: true<br>解释: 返回 true 因为 “applepenapple” 可以被拆分成 “apple pen apple”。<br>     注意你可以重复使用字典中的单词。</p>
-<p>示例 3：<br>输入: s = “catsandog”, wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]<br>输出: false</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，<code>dp[i]</code>表示字符串<code>s</code>的前<code>i</code>个字符是否可以拆分</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wordBreak</span><span class="params">(s <span class="keyword">string</span>, wordDict []<span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    dp := <span class="built_in">make</span>([]<span class="keyword">bool</span>, n+<span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; i; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> dp[j] &amp;&amp; contains(s[j:i], wordDict) &#123;</span><br><span class="line">                dp[i] = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">contains</span><span class="params">(s <span class="keyword">string</span>, dict []<span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> dict &#123;</span><br><span class="line">        <span class="keyword">if</span> s == v &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-139.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -899,17 +890,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个链表，判断链表中是否有环。<br>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p>
-<p>示例 1：<br>输入：head = [3,2,0,-4], pos = 1<br>输出：true<br>解释：链表中有一个环，其尾部连接到第二个节点。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png" alt=""></p>
-<p>示例 2：<br>输入：head = [1,2], pos = 0<br>输出：true<br>解释：链表中有一个环，其尾部连接到第一个节点。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test2.png" alt=""></p>
-<p>示例 3：<br>输入：head = [1], pos = -1<br>输出：false<br>解释：链表中没有环。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist_test3.png" alt=""></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过快慢指针进行判断，如果有环则会相遇</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> head == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    fast, slow := head, head</span><br><span class="line">    <span class="keyword">for</span> slow != <span class="literal">nil</span> &amp;&amp; fast != <span class="literal">nil</span> &#123;</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> fast.Next == <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> slow != fast &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个链表，判断链表中是否有环。<br>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-141.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1036,17 +1024,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。<br>你找到的子数组应是最短的，请输出它的长度。</p>
-<p>示例 1:<br>输入: [2, 6, 4, 8, 10, 9, 15]<br>输出: 5<br>解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。</p>
-<p>说明 :</p>
-<ol>
-<li>输入的数组长度范围在 [1, 10,000]。</li>
-<li>输入的数组可能包含重复元素 ，所以升序的意思是&lt;=。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历数组，同时进行从头到尾，从尾到头的遍历，分别找出无序连续子数组区间的右边和左边节点；右边点，是从左到右不递增的点，左边点，是从右到左不递减的点，两点之间的距离就是所求值</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findUnsortedSubarray</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    start, end := n<span class="number">-1</span>, <span class="number">0</span></span><br><span class="line">    max, min := nums[<span class="number">0</span>], nums[n<span class="number">-1</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= max &#123;</span><br><span class="line">            max= nums[i]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            end = i</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> nums[n-i<span class="number">-1</span>] &lt;= min &#123;</span><br><span class="line">            min = nums[n-i<span class="number">-1</span>]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            start = n-i<span class="number">-1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> start &gt;= end &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> end-start+<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。<br>你找到的子数组应是最短的，请输出它的长度。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-581.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1173,13 +1158,16 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请判断一个链表是否为回文链表。</p>
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>请判断一个链表是否为回文链表。</p>
 <p>示例 1:<br>输入: 1-&gt;2<br>输出: false</p>
-<p>示例 2:<br>输入: 1-&gt;2-&gt;2-&gt;1<br>输出: true</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>分为三步，首先通过快慢指针找到链表的中点，然后算出中点后面的逆序链表，最后比较链表中点前后的值是否相同</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPalindrome</span><span class="params">(head *ListNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    fast, slow := head, head</span><br><span class="line">    <span class="keyword">var</span> reverse *ListNode</span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &#123;</span><br><span class="line">        slow = slow.Next</span><br><span class="line">        <span class="keyword">if</span> fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">            fast = fast.Next.Next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            fast = fast.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> slow != <span class="literal">nil</span> &#123;</span><br><span class="line">        tmp := slow.Next</span><br><span class="line">        slow.Next = reverse</span><br><span class="line">        reverse = slow</span><br><span class="line">        slow = tmp</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> head != <span class="literal">nil</span> &amp;&amp; reverse != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> head.Val != reverse.Val &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        head = head.Next</span><br><span class="line">        reverse = reverse.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+<p>示例 2:<br>输入: 1-&gt;2-&gt;2-&gt;1<br>输出: true<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-234.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1306,22 +1294,21 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
 <p>有效字符串需满足：</p>
 <ol>
 <li>左括号必须用相同类型的右括号闭合。</li>
 <li>左括号必须以正确的顺序闭合。</li>
 </ol>
 <p>注意空字符串可被认为是有效字符串。</p>
-<p>示例 1:<br>输入: “()”<br>输出: true</p>
-<p>示例 2:<br>输入: “()[]{}”<br>输出: true</p>
-<p>示例 3:<br>输入: “(]”<br>输出: false</p>
-<p>示例 4:<br>输入: “([)]”<br>输出: false</p>
-<p>示例 5:<br>输入: “{[]}”<br>输出: true</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过栈解决，左括号入栈，右括号出栈比较</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isValid</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    stack := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">        v1 := <span class="keyword">byte</span>(v)</span><br><span class="line">        <span class="keyword">if</span> v1 == <span class="string">'('</span> || v1 == <span class="string">'&#123;'</span> || v1 == <span class="string">'['</span> &#123;</span><br><span class="line">            stack = <span class="built_in">append</span>(stack, v1)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            n := <span class="built_in">len</span>(stack)</span><br><span class="line">            <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">            v2 := stack[n<span class="number">-1</span>]</span><br><span class="line">            stack = stack[:n<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">if</span> v1 == <span class="string">')'</span> &amp;&amp; v2 != <span class="string">'('</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v1 == <span class="string">'&#125;'</span> &amp;&amp; v2 != <span class="string">'&#123;'</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> v1 == <span class="string">']'</span> &amp;&amp; v2 != <span class="string">'['</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(stack) != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+<p>示例 1:<br>输入: “()”<br>输出: true<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-20.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1448,18 +1435,14 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。<br>字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。</p>
-<p>说明：</p>
-<ul>
-<li>字母异位词指字母相同，但排列不同的字符串。</li>
-<li>不考虑答案输出的顺序。</li>
-</ul>
-<p>示例 1:<br>输入:<br>s: “cbaebabacd” p: “abc”<br>输出:<br>[0, 6]<br>解释:<br>起始索引等于 0 的子串是 “cba”, 它是 “abc” 的字母异位词。<br>起始索引等于 6 的子串是 “bac”, 它是 “abc” 的字母异位词。</p>
-<p>示例 2:<br>输入:<br>s: “abab” p: “ab”<br>输出:<br>[0, 1, 2]<br>解释:<br>起始索引等于 0 的子串是 “ab”, 它是 “ab” 的字母异位词。<br>起始索引等于 1 的子串是 “ba”, 它是 “ab” 的字母异位词。<br>起始索引等于 2 的子串是 “ab”, 它是 “ab” 的字母异位词。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过哈希表记录字符出现的次数，通过滑动窗口找出要进行比较的字符串，计算出窗口字符串中每个字符出现的次数，然后比较两个哈希表是否相等</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findAnagrams</span><span class="params">(s <span class="keyword">string</span>, p <span class="keyword">string</span>)</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    hashS := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    hashP := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    m, n := <span class="built_in">len</span>(s), <span class="built_in">len</span>(p)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        hashP[p[i]]++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i &gt;= n &#123;</span><br><span class="line">            hashS[s[i-n]]--</span><br><span class="line">        &#125;</span><br><span class="line">        hashS[s[i]]++</span><br><span class="line">        <span class="keyword">if</span> isEqual(hashS, hashP) &#123;</span><br><span class="line">            res = <span class="built_in">append</span>(res, i-n+<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isEqual</span><span class="params">(a, b <span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> b &#123;</span><br><span class="line">        <span class="keyword">if</span> a[k] != v &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。<br>字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-438.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1586,18 +1569,20 @@
 
       
         
-          
-            <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
 <p>注意:</p>
 <ol>
 <li>每个数组中的元素不会超过 100</li>
 <li>数组的大小不会超过 200</li>
 </ol>
-<p>示例 1:<br>输入: [1, 5, 11, 5]<br>输出: true<br>解释: 数组可以分割成 [1, 5, 5] 和 [11].</p>
-<p>示例 2:<br>输入: [1, 2, 3, 5]<br>输出: false<br>解释: 数组不能分割成两个元素和相等的子集.</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>两个子集相等，可以知道数组的和<code>sum</code>肯定为偶数，然后问题就变为，判断数组中是否存在和为<code>sum/2</code>的子集，使用背包问题的动态规划，计算出<code>pack</code>可以存储的数值和</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canPartition</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    sum := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        sum += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> sum % <span class="number">2</span> != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    capacity := sum / <span class="number">2</span></span><br><span class="line">    pack := <span class="built_in">make</span>([]<span class="keyword">bool</span>, capacity+<span class="number">1</span>)</span><br><span class="line">    pack[<span class="number">0</span>] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">for</span> _, v1 := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">for</span> v2 := capacity; v2 &gt;= v1; v2-- &#123;</span><br><span class="line">            <span class="keyword">if</span> pack[v2-v1] &#123;</span><br><span class="line">                pack[v2] = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> pack[capacity] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+<p>示例 1:<br>输入: [1, 5, 11, 5]<br>输出: true<br>解释: 数组可以分割成 [1, 5, 5] 和 [11].<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/leetcode-416.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

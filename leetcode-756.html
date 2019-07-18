@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="三点钟的太阳">
 <meta property="og:description" content="题目描述现在，我们用一些方块来堆砌一个金字塔。 每个方块用仅包含一个字母的字符串表示，例如 “Z”。使用三元组表示金字塔的堆砌规则如下：(A, B, C) 表示，“C”为顶层方块，方块“A”、“B”分别作为方块“C”下一层的的左、右子块。当且仅当(A, B, C)是被允许的三元组，我们才可以将其堆砌上。初始时，给定金字塔的基层 bottom，用一个字符串表示。一个允许的三元组列表 allowed，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:51:30.482Z">
+<meta property="og:updated_time" content="2019-07-18T02:54:47.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 756. 金字塔转换矩阵">
 <meta name="twitter:description" content="题目描述现在，我们用一些方块来堆砌一个金字塔。 每个方块用仅包含一个字母的字符串表示，例如 “Z”。使用三元组表示金字塔的堆砌规则如下：(A, B, C) 表示，“C”为顶层方块，方块“A”、“B”分别作为方块“C”下一层的的左、右子块。当且仅当(A, B, C)是被允许的三元组，我们才可以将其堆砌上。初始时，给定金字塔的基层 bottom，用一个字符串表示。一个允许的三元组列表 allowed，">
@@ -347,11 +347,11 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>现在，我们用一些方块来堆砌一个金字塔。 每个方块用仅包含一个字母的字符串表示，例如 “Z”。<br>使用三元组表示金字塔的堆砌规则如下：<br>(A, B, C) 表示，“C”为顶层方块，方块“A”、“B”分别作为方块“C”下一层的的左、右子块。当且仅当(A, B, C)是被允许的三元组，我们才可以将其堆砌上。<br>初始时，给定金字塔的基层 bottom，用一个字符串表示。一个允许的三元组列表 allowed，每个三元组用一个长度为 3 的字符串表示。<br>如果可以由基层一直堆到塔尖返回true，否则返回false。</p>
-<p>示例 1:<br>输入: bottom = “XYZ”, allowed = [“XYD”, “YZE”, “DEA”, “FFF”]<br>输出: true<br>解析:<br>可以堆砌成这样的金字塔:<br>    A<br>   / \<br>  D   E<br> / \ / \<br>X   Y   Z</p>
-<p>因为符合(‘X’, ‘Y’, ‘D’), (‘Y’, ‘Z’, ‘E’) 和 (‘D’, ‘E’, ‘A’) 三种规则。</p>
-<p>示例 2:<br>输入: bottom = “XXYX”, allowed = [“XXX”, “XXY”, “XYX”, “XYY”, “YXZ”]<br>输出: false<br>解析:<br>无法一直堆到塔尖。<br>注意, 允许存在三元组(A, B, C)和 (A, B, D) ，其中 C != D.</p>
-<p>注意：</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>现在，我们用一些方块来堆砌一个金字塔。 每个方块用仅包含一个字母的字符串表示，例如 “Z”。<br>使用三元组表示金字塔的堆砌规则如下：<br>(A, B, C) 表示，“C”为顶层方块，方块“A”、“B”分别作为方块“C”下一层的的左、右子块。当且仅当(A, B, C)是被允许的三元组，我们才可以将其堆砌上。<br>初始时，给定金字塔的基层 bottom，用一个字符串表示。一个允许的三元组列表 allowed，每个三元组用一个长度为 3 的字符串表示。<br>如果可以由基层一直堆到塔尖返回true，否则返回false。<br><a id="more"></a></p>
+<p>示例 1:</p>
+<p><pre><br>输入: bottom = “XYZ”, allowed = [“XYD”, “YZE”, “DEA”, “FFF”]<br>输出: true<br>解析:<br>可以堆砌成这样的金字塔:<br>    A<br>   / \<br>  D   E<br> / \ / \<br>X   Y   Z</pre></p>
+<p>因为符合(‘X’, ‘Y’, ‘D’), (‘Y’, ‘Z’, ‘E’) 和 (‘D’, ‘E’, ‘A’) 三种规则。<br><br>示例 2:</p>
+<p><pre><br>输入: bottom = “XXYX”, allowed = [“XXX”, “XXY”, “XYX”, “XYY”, “YXZ”]<br>输出: false<br>解析:<br>无法一直堆到塔尖。<br>注意, 允许存在三元组(A, B, C)和 (A, B, D) ，其中 C != D.<br></pre><br>注意：</p>
 <ol>
 <li>bottom 的长度范围在 [2, 8]。</li>
 <li>allowed 的长度范围在[0, 200]。</li>

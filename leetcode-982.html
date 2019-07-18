@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：  0 &amp;lt;= i &amp;lt; A.length 0 &amp;lt;= j &amp;lt; A.length 0 &amp;lt;= k &amp;lt; A.length A[i] &amp;amp; A[j] &amp;amp; A[k] == 0，其中 &amp;amp; 表示按位与（AND）操作符。  示例：输入：[2,1,3]输出：12解释：我们可以选出如下">
+<meta name="description" content="题目描述给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：  0 &amp;lt;= i &amp;lt; A.length 0 &amp;lt;= j &amp;lt; A.length 0 &amp;lt;= k &amp;lt; A.length A[i] &amp;amp; A[j] &amp;amp; A[k] == 0，其中 &amp;amp; 表示按位与（AND）操作符。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 982. 按位与为零的三元组">
 <meta property="og:url" content="https://iamxcb.com/leetcode-982.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：  0 &amp;lt;= i &amp;lt; A.length 0 &amp;lt;= j &amp;lt; A.length 0 &amp;lt;= k &amp;lt; A.length A[i] &amp;amp; A[j] &amp;amp; A[k] == 0，其中 &amp;amp; 表示按位与（AND）操作符。  示例：输入：[2,1,3]输出：12解释：我们可以选出如下">
+<meta property="og:description" content="题目描述给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：  0 &amp;lt;= i &amp;lt; A.length 0 &amp;lt;= j &amp;lt; A.length 0 &amp;lt;= k &amp;lt; A.length A[i] &amp;amp; A[j] &amp;amp; A[k] == 0，其中 &amp;amp; 表示按位与（AND）操作符。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-18T01:44:04.443Z">
+<meta property="og:updated_time" content="2019-07-18T02:43:50.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 982. 按位与为零的三元组">
-<meta name="twitter:description" content="题目描述给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：  0 &amp;lt;= i &amp;lt; A.length 0 &amp;lt;= j &amp;lt; A.length 0 &amp;lt;= k &amp;lt; A.length A[i] &amp;amp; A[j] &amp;amp; A[k] == 0，其中 &amp;amp; 表示按位与（AND）操作符。  示例：输入：[2,1,3]输出：12解释：我们可以选出如下">
+<meta name="twitter:description" content="题目描述给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：  0 &amp;lt;= i &amp;lt; A.length 0 &amp;lt;= j &amp;lt; A.length 0 &amp;lt;= k &amp;lt; A.length A[i] &amp;amp; A[j] &amp;amp; A[k] == 0，其中 &amp;amp; 表示按位与（AND）操作符。">
 
 
 
@@ -352,7 +352,8 @@
 <li>0 &lt;= i &lt; A.length</li>
 <li>0 &lt;= j &lt; A.length</li>
 <li>0 &lt;= k &lt; A.length</li>
-<li>A[i] &amp; A[j] &amp; A[k] == 0，其中 &amp; 表示按位与（AND）操作符。</li>
+<li>A[i] &amp; A[j] &amp; A[k] == 0，其中 &amp; 表示按位与（AND）操作符。<a id="more"></a>
+</li>
 </ol>
 <p>示例：<br>输入：[2,1,3]<br>输出：12<br>解释：我们可以选出如下 i, j, k 三元组：<br>(i=0, j=0, k=1) : 2 &amp; 2 &amp; 1<br>(i=0, j=1, k=0) : 2 &amp; 1 &amp; 2<br>(i=0, j=1, k=1) : 2 &amp; 1 &amp; 1<br>(i=0, j=1, k=2) : 2 &amp; 1 &amp; 3<br>(i=0, j=2, k=1) : 2 &amp; 3 &amp; 1<br>(i=1, j=0, k=0) : 1 &amp; 2 &amp; 2<br>(i=1, j=0, k=1) : 1 &amp; 2 &amp; 1<br>(i=1, j=0, k=2) : 1 &amp; 2 &amp; 3<br>(i=1, j=1, k=0) : 1 &amp; 1 &amp; 2<br>(i=1, j=2, k=0) : 1 &amp; 3 &amp; 2<br>(i=2, j=0, k=1) : 3 &amp; 2 &amp; 1<br>(i=2, j=1, k=0) : 3 &amp; 1 &amp; 2</p>
 <p>提示：</p>

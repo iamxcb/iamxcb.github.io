@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1:输入: “()())()”输出: [“()()()”, “(())()”] 示例 2:输入: “(a)())()”输出: [“(a)()()”, “(a())()”] 示例 3:输入: “)(“输出: [“”] 题解BFS思想，通过不断从字符串中减去一位，找出各">
+<meta name="description" content="题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1:输入: “()())()”输出: [“()()()”, “(())()”]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 301. 删除无效的括号">
 <meta property="og:url" content="https://iamxcb.com/leetcode-301.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1:输入: “()())()”输出: [“()()()”, “(())()”] 示例 2:输入: “(a)())()”输出: [“(a)()()”, “(a())()”] 示例 3:输入: “)(“输出: [“”] 题解BFS思想，通过不断从字符串中减去一位，找出各">
+<meta property="og:description" content="题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1:输入: “()())()”输出: [“()()()”, “(())()”]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:08:29.845Z">
+<meta property="og:updated_time" content="2019-07-18T02:51:59.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 301. 删除无效的括号">
-<meta name="twitter:description" content="题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1:输入: “()())()”输出: [“()()()”, “(())()”] 示例 2:输入: “(a)())()”输出: [“(a)()()”, “(a())()”] 示例 3:输入: “)(“输出: [“”] 题解BFS思想，通过不断从字符串中减去一位，找出各">
+<meta name="twitter:description" content="题目描述删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。 说明: 输入可能包含了除 ( 和 ) 以外的字符。 示例 1:输入: “()())()”输出: [“()()()”, “(())()”]">
 
 
 
@@ -349,7 +349,7 @@
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。</p>
 <p>说明: 输入可能包含了除 ( 和 ) 以外的字符。</p>
-<p>示例 1:<br>输入: “()())()”<br>输出: [“()()()”, “(())()”]</p>
+<p>示例 1:<br>输入: “()())()”<br>输出: [“()()()”, “(())()”]<br><a id="more"></a></p>
 <p>示例 2:<br>输入: “(a)())()”<br>输出: [“(a)()()”, “(a())()”]</p>
 <p>示例 3:<br>输入: “)(“<br>输出: [“”]</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>BFS思想，通过不断从字符串中减去一位，找出各种可能的子序列，然后判断是否合法（PS：合法的字符串的长度一定都是相同的)</p>

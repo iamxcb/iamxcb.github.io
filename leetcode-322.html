@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1:输入: coins = [1, 2, 5], amount = 11输出: 3解释: 11 = 5 + 5 + 1 示例 2:输入: coins = [2], amount = 3输出: -1 说明:你可以认为每种硬">
+<meta name="description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1:输入: coins = [1, 2, 5], amount = 11输出: 3解释: 11 = 5 + 5 + 1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 322. 零钱兑换">
 <meta property="og:url" content="https://iamxcb.com/leetcode-322.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1:输入: coins = [1, 2, 5], amount = 11输出: 3解释: 11 = 5 + 5 + 1 示例 2:输入: coins = [2], amount = 3输出: -1 说明:你可以认为每种硬">
+<meta property="og:description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1:输入: coins = [1, 2, 5], amount = 11输出: 3解释: 11 = 5 + 5 + 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:11:26.654Z">
+<meta property="og:updated_time" content="2019-07-18T02:52:13.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 322. 零钱兑换">
-<meta name="twitter:description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1:输入: coins = [1, 2, 5], amount = 11输出: 3解释: 11 = 5 + 5 + 1 示例 2:输入: coins = [2], amount = 3输出: -1 说明:你可以认为每种硬">
+<meta name="twitter:description" content="题目描述给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。 示例 1:输入: coins = [1, 2, 5], amount = 11输出: 3解释: 11 = 5 + 5 + 1">
 
 
 
@@ -348,7 +348,7 @@
 
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</p>
-<p>示例 1:<br>输入: coins = [1, 2, 5], amount = 11<br>输出: 3<br>解释: 11 = 5 + 5 + 1</p>
+<p>示例 1:<br>输入: coins = [1, 2, 5], amount = 11<br>输出: 3<br>解释: 11 = 5 + 5 + 1<br><a id="more"></a></p>
 <p>示例 2:<br>输入: coins = [2], amount = 3<br>输出: -1</p>
 <p>说明:<br>你可以认为每种硬币的数量是无限的。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>动态规划，dp[n] = min(dp[n], dp[n-v]+1)，其中<code>n</code>代表总金额， <code>v</code>代表不同的硬币</p>

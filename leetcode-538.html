@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如：输入: 二叉搜索树:              5            /   \           2     13 输出: 转换为累加树:             18            /   \">
+<meta name="description" content="题目描述给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如： 输入: 二叉搜索树:              5            /   \           2     13 输出: 转换为累加树:             18            /   \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 538. 把二叉搜索树转换为累加树">
 <meta property="og:url" content="https://iamxcb.com/leetcode-538.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如：输入: 二叉搜索树:              5            /   \           2     13 输出: 转换为累加树:             18            /   \">
+<meta property="og:description" content="题目描述给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如： 输入: 二叉搜索树:              5            /   \           2     13 输出: 转换为累加树:             18            /   \">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:32:45.525Z">
+<meta property="og:updated_time" content="2019-07-18T02:53:37.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 538. 把二叉搜索树转换为累加树">
-<meta name="twitter:description" content="题目描述给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如：输入: 二叉搜索树:              5            /   \           2     13 输出: 转换为累加树:             18            /   \">
+<meta name="twitter:description" content="题目描述给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。 例如： 输入: 二叉搜索树:              5            /   \           2     13 输出: 转换为累加树:             18            /   \">
 
 
 
@@ -348,8 +348,9 @@
 
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，使得每个节点的值是原来的节点值加上所有大于它的节点值之和。</p>
-<p>例如：<br>输入: 二叉搜索树:<br>              5<br>            /   \<br>           2     13</p>
-<p>输出: 转换为累加树:<br>             18<br>            /   \<br>          20     13</p>
+<p>例如：</p>
+<p><pre><br>输入: 二叉搜索树:<br>              5<br>            /   \<br>           2     13</pre></p>
+<p>输出: 转换为累加树:<br>             18<br>            /   \<br>          20     13<br><br><a id="more"></a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>根据二叉搜索树的特点，左子树节点的值小于根节点的值，根节点的值小于右子树节点的值，可以按照右-根-左的顺序遍历二叉树，将遍历顺序的结点的值累加起来，和当前结点的值相加</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> pre <span class="keyword">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">convertBST</span><span class="params">(root *TreeNode)</span> *<span class="title">TreeNode</span></span> &#123;</span><br><span class="line">    pre = <span class="number">0</span></span><br><span class="line">    inorder(root)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorder</span><span class="params">(root *TreeNode)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    inorder(root.Right)</span><br><span class="line">    root.Val += pre</span><br><span class="line">    pre = root.Val</span><br><span class="line">    inorder(root.Left)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

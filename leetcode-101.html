@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个二叉树，检查它是否是镜像对称的。 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。 1    / \  2   2 / \ / \3  4 4  3但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的: 1    / \  2   2   \   \   3    3 题解递归，判断左子树的左边和右子树的右边，以及左子树的右边和右子树的左边是否相同 示">
+<meta name="description" content="题目描述给定一个二叉树，检查它是否是镜像对称的。例如，二叉树 [1,2,2,3,4,4,3] 是对称的。      1    / \   2   2  / \ / \ 3  4 4  3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 101. 对称二叉树">
 <meta property="og:url" content="https://iamxcb.com/leetcode-101.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个二叉树，检查它是否是镜像对称的。 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。 1    / \  2   2 / \ / \3  4 4  3但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的: 1    / \  2   2   \   \   3    3 题解递归，判断左子树的左边和右子树的右边，以及左子树的右边和右子树的左边是否相同 示">
+<meta property="og:description" content="题目描述给定一个二叉树，检查它是否是镜像对称的。例如，二叉树 [1,2,2,3,4,4,3] 是对称的。      1    / \   2   2  / \ / \ 3  4 4  3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:38:50.256Z">
+<meta property="og:updated_time" content="2019-07-18T02:49:17.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 101. 对称二叉树">
-<meta name="twitter:description" content="题目描述给定一个二叉树，检查它是否是镜像对称的。 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。 1    / \  2   2 / \ / \3  4 4  3但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的: 1    / \  2   2   \   \   3    3 题解递归，判断左子树的左边和右子树的右边，以及左子树的右边和右子树的左边是否相同 示">
+<meta name="twitter:description" content="题目描述给定一个二叉树，检查它是否是镜像对称的。例如，二叉树 [1,2,2,3,4,4,3] 是对称的。      1    / \   2   2  / \ / \ 3  4 4  3">
 
 
 
@@ -347,12 +347,25 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，检查它是否是镜像对称的。</p>
-<p>例如，二叉树 [1,2,2,3,4,4,3] 是对称的。</p>
-<pre><code>1
-</code></pre><p>   / \<br>  2   2<br> / \ / \<br>3  4 4  3<br>但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:</p>
-<pre><code>1
-</code></pre><p>   / \<br>  2   2<br>   \   \<br>   3    3</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，检查它是否是镜像对称的。<br>例如，二叉树 [1,2,2,3,4,4,3] 是对称的。</p>
+<pre>
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+</pre>
+<a id="more"></a>
+
+但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
+<pre>
+    1
+   / \
+  2   2
+   \   \
+   3    3
+</pre>
+
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，判断左子树的左边和右子树的右边，以及左子树的右边和右子树的左边是否相同</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSymmetric</span><span class="params">(root *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isLRSymmetric(root.Left, root.Right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLRSymmetric</span><span class="params">(left, right *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> left == <span class="literal">nil</span> &amp;&amp; right != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> left != <span class="literal">nil</span> &amp;&amp; right == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">if</span> left == <span class="literal">nil</span> &amp;&amp; right == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> left.Val != right.Val &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isLRSymmetric(left.Left, right.Right) &amp;&amp; isLRSymmetric(left.Right, right.Left)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

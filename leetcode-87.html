@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。 下图是字符串 s1 = “great” 的一种可能的表示形式。 great    /    \  gr    eat / \    /  \g   r  e   at           / \          a   t在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子节点。">
+<meta name="description" content="题目描述给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。 下图是字符串 s1 = “great” 的一种可能的表示形式。     great   /    \  gr    eat / \    /  \g   r  e   at           / \          a   t在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 87. 扰乱字符串">
 <meta property="og:url" content="https://iamxcb.com/leetcode-87.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。 下图是字符串 s1 = “great” 的一种可能的表示形式。 great    /    \  gr    eat / \    /  \g   r  e   at           / \          a   t在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子节点。">
+<meta property="og:description" content="题目描述给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。 下图是字符串 s1 = “great” 的一种可能的表示形式。     great   /    \  gr    eat / \    /  \g   r  e   at           / \          a   t在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:35:43.855Z">
+<meta property="og:updated_time" content="2019-07-18T02:48:45.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 87. 扰乱字符串">
-<meta name="twitter:description" content="题目描述给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。 下图是字符串 s1 = “great” 的一种可能的表示形式。 great    /    \  gr    eat / \    /  \g   r  e   at           / \          a   t在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子节点。">
+<meta name="twitter:description" content="题目描述给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。 下图是字符串 s1 = “great” 的一种可能的表示形式。     great   /    \  gr    eat / \    /  \g   r  e   at           / \          a   t在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子">
 
 
 
@@ -349,14 +349,11 @@
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串 s1，我们可以把它递归地分割成两个非空子字符串，从而将其表示为二叉树。</p>
 <p>下图是字符串 s1 = “great” 的一种可能的表示形式。</p>
-<pre><code>great
-</code></pre><p>   /    \<br>  gr    eat<br> / \    /  \<br>g   r  e   at<br>           / \<br>          a   t<br>在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子节点。</p>
+<p><pre><br>    great<br>   /    \<br>  gr    eat<br> / \    /  \<br>g   r  e   at<br>           / \<br>          a   t<br></pre><br>在扰乱这个字符串的过程中，我们可以挑选任何一个非叶节点，然后交换它的两个子节点。<br><a id="more"></a></p>
 <p>例如，如果我们挑选非叶节点 “gr” ，交换它的两个子节点，将会产生扰乱字符串 “rgeat” 。</p>
-<pre><code>rgeat
-</code></pre><p>   /    \<br>  rg    eat<br> / \    /  \<br>r   g  e   at<br>           / \<br>          a   t<br>我们将 “rgeat” 称作 “great” 的一个扰乱字符串。</p>
+<p><pre><br>    rgeat<br>   /    \<br>  rg    eat<br> / \    /  \<br>r   g  e   at<br>           / \<br>          a   t<br></pre><br>我们将 “rgeat” 称作 “great” 的一个扰乱字符串。</p>
 <p>同样地，如果我们继续将其节点 “eat” 和 “at” 进行交换，将会产生另一个新的扰乱字符串 “rgtae” 。</p>
-<pre><code>rgtae
-</code></pre><p>   /    \<br>  rg    tae<br> / \    /  \<br>r   g  ta  e<br>       / \<br>      t   a<br>我们将 “rgtae” 称作 “great” 的一个扰乱字符串。</p>
+<p><pre><br>    rgtae<br>   /    \<br>  rg    tae<br> / \    /  \<br>r   g  ta  e<br>       / \<br>      t   a<br></pre><br>我们将 “rgtae” 称作 “great” 的一个扰乱字符串。</p>
 <p>给出两个长度相等的字符串 s1 和 s2，判断 s2 是否是 s1 的扰乱字符串。</p>
 <p>示例 1:<br>输入: s1 = “great”, s2 = “rgeat”<br>输出: true</p>
 <p>示例 2:<br>输入: s1 = “abcde”, s2 = “caebd”<br>输出: false</p>

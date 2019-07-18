@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。 示例 1:输入: [3,2,3">
+<meta name="description" content="题目描述在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 337. 打家劫舍 III">
 <meta property="og:url" content="https://iamxcb.com/leetcode-337.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。 示例 1:输入: [3,2,3">
+<meta property="og:description" content="题目描述在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:13:11.569Z">
+<meta property="og:updated_time" content="2019-07-18T02:52:21.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 337. 打家劫舍 III">
-<meta name="twitter:description" content="题目描述在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。 示例 1:输入: [3,2,3">
+<meta name="twitter:description" content="题目描述在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。">
 
 
 
@@ -347,15 +347,32 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。<br>计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。</p>
-<p>示例 1:<br>输入: [3,2,3,null,3,null,1]</p>
-<pre><code> 3
-/ \
-</code></pre><p>   2   3<br>    \   \<br>     3   1<br>输出: 7<br>解释: 小偷一晚能够盗取的最高金额 = 3 + 3 + 1 = 7.</p>
-<p>示例 2:<br>输入: [3,4,5,1,3,null,1]</p>
-<pre><code> 3
-/ \
-</code></pre><p>   4   5<br>  / \   \<br> 1   3   1<br>输出: 9<br>解释: 小偷一晚能够盗取的最高金额 = 4 + 5 = 9.</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。<br>计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。<br><a id="more"></a></p>
+<p>示例 1:</p>
+<pre>
+输入: [3,2,3,null,3,null,1]
+
+     3
+    / \
+   2   3
+    \   \ 
+     3   1
+输出: 7 
+解释: 小偷一晚能够盗取的最高金额 = 3 + 3 + 1 = 7.
+</pre>
+示例 2:
+<pre>
+输入: [3,4,5,1,3,null,1]
+
+     3
+    / \
+   4   5
+  / \   \ 
+ 1   3   1
+输出: 9
+解释: 小偷一晚能够盗取的最高金额 = 4 + 5 = 9.
+</pre>
+
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>两种情况，根的值加上不直接相连的左右子树的值，或者不要根植，直接是根的左右子树值的和，比较两种情况下的大小，同时可以加上哈希表返回已经计算过的值</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rob</span><span class="params">(root *TreeNode)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    stateMap := <span class="built_in">make</span>(<span class="keyword">map</span>[*TreeNode]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">return</span> dfs(root, stateMap)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(root *TreeNode, stateMap <span class="keyword">map</span>[*TreeNode]<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> _, ok := stateMap[root]; ok &#123;</span><br><span class="line">        <span class="keyword">return</span> stateMap[root]</span><br><span class="line">    &#125;</span><br><span class="line">    res := root.Val</span><br><span class="line">    <span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">        res += dfs(root.Left.Left, stateMap) + dfs(root.Left.Right, stateMap)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        res += dfs(root.Right.Left, stateMap) + dfs(root.Right.Right, stateMap)</span><br><span class="line">    &#125;</span><br><span class="line">    val := dfs(root.Left, stateMap) + dfs(root.Right, stateMap)</span><br><span class="line">    <span class="keyword">if</span> res &lt; val &#123;</span><br><span class="line">        res = val</span><br><span class="line">    &#125;</span><br><span class="line">    stateMap[root] = res</span><br><span class="line">    <span class="keyword">return</span> stateMap[root]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

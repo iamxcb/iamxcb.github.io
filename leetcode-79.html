@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。 示例:board =[  [‘A’,’B’,’C’,’E’],  [‘S’,’F’,’C’,’S’],  [‘A’,’D’,’E’,’E’]] 给定 word = “ABCCED”, 返回 t">
+<meta name="description" content="题目描述给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 79. 单词搜索">
 <meta property="og:url" content="https://iamxcb.com/leetcode-79.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。 示例:board =[  [‘A’,’B’,’C’,’E’],  [‘S’,’F’,’C’,’S’],  [‘A’,’D’,’E’,’E’]] 给定 word = “ABCCED”, 返回 t">
+<meta property="og:description" content="题目描述给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:34:34.924Z">
+<meta property="og:updated_time" content="2019-07-18T02:48:40.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 79. 单词搜索">
-<meta name="twitter:description" content="题目描述给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。 示例:board =[  [‘A’,’B’,’C’,’E’],  [‘S’,’F’,’C’,’S’],  [‘A’,’D’,’E’,’E’]] 给定 word = “ABCCED”, 返回 t">
+<meta name="twitter:description" content="题目描述给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。">
 
 
 
@@ -347,9 +347,21 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二维网格和一个单词，找出该单词是否存在于网格中。<br>单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。</p>
-<p>示例:<br>board =<br>[<br>  [‘A’,’B’,’C’,’E’],<br>  [‘S’,’F’,’C’,’S’],<br>  [‘A’,’D’,’E’,’E’]<br>]</p>
-<p>给定 word = “ABCCED”, 返回 true.<br>给定 word = “SEE”, 返回 true.<br>给定 word = “ABCB”, 返回 false.</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二维网格和一个单词，找出该单词是否存在于网格中。<br>单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。<br><a id="more"></a></p>
+<p>示例:</p>
+<pre>
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
+
+给定 word = "ABCCED", 返回 true.
+给定 word = "SEE", 返回 true.
+给定 word = "ABCB", 返回 false.
+</pre>
+
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，查看元素的上下左右位置，注意已经搜索过的位置，把搜索过的置为非字母，同时也不要忘了还原</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">exist</span><span class="params">(board [][]<span class="keyword">byte</span>, word <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> x := <span class="number">0</span>; x &lt; <span class="built_in">len</span>(board); x++ &#123;</span><br><span class="line">        <span class="keyword">for</span> y := <span class="number">0</span>; y &lt; <span class="built_in">len</span>(board[x]); y++ &#123;</span><br><span class="line">            <span class="keyword">if</span> dfs(board, word, x, y, <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(board [][]<span class="keyword">byte</span>, word <span class="keyword">string</span>, x, y, i <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> i == <span class="built_in">len</span>(word) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> || y &lt; <span class="number">0</span> || x == <span class="built_in">len</span>(board) || y == <span class="built_in">len</span>(board[x]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> board[x][y] != word[i] &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    board[x][y] ^= <span class="number">255</span>;</span><br><span class="line">    exists := dfs(board, word, x+<span class="number">1</span>, y, i+<span class="number">1</span>) || dfs(board, word, x<span class="number">-1</span>, y, i+<span class="number">1</span>) || dfs(board, word, x, y+<span class="number">1</span>, i+<span class="number">1</span>) || dfs(board, word, x, y<span class="number">-1</span>, i+<span class="number">1</span>)</span><br><span class="line">    board[x][y] ^= <span class="number">255</span>;</span><br><span class="line">    <span class="keyword">return</span> exists</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

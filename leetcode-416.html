@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11]. 示例 2:输入: [1, 2, 3, 5]输出: false解释: 数组不能分割成两个元素和相等的子集.">
+<meta name="description" content="题目描述给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11].">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 416. 分割等和子集">
 <meta property="og:url" content="https://iamxcb.com/leetcode-416.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11]. 示例 2:输入: [1, 2, 3, 5]输出: false解释: 数组不能分割成两个元素和相等的子集.">
+<meta property="og:description" content="题目描述给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11].">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:21:53.961Z">
+<meta property="og:updated_time" content="2019-07-18T02:52:57.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 416. 分割等和子集">
-<meta name="twitter:description" content="题目描述给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11]. 示例 2:输入: [1, 2, 3, 5]输出: false解释: 数组不能分割成两个元素和相等的子集.">
+<meta name="twitter:description" content="题目描述给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:  每个数组中的元素不会超过 100 数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11].">
 
 
 
@@ -353,7 +353,7 @@
 <li>每个数组中的元素不会超过 100</li>
 <li>数组的大小不会超过 200</li>
 </ol>
-<p>示例 1:<br>输入: [1, 5, 11, 5]<br>输出: true<br>解释: 数组可以分割成 [1, 5, 5] 和 [11].</p>
+<p>示例 1:<br>输入: [1, 5, 11, 5]<br>输出: true<br>解释: 数组可以分割成 [1, 5, 5] 和 [11].<br> <a id="more"></a></p>
 <p>示例 2:<br>输入: [1, 2, 3, 5]<br>输出: false<br>解释: 数组不能分割成两个元素和相等的子集.</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>两个子集相等，可以知道数组的和<code>sum</code>肯定为偶数，然后问题就变为，判断数组中是否存在和为<code>sum/2</code>的子集，使用背包问题的动态规划，计算出<code>pack</code>可以存储的数值和</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canPartition</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    sum := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        sum += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> sum % <span class="number">2</span> != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    capacity := sum / <span class="number">2</span></span><br><span class="line">    pack := <span class="built_in">make</span>([]<span class="keyword">bool</span>, capacity+<span class="number">1</span>)</span><br><span class="line">    pack[<span class="number">0</span>] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">for</span> _, v1 := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">for</span> v2 := capacity; v2 &gt;= v1; v2-- &#123;</span><br><span class="line">            <span class="keyword">if</span> pack[v2-v1] &#123;</span><br><span class="line">                pack[v2] = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> pack[capacity] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

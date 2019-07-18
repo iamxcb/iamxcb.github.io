@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="三点钟的太阳">
 <meta property="og:description" content="题目描述运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:55:04.442Z">
+<meta property="og:updated_time" content="2019-07-18T02:51:01.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 146. LRU缓存机制">
 <meta name="twitter:description" content="题目描述运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用">
@@ -347,7 +347,7 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。<br>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。<br>写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用的数据值，从而为新的数据值留出空间。</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。<br>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。<br>写入数据 put(key, value) - 如果密钥不存在，则写入其数据值。当缓存容量达到上限时，它应该在写入新数据之前删除最近最少使用的数据值，从而为新的数据值留出空间。<br><a id="more"></a></p>
 <p>进阶:<br>你是否可以在 O(1) 时间复杂度内完成这两种操作？</p>
 <p>示例:<br>LRUCache cache = new LRUCache( 2 /<em> 缓存容量 </em>/ );</p>
 <p>cache.put(1, 1);<br>cache.put(2, 2);<br>cache.get(1);       // 返回  1<br>cache.put(3, 3);    // 该操作会使得密钥 2 作废<br>cache.get(2);       // 返回 -1 (未找到)<br>cache.put(4, 4);    // 该操作会使得密钥 1 作废<br>cache.get(1);       // 返回 -1 (未找到)<br>cache.get(3);       // 返回  3<br>cache.get(4);       // 返回  4</p>

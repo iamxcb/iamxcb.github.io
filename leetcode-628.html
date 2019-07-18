@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1:输入: [1,2,3]输出: 6 示例 2:输入: [1,2,3,4]输出: 24 注意:  给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。 输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。  题解找出最大的三个数和最小的两个数，比较最大三个数的乘积和最">
+<meta name="description" content="题目描述给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1:输入: [1,2,3]输出: 6 示例 2:输入: [1,2,3,4]输出: 24 注意:  给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。 输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 628. 三个数的最大乘积">
 <meta property="og:url" content="https://iamxcb.com/leetcode-628.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1:输入: [1,2,3]输出: 6 示例 2:输入: [1,2,3,4]输出: 24 注意:  给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。 输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。  题解找出最大的三个数和最小的两个数，比较最大三个数的乘积和最">
+<meta property="og:description" content="题目描述给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1:输入: [1,2,3]输出: 6 示例 2:输入: [1,2,3,4]输出: 24 注意:  给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。 输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:41:42.257Z">
+<meta property="og:updated_time" content="2019-07-18T02:54:16.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 628. 三个数的最大乘积">
-<meta name="twitter:description" content="题目描述给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1:输入: [1,2,3]输出: 6 示例 2:输入: [1,2,3,4]输出: 24 注意:  给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。 输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。  题解找出最大的三个数和最小的两个数，比较最大三个数的乘积和最">
+<meta name="twitter:description" content="题目描述给定一个整型数组，在数组中找出由三个数组成的最大乘积，并输出这个乘积。 示例 1:输入: [1,2,3]输出: 6 示例 2:输入: [1,2,3,4]输出: 24 注意:  给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。 输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。">
 
 
 
@@ -353,7 +353,8 @@
 <p>注意:</p>
 <ol>
 <li>给定的整型数组长度范围是[3,104]，数组中所有的元素范围是[-1000, 1000]。</li>
-<li>输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。</li>
+<li>输入的数组中任意三个数的乘积不会超出32位有符号整数的范围。<a id="more"></a>
+</li>
 </ol>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>找出最大的三个数和最小的两个数，比较最大三个数的乘积和最小两个数与最大数的乘积</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maximumProduct</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    firstMax, secondMax, thirdMax := math.MinInt32, math.MinInt32, math.MinInt32</span><br><span class="line">    firstMin, secondMin := math.MaxInt32, math.MaxInt32</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="keyword">if</span> v &gt; firstMax &#123;</span><br><span class="line">            firstMax, secondMax, thirdMax = v, firstMax, secondMax</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &gt; secondMax &#123;</span><br><span class="line">            secondMax, thirdMax = v, secondMax</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &gt; thirdMax &#123;</span><br><span class="line">            thirdMax = v</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> v &lt; firstMin &#123;</span><br><span class="line">            firstMin, secondMin = v, firstMin</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> v &lt; secondMin &#123;</span><br><span class="line">            secondMin = v</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res = firstMax * secondMax * thirdMax</span><br><span class="line">    <span class="keyword">if</span> res &lt; firstMin * secondMin * firstMax &#123;</span><br><span class="line">        res = firstMin * secondMin * firstMax</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

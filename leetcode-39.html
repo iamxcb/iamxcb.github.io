@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。 说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。  示例 1:输入: candidates = [2,3,6,7], target = 7,所求解集为:[  [7]">
+<meta name="description" content="题目描述给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。 说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。  示例 1:  输入: candidates = [2,3,6,7], target = 7, 所求解集为: [">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 39. 组合总和">
 <meta property="og:url" content="https://iamxcb.com/leetcode-39.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。 说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。  示例 1:输入: candidates = [2,3,6,7], target = 7,所求解集为:[  [7]">
+<meta property="og:description" content="题目描述给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。 说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。  示例 1:  输入: candidates = [2,3,6,7], target = 7, 所求解集为: [">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:09:42.825Z">
+<meta property="og:updated_time" content="2019-07-18T02:47:32.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 39. 组合总和">
-<meta name="twitter:description" content="题目描述给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。 说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。  示例 1:输入: candidates = [2,3,6,7], target = 7,所求解集为:[  [7]">
+<meta name="twitter:description" content="题目描述给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。 说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。  示例 1:  输入: candidates = [2,3,6,7], target = 7, 所求解集为: [">
 
 
 
@@ -349,8 +349,28 @@
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。<br>candidates 中的数字可以无限制重复被选取。</p>
 <p>说明：<br>所有数字（包括 target）都是正整数。<br>解集不能包含重复的组合。 </p>
-<p>示例 1:<br>输入: candidates = [2,3,6,7], target = 7,<br>所求解集为:<br>[<br>  [7],<br>  [2,2,3]<br>]</p>
-<p>示例 2:<br>输入: candidates = [2,3,5], target = 8,<br>所求解集为:<br>[<br>  [2,2,2,2],<br>  [2,3,3],<br>  [3,5]<br>]</p>
+<p>示例 1:</p>
+<pre>
+输入: candidates = [2,3,6,7], target = 7,
+所求解集为:
+[
+  [7],
+  [2,2,3]
+]
+</pre>
+<a id="more"></a>
+
+示例 2:
+<pre>
+输入: candidates = [2,3,5], target = 8,
+所求解集为:
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]
+</pre>
+
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归，遍历数组<code>candidates</code>，通过<code>target</code>减去数组中相应的值，不断缩小<code>target</code>进行递归，同时为了避免重复，从数组中取的值不能大于<code>target/2</code>，同时不能小于上一次的取值<code>prev</code><br>例如, <code>candidates=[2,3,5,6,7,8,9,11,12]; target = 14</code>，可以递归<code>(2,12),(3,11),(5,9),(6,8),(7,7)</code></p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combinationSum</span><span class="params">(candidates []<span class="keyword">int</span>, target <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> combination(candidates, []<span class="keyword">int</span>&#123;&#125;, <span class="number">0</span>, target)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combination</span><span class="params">(candidates []<span class="keyword">int</span>, arr []<span class="keyword">int</span>, prev, target <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> target == <span class="number">0</span> &#123;</span><br><span class="line">        tmp := <span class="built_in">append</span>([]<span class="keyword">int</span>&#123;&#125;, arr...)</span><br><span class="line">        res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> candidates &#123;</span><br><span class="line">        <span class="keyword">if</span> (v &lt;= target/<span class="number">2</span> &amp;&amp; v &gt;= prev) || v == target &#123;</span><br><span class="line">            arr = <span class="built_in">append</span>(arr, v)</span><br><span class="line">            res = <span class="built_in">append</span>(res, combination(candidates, arr, v, target-v)...)</span><br><span class="line">            arr = arr[:<span class="built_in">len</span>(arr)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

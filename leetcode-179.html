@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。 示例 1:输入: [10,2]输出: 210 示例 2:输入: [3,30,34,5,9]输出: 9534330 说明: 输出结果可能非常大，所以你需要返回一个字符串而不是整数。 题解自定义排序方式，比较 arr[i]+arr[j], arr[j]+arr[i] 两种相连方式，例如比较 “34” 和 “341” 时，可以转换为比">
+<meta name="description" content="题目描述给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。 示例 1:输入: [10,2]输出: 210">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 179. 最大数">
 <meta property="og:url" content="https://iamxcb.com/leetcode-179.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。 示例 1:输入: [10,2]输出: 210 示例 2:输入: [3,30,34,5,9]输出: 9534330 说明: 输出结果可能非常大，所以你需要返回一个字符串而不是整数。 题解自定义排序方式，比较 arr[i]+arr[j], arr[j]+arr[i] 两种相连方式，例如比较 “34” 和 “341” 时，可以转换为比">
+<meta property="og:description" content="题目描述给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。 示例 1:输入: [10,2]输出: 210">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:57:46.645Z">
+<meta property="og:updated_time" content="2019-07-18T02:51:13.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 179. 最大数">
-<meta name="twitter:description" content="题目描述给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。 示例 1:输入: [10,2]输出: 210 示例 2:输入: [3,30,34,5,9]输出: 9534330 说明: 输出结果可能非常大，所以你需要返回一个字符串而不是整数。 题解自定义排序方式，比较 arr[i]+arr[j], arr[j]+arr[i] 两种相连方式，例如比较 “34” 和 “341” 时，可以转换为比">
+<meta name="twitter:description" content="题目描述给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。 示例 1:输入: [10,2]输出: 210">
 
 
 
@@ -348,7 +348,7 @@
 
       
         <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一组非负整数，重新排列它们的顺序使之组成一个最大的整数。</p>
-<p>示例 1:<br>输入: [10,2]<br>输出: 210</p>
+<p>示例 1:<br>输入: [10,2]<br>输出: 210<br><a id="more"></a></p>
 <p>示例 2:<br>输入: [3,30,34,5,9]<br>输出: 9534330</p>
 <p>说明: 输出结果可能非常大，所以你需要返回一个字符串而不是整数。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>自定义排序方式，比较 <code>arr[i]+arr[j], arr[j]+arr[i]</code> 两种相连方式，例如比较 “34” 和 “341” 时，可以转换为比较 “34341” 和 “34134”，可以看出 “34” 要排在 “341” 前面</p>

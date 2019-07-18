@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个二叉树，原地将它展开为链表。 例如，给定二叉树 1    / \  2   5 / \   \3   4   6将其展开为：1 \  2   \    3     \      4       \        5         \          6 题解分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原">
+<meta name="description" content="题目描述给定一个二叉树，原地将它展开为链表。例如，给定二叉树     1   / \  2   5 / \   \3   4   6将其展开为： 1 \  2   \    3     \      4       \        5         \          6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 114. 二叉树展开为链表">
 <meta property="og:url" content="https://iamxcb.com/leetcode-114.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个二叉树，原地将它展开为链表。 例如，给定二叉树 1    / \  2   5 / \   \3   4   6将其展开为：1 \  2   \    3     \      4       \        5         \          6 题解分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原">
+<meta property="og:description" content="题目描述给定一个二叉树，原地将它展开为链表。例如，给定二叉树     1   / \  2   5 / \   \3   4   6将其展开为： 1 \  2   \    3     \      4       \        5         \          6">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:40:34.263Z">
+<meta property="og:updated_time" content="2019-07-18T02:50:02.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 114. 二叉树展开为链表">
-<meta name="twitter:description" content="题目描述给定一个二叉树，原地将它展开为链表。 例如，给定二叉树 1    / \  2   5 / \   \3   4   6将其展开为：1 \  2   \    3     \      4       \        5         \          6 题解分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原">
+<meta name="twitter:description" content="题目描述给定一个二叉树，原地将它展开为链表。例如，给定二叉树     1   / \  2   5 / \   \3   4   6将其展开为： 1 \  2   \    3     \      4       \        5         \          6">
 
 
 
@@ -347,10 +347,9 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，原地将它展开为链表。</p>
-<p>例如，给定二叉树</p>
-<pre><code>1
-</code></pre><p>   / \<br>  2   5<br> / \   \<br>3   4   6<br>将其展开为：<br>1<br> \<br>  2<br>   \<br>    3<br>     \<br>      4<br>       \<br>        5<br>         \<br>          6</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，原地将它展开为链表。<br>例如，给定二叉树</p>
+<p><pre><br>    1<br>   / \<br>  2   5<br> / \   \<br>3   4   6<br></pre><br>将其展开为：</p>
+<p><pre><br>1<br> \<br>  2<br>   \<br>    3<br>     \<br>      4<br>       \<br>        5<br>         \<br>          6<br></pre><br><a id="more"></a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分别递归左右子树变为链表，然后先临时保存右子树，再把右子树指向左子树并清空，最后找到右子树的最后的叶节点，指向临时保存的原右子树</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">flatten</span><span class="params">(root *TreeNode)</span></span>  &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    flatten(root.Left)</span><br><span class="line">    flatten(root.Right)</span><br><span class="line">    tmp := root.Right</span><br><span class="line">    root.Right = root.Left</span><br><span class="line">    root.Left = <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">for</span> root.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">        root = root.Right</span><br><span class="line">    &#125;</span><br><span class="line">    root.Right = tmp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

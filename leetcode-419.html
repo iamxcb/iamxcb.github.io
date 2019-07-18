@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个二维的甲板， 请计算其中有多少艘战舰。 战舰用 ‘X’表示，空位用 ‘.’表示。 你需要遵守以下规则：  给你一个有效的甲板，仅由战舰或者空位组成。 战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。 两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。  示例 :X..X…">
+<meta name="description" content="题目描述给定一个二维的甲板， 请计算其中有多少艘战舰。 战舰用 ‘X’表示，空位用 ‘.’表示。 你需要遵守以下规则：  给你一个有效的甲板，仅由战舰或者空位组成。 战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。 两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 419. 甲板上的战舰">
 <meta property="og:url" content="https://iamxcb.com/leetcode-419.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个二维的甲板， 请计算其中有多少艘战舰。 战舰用 ‘X’表示，空位用 ‘.’表示。 你需要遵守以下规则：  给你一个有效的甲板，仅由战舰或者空位组成。 战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。 两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。  示例 :X..X…">
+<meta property="og:description" content="题目描述给定一个二维的甲板， 请计算其中有多少艘战舰。 战舰用 ‘X’表示，空位用 ‘.’表示。 你需要遵守以下规则：  给你一个有效的甲板，仅由战舰或者空位组成。 战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。 两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:23:42.226Z">
+<meta property="og:updated_time" content="2019-07-18T02:53:00.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 419. 甲板上的战舰">
-<meta name="twitter:description" content="题目描述给定一个二维的甲板， 请计算其中有多少艘战舰。 战舰用 ‘X’表示，空位用 ‘.’表示。 你需要遵守以下规则：  给你一个有效的甲板，仅由战舰或者空位组成。 战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。 两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。  示例 :X..X…">
+<meta name="twitter:description" content="题目描述给定一个二维的甲板， 请计算其中有多少艘战舰。 战舰用 ‘X’表示，空位用 ‘.’表示。 你需要遵守以下规则：  给你一个有效的甲板，仅由战舰或者空位组成。 战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。 两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。">
 
 
 
@@ -351,10 +351,24 @@
 <ol>
 <li>给你一个有效的甲板，仅由战舰或者空位组成。</li>
 <li>战舰只能水平或者垂直放置。换句话说,战舰只能由 1xN (1 行, N 列)组成，或者 Nx1 (N 行, 1 列)组成，其中N可以是任意大小。</li>
-<li>两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。</li>
+<li>两艘战舰之间至少有一个水平或垂直的空位分隔 - 即没有相邻的战舰。<a id="more"></a>
+</li>
 </ol>
-<p>示例 :<br>X..X<br>…X<br>…X<br>在上面的甲板中有2艘战舰。</p>
-<p>无效样例 :<br>…X<br>XXXX<br>…X<br>你不会收到这样的无效甲板 - 因为战舰之间至少会有一个空位将它们分开。</p>
+<p>示例 :</p>
+<pre>
+X..X
+...X
+...X
+在上面的甲板中有2艘战舰。
+</pre>
+无效样例 :
+<pre>
+...X
+XXXX
+...X
+你不会收到这样的无效甲板 - 因为战舰之间至少会有一个空位将它们分开。
+</pre>
+
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>左边和上边没有<code>X</code>的点位则为战舰</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countBattleships</span><span class="params">(board [][]<span class="keyword">byte</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(board); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="built_in">len</span>(board[i]); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> board[i][j] == <span class="string">'X'</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> j<span class="number">-1</span> &gt;= <span class="number">0</span> &amp;&amp; board[i][j<span class="number">-1</span>] == <span class="string">'X'</span>&#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> &amp;&amp; board[i<span class="number">-1</span>][j] == <span class="string">'X'</span>&#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                &#125;</span><br><span class="line">                res++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

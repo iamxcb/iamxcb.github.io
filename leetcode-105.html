@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述根据一棵树的前序遍历与中序遍历构造二叉树。 注意:你可以假设树中没有重复的元素。 例如，给出前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树： 3    / \  9  20    /  \   15   7 题解前序遍历顺序为根左右，中序遍历顺序为左根右，所以可以看出preorder中的每一个数，在inor">
+<meta name="description" content="题目描述根据一棵树的前序遍历与中序遍历构造二叉树。注意:你可以假设树中没有重复的元素。 例如，给出前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树：     3   / \  9  20    /  \   15   7">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 105 . 从前序与中序遍历序列构造二叉树">
 <meta property="og:url" content="https://iamxcb.com/leetcode-105.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述根据一棵树的前序遍历与中序遍历构造二叉树。 注意:你可以假设树中没有重复的元素。 例如，给出前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树： 3    / \  9  20    /  \   15   7 题解前序遍历顺序为根左右，中序遍历顺序为左根右，所以可以看出preorder中的每一个数，在inor">
+<meta property="og:description" content="题目描述根据一棵树的前序遍历与中序遍历构造二叉树。注意:你可以假设树中没有重复的元素。 例如，给出前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树：     3   / \  9  20    /  \   15   7">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:39:55.686Z">
+<meta property="og:updated_time" content="2019-07-18T02:49:51.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 105 . 从前序与中序遍历序列构造二叉树">
-<meta name="twitter:description" content="题目描述根据一棵树的前序遍历与中序遍历构造二叉树。 注意:你可以假设树中没有重复的元素。 例如，给出前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树： 3    / \  9  20    /  \   15   7 题解前序遍历顺序为根左右，中序遍历顺序为左根右，所以可以看出preorder中的每一个数，在inor">
+<meta name="twitter:description" content="题目描述根据一棵树的前序遍历与中序遍历构造二叉树。注意:你可以假设树中没有重复的元素。 例如，给出前序遍历 preorder = [3,9,20,15,7]中序遍历 inorder = [9,3,15,20,7]返回如下的二叉树：     3   / \  9  20    /  \   15   7">
 
 
 
@@ -347,11 +347,9 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>根据一棵树的前序遍历与中序遍历构造二叉树。</p>
-<p>注意:<br>你可以假设树中没有重复的元素。</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>根据一棵树的前序遍历与中序遍历构造二叉树。<br>注意:<br>你可以假设树中没有重复的元素。</p>
 <p>例如，给出<br>前序遍历 preorder = [3,9,20,15,7]<br>中序遍历 inorder = [9,3,15,20,7]<br>返回如下的二叉树：</p>
-<pre><code>3
-</code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7</p>
+<p><pre><br>    3<br>   / \<br>  9  20<br>    /  \<br>   15   7<br></pre><br><a id="more"></a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>前序遍历顺序为根左右，中序遍历顺序为左根右，所以可以看出<code>preorder</code>中的每一个数，在<code>inorder</code>中所处位置的左边就是左子树，右边为右子树</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">buildTree</span><span class="params">(preorder []<span class="keyword">int</span>, inorder []<span class="keyword">int</span>)</span> *<span class="title">TreeNode</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> node *TreeNode</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(preorder) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> node</span><br><span class="line">    &#125;</span><br><span class="line">    node = &amp;TreeNode&#123;preorder[<span class="number">0</span>], <span class="literal">nil</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    left := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> inorder &#123;</span><br><span class="line">        <span class="keyword">if</span> v == preorder[<span class="number">0</span>] &#123;</span><br><span class="line">            left = i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    node.Left = buildTree(preorder[<span class="number">1</span>:left+<span class="number">1</span>], inorder[:left])</span><br><span class="line">    node.Right = buildTree(preorder[left+<span class="number">1</span>:], inorder[left+<span class="number">1</span>:])</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       

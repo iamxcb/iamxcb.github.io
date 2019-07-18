@@ -92,17 +92,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。 假设一个二叉搜索树具有如下特征：  节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。  示例 1:输入:    2   / \  1   3输出: true 示例 2:输入:    5   / \  1   4     / \    3   6输出: false解释:">
+<meta name="description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：  节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode 98. 验证二叉搜索树">
 <meta property="og:url" content="https://iamxcb.com/leetcode-98.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。 假设一个二叉搜索树具有如下特征：  节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。  示例 1:输入:    2   / \  1   3输出: true 示例 2:输入:    5   / \  1   4     / \    3   6输出: false解释:">
+<meta property="og:description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：  节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T08:38:15.411Z">
+<meta property="og:updated_time" content="2019-07-18T02:49:03.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 98. 验证二叉搜索树">
-<meta name="twitter:description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。 假设一个二叉搜索树具有如下特征：  节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。  示例 1:输入:    2   / \  1   3输出: true 示例 2:输入:    5   / \  1   4     / \    3   6输出: false解释:">
+<meta name="twitter:description" content="题目描述给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：  节点的左子树只包含小于当前节点的数。 节点的右子树只包含大于当前节点的数。 所有左子树和右子树自身必须也是二叉搜索树。">
 
 
 
@@ -347,15 +347,34 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。</p>
-<p>假设一个二叉搜索树具有如下特征：</p>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。<br>假设一个二叉搜索树具有如下特征：</p>
 <ol>
 <li>节点的左子树只包含小于当前节点的数。</li>
 <li>节点的右子树只包含大于当前节点的数。</li>
-<li>所有左子树和右子树自身必须也是二叉搜索树。</li>
+<li>所有左子树和右子树自身必须也是二叉搜索树。<a id="more"></a>
+</li>
 </ol>
-<p>示例 1:<br>输入:<br>    2<br>   / \<br>  1   3<br>输出: true</p>
-<p>示例 2:<br>输入:<br>    5<br>   / \<br>  1   4<br>     / \<br>    3   6<br>输出: false<br>解释: 输入为: [5,1,4,null,null,3,6]。<br>     根节点的值为 5 ，但是其右子节点值为 4 。</p>
+<p>示例 1:</p>
+<pre>
+输入:
+    2
+   / \
+  1   3
+输出: true
+</pre>
+示例 2:
+<pre>
+输入:
+    5
+   / \
+  1   4
+     / \
+    3   6
+输出: false
+解释: 输入为: [5,1,4,null,null,3,6]。
+     根节点的值为 5 ，但是其右子节点值为 4 。
+</pre>
+
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>暴力递归，直接判断是否符合二叉搜索树的标准，左子树上所有结点的值均小于它的根结点的值，右子树上所有结点的值均大于它的根结点的值</p>
 <h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isValidBST</span><span class="params">(root *TreeNode)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> !isValidLeft(root.Left, root.Val) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> !isValidRight(root.Right, root.Val) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isValidBST(root.Left) &amp;&amp; isValidBST(root.Right)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isValidLeft</span><span class="params">(root *TreeNode, val <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Val &gt;= val &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isValidLeft(root.Left, val) &amp;&amp; isValidLeft(root.Right, val)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isValidRight</span><span class="params">(root *TreeNode, val <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Val &lt;= val &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isValidRight(root.Left, val) &amp;&amp; isValidRight(root.Right, val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
