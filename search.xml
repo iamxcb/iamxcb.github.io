@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 65. 有效数字]]></title>
+    <url>%2Fleetcode-65.html</url>
+    <content type="text"><![CDATA[题目描述验证给定的字符串是否可以解释为十进制数字。 例如:“0” =&gt; true“ 0.1 “ =&gt; true“abc” =&gt; false“1 a” =&gt; false“2e10” =&gt; true“ -90e3 “ =&gt; true“ 1e” =&gt; false“e3” =&gt; false“ 6e-1” =&gt; true“ 99e2.5 “ =&gt; false“53.5e93” =&gt; true“ –6 “ =&gt; false“-+3” =&gt; false“95a54e53” =&gt; false 说明: 我们有意将问题陈述地比较模糊。在实现代码之前，你应当事先思考所有可能的情况。这里给出一份可能存在于有效十进制数字中的字符列表：数字 0-9指数 - “e”正/负号 - “+”/“-“小数点 - “.”当然，在输入中，这些字符的上下文也很重要。 题解正则表达式，前后空格 *，正负号 [+-]?，数字部分 (\d+|\d+\.\d+|\d+\.|\.\d+)，科学计数部分 (e[+-]?\d+)?主要注意数字部分的正则匹配，有四种可能性，例如 2, 2.2, 2., .2 示例代码(go)1234func isNumber(s string) bool &#123; matched, _ := regexp.Match(`^ *[+-]?(\d+|\d+\.\d+|\d+\.|\.\d+)(e[+-]?\d+)? *$`, []byte(s)) return matched&#125;]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 16.最接近的三数之和]]></title>
+    <url>%2Fleetcode-16.html</url>
+    <content type="text"><![CDATA[题目描述给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2). 题解首先对数组进行排序，计算出最小和最大的三数之和 min, max，如果 target &gt; max 表明最接近的三数之和肯定就是 max，同理 target &lt; min 时最接近的三数之和就是 min，当 target 在 min, max 之间的时候，可以通过双指针判断最接近 target 的三数之和 sum，因为数组 nums 已经排好序了，所以可以通过判断 sum, target 的大小来移动左右指针 j, k 示例代码(go)12345678910111213141516171819202122232425262728293031323334353637func threeSumClosest(nums []int, target int) int &#123; n := len(nums) sort.Ints(nums) min := nums[0] + nums[1] + nums[2] max := nums[n-3] + nums[n-2] + nums[n-1] if target &gt; max &#123; return max &#125; if target &lt; min &#123; return min &#125; res := min for i := 0; i &lt; n; i++ &#123; j, k := i+1, n-1 for j &lt; k &#123; sum := nums[i] + nums[j] + nums[k] if abs(target-sum) &lt; abs(target-res) &#123; res = sum &#125; if sum &gt; target &#123; k-- &#125; else if sum &lt; target &#123; j++ &#125; else &#123; return res &#125; &#125; &#125; return res&#125;func abs(num int) int &#123; if num &lt; 0 &#123; return -num &#125; return num&#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 84. 柱状图中最大的矩形]]></title>
     <url>%2Fleetcode-84.html</url>
     <content type="text"><![CDATA[题目描述给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。求在该柱状图中，能够勾勒出来的矩形的最大面积。 以上是柱状图的示例，其中每个柱子的宽度为 1，给定的高度为 [2,1,5,6,2,3]。 图中阴影部分为所能勾勒出的最大矩形面积，其面积为 10 个单位。 示例:输入: [2,1,5,6,2,3]输出: 10 题解暴力破解法，计算所有的两个柱子之间的最大矩形面积 示例代码(go)123456789101112131415161718192021222324252627func largestRectangleArea(heights []int) int &#123; res := 0 n := len(heights) for i := 0; i &lt; n; i++ &#123; minHeight := heights[i] res = max(res, minHeight) for j := i+1; j &lt; n; j++ &#123; minHeight = min(minHeight, heights[j]) res = max(res, minHeight * (j-i+1)) &#125; &#125; return res&#125;func min(a, b int) int &#123; if a &lt; b &#123; return a &#125; return b&#125;func max(a, b int) int &#123; if a &gt; b &#123; return a &#125; return b&#125;]]></content>
