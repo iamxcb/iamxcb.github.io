@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-22T06:18:52.783Z</updated>
+  <updated>2019-07-23T07:38:47.599Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 166. 分数到小数</title>
+    <link href="https://iamxcb.com/leetcode-166.html"/>
+    <id>https://iamxcb.com/leetcode-166.html</id>
+    <published>2019-07-23T07:31:54.000Z</published>
+    <updated>2019-07-23T07:38:47.599Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。<br>如果小数部分为循环小数，则将循环的部分括在括号内。</p><p>示例 1:<br>输入: numerator = 1, denominator = 2<br>输出: “0.5”</p><p>示例 2:<br>输入: numerator = 2, denominator = 1<br>输出: “2”</p><p>示例 3:<br>输入: numerator = 2, denominator = 3<br>输出: “0.(6)”<br><a id="more"></a></p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过判断余数是否重复，找出循环小数的起始位置<br>分为三种情况：没有小数、小数不循环、小数循环</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fractionToDecimal</span><span class="params">(numerator <span class="keyword">int</span>, denominator <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    isPositive := <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> numerator &lt; <span class="number">0</span> &#123;</span><br><span class="line">        numerator = -numerator</span><br><span class="line">        isPositive = !isPositive</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> denominator &lt; <span class="number">0</span> &#123;</span><br><span class="line">        denominator = -denominator</span><br><span class="line">        isPositive = !isPositive</span><br><span class="line">    &#125;</span><br><span class="line">    res := strconv.Itoa(numerator / denominator)</span><br><span class="line">    numerator = numerator % denominator</span><br><span class="line">    <span class="keyword">if</span> numerator == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> !isPositive &amp;&amp; res != <span class="string">"0"</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"-"</span> + res</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    decimal := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    i := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> numerator != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> _, ok := hash[numerator]; ok &#123;</span><br><span class="line">            i = hash[numerator]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        hash[numerator] = i</span><br><span class="line">        i++</span><br><span class="line">        numerator *= <span class="number">10</span></span><br><span class="line">        str := strconv.Itoa(numerator / denominator)</span><br><span class="line">        decimal = <span class="built_in">append</span>(decimal, str)</span><br><span class="line">        numerator = numerator % denominator</span><br><span class="line">    &#125;</span><br><span class="line">    str := strings.Join(decimal, <span class="string">""</span>)</span><br><span class="line">    <span class="keyword">if</span> numerator == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> !isPositive &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"-"</span> + res + <span class="string">"."</span> + str</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res + <span class="string">"."</span> + str</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> !isPositive &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"-"</span> + res + <span class="string">"."</span> + str[:i] + <span class="string">"("</span> + str[i:] + <span class="string">")"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res + <span class="string">"."</span> + str[:i] + <span class="string">"("</span> + str[i:] + <span class="string">")"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。&lt;br&gt;如果小数部分为循环小数，则将循环的部分括在括号内。&lt;/p&gt;
+&lt;p&gt;示例 1:&lt;br&gt;输入: numerator = 1, denominator = 2&lt;br&gt;输出: “0.5”&lt;/p&gt;
+&lt;p&gt;示例 2:&lt;br&gt;输入: numerator = 2, denominator = 1&lt;br&gt;输出: “2”&lt;/p&gt;
+&lt;p&gt;示例 3:&lt;br&gt;输入: numerator = 2, denominator = 3&lt;br&gt;输出: “0.(6)”&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 65. 有效数字</title>
@@ -395,25 +416,6 @@
     
       &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给定一个未排序的整数数组，找出其中没有出现的最小的正整数。&lt;/p&gt;
 &lt;p&gt;示例 1:&lt;br&gt;输入: [1,2,0]&lt;br&gt;输出: 3&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 3. 无重复字符的最长子串</title>
-    <link href="https://iamxcb.com/leetcode-3.html"/>
-    <id>https://iamxcb.com/leetcode-3.html</id>
-    <published>2019-06-17T07:21:48.000Z</published>
-    <updated>2019-07-18T02:45:06.657Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p><p>示例 1:<br>输入: “abcabcbb”<br>输出: 3<br>解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br><a id="more"></a></p><p>示例 2:<br>输入: “bbbbb”<br>输出: 1<br>解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。</p><p>示例 3:<br>输入: “pwwkew”<br>输出: 3<br>解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。</p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过哈希表保存重复字符上一次出现的位置，然后从重复字符的后一个字符作为新的开始，重新计算最长子串的长度</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">byte</span>]<span class="keyword">int</span>)</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    res, start := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> last, ok := hash[s[i]]; ok &amp;&amp; last &gt;= start &#123;</span><br><span class="line">            start = last+<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        hash[s[i]] = i</span><br><span class="line">        res = max(res, i-start+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;/p&gt;
-&lt;p&gt;示例 1:&lt;br&gt;输入: “abcabcbb”&lt;br&gt;输出: 3&lt;br&gt;解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;
     
     </summary>
     

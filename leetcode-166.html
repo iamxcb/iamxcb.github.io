@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="题目描述给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。你找到的子数组应是最短的，请输出它的长度。">
+<meta name="description" content="题目描述给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。如果小数部分为循环小数，则将循环的部分括在括号内。 示例 1:输入: numerator = 1, denominator = 2输出: “0.5” 示例 2:输入: numerator = 2, denominator = 1输出: “2” 示例 3:输入: numerator =">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 581. 最短无序连续子数组">
-<meta property="og:url" content="https://iamxcb.com/leetcode-581.html">
+<meta property="og:title" content="leetcode 166. 分数到小数">
+<meta property="og:url" content="https://iamxcb.com/leetcode-166.html">
 <meta property="og:site_name" content="三点钟的太阳">
-<meta property="og:description" content="题目描述给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。你找到的子数组应是最短的，请输出它的长度。">
+<meta property="og:description" content="题目描述给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。如果小数部分为循环小数，则将循环的部分括在括号内。 示例 1:输入: numerator = 1, denominator = 2输出: “0.5” 示例 2:输入: numerator = 2, denominator = 1输出: “2” 示例 3:输入: numerator =">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-18T02:54:07.676Z">
+<meta property="og:updated_time" content="2019-07-23T07:38:47.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 581. 最短无序连续子数组">
-<meta name="twitter:description" content="题目描述给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。你找到的子数组应是最短的，请输出它的长度。">
+<meta name="twitter:title" content="leetcode 166. 分数到小数">
+<meta name="twitter:description" content="题目描述给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。如果小数部分为循环小数，则将循环的部分括在括号内。 示例 1:输入: numerator = 1, denominator = 2输出: “0.5” 示例 2:输入: numerator = 2, denominator = 1输出: “2” 示例 3:输入: numerator =">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://iamxcb.com/leetcode-581.html"/>
+  <link rel="canonical" href="https://iamxcb.com/leetcode-166.html"/>
 
 
 
 
 
-  <title>leetcode 581. 最短无序连续子数组 | 三点钟的太阳</title>
+  <title>leetcode 166. 分数到小数 | 三点钟的太阳</title>
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-581.html">
+    <link itemprop="mainEntityOfPage" href="https://iamxcb.com/leetcode-166.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="iamxcb">
@@ -322,7 +322,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">leetcode 581. 最短无序连续子数组</h2>
+          <h2 class="post-title" itemprop="name headline">leetcode 166. 分数到小数</h2>
         
 
         <div class="post-meta">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-26T11:05:11+08:00">
-                2019-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T15:31:54+08:00">
+                2019-07-23
               </time>
             
 
@@ -353,8 +353,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/leetcode-581.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-581.html" itemprop="commentCount"></span>
+                <a href="/leetcode-166.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/leetcode-166.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,7 +362,7 @@
 
           
           
-             <span id="/leetcode-581.html" class="leancloud_visitors" data-flag-title="leetcode 581. 最短无序连续子数组">
+             <span id="/leetcode-166.html" class="leancloud_visitors" data-flag-title="leetcode 166. 分数到小数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,15 +393,13 @@
       
 
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。<br>你找到的子数组应是最短的，请输出它的长度。<br><a id="more"></a></p>
-<p>示例 1:<br>输入: [2, 6, 4, 8, 10, 9, 15]<br>输出: 5<br>解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。</p>
-<p>说明 :</p>
-<ol>
-<li>输入的数组长度范围在 [1, 10,000]。</li>
-<li>输入的数组可能包含重复元素 ，所以升序的意思是&lt;=。</li>
-</ol>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历数组，同时进行从头到尾，从尾到头的遍历，分别找出无序连续子数组区间的右边和左边节点；右边点，是从左到右不递增的点，左边点，是从右到左不递减的点，两点之间的距离就是所求值</p>
-<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findUnsortedSubarray</span><span class="params">(nums []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    start, end := n<span class="number">-1</span>, <span class="number">0</span></span><br><span class="line">    max, min := nums[<span class="number">0</span>], nums[n<span class="number">-1</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt;= max &#123;</span><br><span class="line">            max= nums[i]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            end = i</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> nums[n-i<span class="number">-1</span>] &lt;= min &#123;</span><br><span class="line">            min = nums[n-i<span class="number">-1</span>]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            start = n-i<span class="number">-1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> start &gt;= end &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> end-start+<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以字符串形式返回小数。<br>如果小数部分为循环小数，则将循环的部分括在括号内。</p>
+<p>示例 1:<br>输入: numerator = 1, denominator = 2<br>输出: “0.5”</p>
+<p>示例 2:<br>输入: numerator = 2, denominator = 1<br>输出: “2”</p>
+<p>示例 3:<br>输入: numerator = 2, denominator = 3<br>输出: “0.(6)”<br><a id="more"></a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>通过判断余数是否重复，找出循环小数的起始位置<br>分为三种情况：没有小数、小数不循环、小数循环</p>
+<h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fractionToDecimal</span><span class="params">(numerator <span class="keyword">int</span>, denominator <span class="keyword">int</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    isPositive := <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> numerator &lt; <span class="number">0</span> &#123;</span><br><span class="line">        numerator = -numerator</span><br><span class="line">        isPositive = !isPositive</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> denominator &lt; <span class="number">0</span> &#123;</span><br><span class="line">        denominator = -denominator</span><br><span class="line">        isPositive = !isPositive</span><br><span class="line">    &#125;</span><br><span class="line">    res := strconv.Itoa(numerator / denominator)</span><br><span class="line">    numerator = numerator % denominator</span><br><span class="line">    <span class="keyword">if</span> numerator == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> !isPositive &amp;&amp; res != <span class="string">"0"</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"-"</span> + res</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line">    decimal := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">    i := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> numerator != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> _, ok := hash[numerator]; ok &#123;</span><br><span class="line">            i = hash[numerator]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        hash[numerator] = i</span><br><span class="line">        i++</span><br><span class="line">        numerator *= <span class="number">10</span></span><br><span class="line">        str := strconv.Itoa(numerator / denominator)</span><br><span class="line">        decimal = <span class="built_in">append</span>(decimal, str)</span><br><span class="line">        numerator = numerator % denominator</span><br><span class="line">    &#125;</span><br><span class="line">    str := strings.Join(decimal, <span class="string">""</span>)</span><br><span class="line">    <span class="keyword">if</span> numerator == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> !isPositive &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"-"</span> + res + <span class="string">"."</span> + str</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res + <span class="string">"."</span> + str</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> !isPositive &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"-"</span> + res + <span class="string">"."</span> + str[:i] + <span class="string">"("</span> + str[i:] + <span class="string">")"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res + <span class="string">"."</span> + str[:i] + <span class="string">"("</span> + str[i:] + <span class="string">")"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -425,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/leetcode-234.html" rel="next" title="leetcode 234. 回文链表">
-                <i class="fa fa-chevron-left"></i> leetcode 234. 回文链表
+              <a href="/leetcode-65.html" rel="next" title="leetcode 65. 有效数字">
+                <i class="fa fa-chevron-left"></i> leetcode 65. 有效数字
               </a>
             
           </div>
@@ -434,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/leetcode-141.html" rel="prev" title="leetcode 141. 环形链表">
-                leetcode 141. 环形链表 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
