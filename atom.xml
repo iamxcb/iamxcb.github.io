@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamxcb.com/"/>
-  <updated>2019-07-24T06:00:19.464Z</updated>
+  <updated>2019-07-29T06:42:32.434Z</updated>
   <id>https://iamxcb.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 135. 分发糖果</title>
+    <link href="https://iamxcb.com/leetcode-135.html"/>
+    <id>https://iamxcb.com/leetcode-135.html</id>
+    <published>2019-07-29T06:27:45.000Z</published>
+    <updated>2019-07-29T06:42:32.434Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>老师想给孩子们分发糖果，有 N 个孩子站成了一条直线，老师会根据每个孩子的表现，预先给他们评分。<br>你需要按照以下要求，帮助老师给这些孩子分发糖果：</p><ol><li>每个孩子至少分配到 1 个糖果。</li><li>相邻的孩子中，评分高的孩子必须获得更多的糖果。</li><li>那么这样下来，老师至少需要准备多少颗糖果呢？<a id="more"></a></li></ol><p>示例 1:<br>输入: [1,0,2]<br>输出: 5<br>解释: 你可以分别给这三个孩子分发 2、1、2 颗糖果。</p><p>示例 2:<br>输入: [1,2,2]<br>输出: 4<br>解释: 你可以分别给这三个孩子分发 1、2、1 颗糖果。<br>     第三个孩子只得到 1 颗糖果，这已满足上述两个条件。</p><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先初始化数组 <code>candies</code> 为 1（每个孩子分一个糖果），因为相邻的评分高的孩子可以获得更多的糖果，所以可以比较第 <code>i</code> 个孩子的分数 <code>ratings[i]</code> 是否比左边 <code>ratings[i-1]</code> ，右边 <code>ratings[i+1]</code> 高，如果比左边高则 <code>candies[i] = candies[i-1] + 1</code> 多给一颗糖果，比右边高则 <code>candies[i] = max(candies[i], candies[i+1] + 1)</code> (因为要同时保证比左右两边孩子的糖果数都高才行)</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">candy</span><span class="params">(ratings []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    res, n := <span class="number">0</span>, <span class="built_in">len</span>(ratings)</span><br><span class="line">    candies := <span class="built_in">make</span>([]<span class="keyword">int</span>, n)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        candies[i] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> ratings[i] &gt; ratings[i<span class="number">-1</span>] &#123;</span><br><span class="line">            candies[i] = candies[i<span class="number">-1</span>] + <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := n<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        <span class="keyword">if</span> ratings[i] &gt; ratings[i+<span class="number">1</span>] &#123;</span><br><span class="line">            candies[i] = max(candies[i], candies[i+<span class="number">1</span>] + <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> candies &#123;</span><br><span class="line">        res += v</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;老师想给孩子们分发糖果，有 N 个孩子站成了一条直线，老师会根据每个孩子的表现，预先给他们评分。&lt;br&gt;你需要按照以下要求，帮助老师给这些孩子分发糖果：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每个孩子至少分配到 1 个糖果。&lt;/li&gt;
+&lt;li&gt;相邻的孩子中，评分高的孩子必须获得更多的糖果。&lt;/li&gt;
+&lt;li&gt;那么这样下来，老师至少需要准备多少颗糖果呢？
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 334. 递增的三元子序列</title>
@@ -400,24 +422,6 @@
       &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给定一个32位正整数 n，你需要找到最小的32位整数，其与 n 中存在的位数完全相同，并且其值大于n。如果不存在这样的32位整数，则返回-1。&lt;/p&gt;
 &lt;p&gt;示例 1:&lt;br&gt;输入: 12&lt;br&gt;输出: 21&lt;/p&gt;
 &lt;p&gt;示例 2:&lt;br&gt;输入: 21&lt;br&gt;输出: -1&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 131. 分割回文串</title>
-    <link href="https://iamxcb.com/leetcode-131.html"/>
-    <id>https://iamxcb.com/leetcode-131.html</id>
-    <published>2019-06-25T06:11:31.000Z</published>
-    <updated>2019-07-18T02:50:41.481Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个字符串 s，将 s 分割成一些子串，使每个子串都是回文串。<br>返回 s 所有可能的分割方案。<br><a id="more"></a></p><p>示例:</p><pre>输入: "aab"输出:[  ["aa","b"],  ["a","a","b"]]</pre><h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归回溯，如果字符串的 <code>s[:i]</code> 子串回文，则对剩下的 <code>s[i:]</code> 子串进行递归</p><h2 id="示例代码-go"><a href="#示例代码-go" class="headerlink" title="示例代码(go)"></a>示例代码(go)</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="keyword">string</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partition</span><span class="params">(s <span class="keyword">string</span>)</span> [][]<span class="title">string</span></span> &#123;</span><br><span class="line">    res = [][]<span class="keyword">string</span>&#123;&#125;</span><br><span class="line">    dfs(s, []<span class="keyword">string</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s <span class="keyword">string</span>, arr []<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> s == <span class="string">""</span> &#123;</span><br><span class="line">        tmp := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">0</span>)</span><br><span class="line">        tmp = <span class="built_in">append</span>(tmp, arr...)</span><br><span class="line">        res = <span class="built_in">append</span>(res, tmp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt;= n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> isPalindrome(s[:i]) &#123;</span><br><span class="line">            dfs(s[i:], <span class="built_in">append</span>(arr, <span class="keyword">string</span>(s[:i])))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPalindrome</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(s)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n/<span class="number">2</span>; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> s[i] != s[n-i<span class="number">-1</span>] &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;给定一个字符串 s，将 s 分割成一些子串，使每个子串都是回文串。&lt;br&gt;返回 s 所有可能的分割方案。&lt;br&gt;
     
     </summary>
     
